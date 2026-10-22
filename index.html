@@ -3,52 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080b08">
-  <meta name="description" content="A Toca do Mal — entre na floresta, se tiver coragem.">
-
-  <title>A Toca do Mal | O bosque não esquece</title>
+  <title>A Toca do Mal | Atlética FSA</title>
 
   <link rel="stylesheet" href="style.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&family=UnifrakturMaguntia&display=swap"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&display=swap" rel="stylesheet">
 </head>
 
 <body>
-
   <header class="site-header">
-    <a class="brand" href="#inicio">A Toca do Mal</a>
+    <a class="brand" href="#inicio">
+      <img
+        class="brand-logo"
+        src="logo-atletica.jpeg"
+        alt="Logo da Atlética Fundação Santo André"
+      >
+      <span>A Toca do Mal</span>
+    </a>
 
-    <nav class="navigation" aria-label="Navegação principal">
+    <nav class="navigation">
       <a href="#inicio">Início</a>
       <a href="#historia">O bosque</a>
       <a href="#inscricao">Inscrição</a>
       <a href="#participantes">Participantes</a>
-      <a href="#ranking">Rankings</a>
+      <a href="#ranking">Ranking</a>
     </nav>
   </header>
 
   <main>
-
-    <!-- PRIMEIRA TELA -->
-
     <section class="hero" id="inicio">
-
       <div class="hero-content">
+        <p class="eyebrow">VOCÊ OUVIU ALGUMA COISA LÁ DENTRO?</p>
 
-        <p class="hero-label">
-          Você ouviu alguma coisa lá dentro?
-        </p>
-
-        <h1>
-          A TOCA
-          <span class="title-second-line">DO MAL</span>
-        </h1>
+        <h1>A TOCA <span>DO MAL</span></h1>
 
         <p class="hero-description">
           Existe um lugar onde as histórias terminam errado.
@@ -69,215 +57,108 @@
         <p class="hero-warning">
           NÃO SIGA OS COELHOS. NÃO CONFIE NA FLORESTA.
         </p>
-
       </div>
 
-      <div class="forest-decoration" aria-hidden="true"></div>
-
+      <div class="rabbit-scene" aria-label="Coelho macabro na floresta">
+        <div class="rabbit-eyes">●　●</div>
+        <div class="rabbit-silhouette">☠</div>
+        <p>ELE SABE QUE VOCÊ ESTÁ AQUI.</p>
+      </div>
     </section>
 
-    <!-- FAIXA DE AVISO -->
-
-    <div class="warning-strip" aria-hidden="true">
-      A FLORESTA NÃO ESTÁ VAZIA
-      <span>✳</span>
-      A FLORESTA NÃO ESTÁ VAZIA
-      <span>✳</span>
-      A FLORESTA NÃO ESTÁ VAZIA
+    <div class="warning-strip">
+      A FLORESTA NÃO ESTÁ VAZIA ✦ A FLORESTA NÃO ESTÁ VAZIA ✦
     </div>
 
-    <!-- HISTÓRIA -->
-
     <section class="content-section story-section" id="historia">
+      <div>
+        <p class="eyebrow">01 / O CONTO ESQUECIDO</p>
+        <h2>Era uma vez.<br>Até deixar de ser.</h2>
 
-      <div class="story-grid">
-
-        <div class="story-copy">
-
-          <p class="section-label">01 / O CONTO ESQUECIDO</p>
-
-          <h2>Era uma vez.<br>Até deixar de ser.</h2>
-
-          <p>
-            Dizem que existia um bosque onde os coelhos nunca envelheciam,
-            as árvores nunca davam frutos e as crianças nunca voltavam
-            pelo mesmo caminho.
-          </p>
-
-          <p>
-            O tempo passou. As casas apodreceram.
-            Os animais desapareceram.
-            Mas as tocas continuaram abertas, esperando por alguém
-            curioso o bastante para olhar lá dentro.
-          </p>
-
-          <p>
-            Agora, o bosque despertou.
-            E você recebeu um convite.
-          </p>
-
-        </div>
-
-        <aside class="story-quote">
-
-          <div class="rabbit-symbol" aria-hidden="true">♟</div>
-
-          <blockquote>
-            “O coelhinho disse que era seguro.”
-          </blockquote>
-
-          <p class="quote-caption">
-            FRAGMENTO ENCONTRADO NA LAMA
-          </p>
-
-        </aside>
-
-      </div>
-
-    </section>
-
-    <!-- INSCRIÇÃO -->
-
-    <section class="content-section registration-section" id="inscricao">
-
-      <div class="section-inner">
-
-        <p class="section-label">02 / O CHAMADO</p>
-
-        <h2>Você vai entrar?</h2>
-
-        <p class="section-description">
-          Prepare sua fantasia. Escolha quem você será quando as luzes
-          apagarem. Mostre sua criação e deixe que a floresta decida
-          se o seu nome merece ser lembrado.
+        <p>
+          Dizem que existia um bosque onde os coelhos nunca envelheciam,
+          as árvores nunca davam frutos e as crianças nunca voltavam
+          pelo mesmo caminho.
         </p>
 
-        <!-- O formulário real será criado em uma próxima etapa. -->
-
-        <button
-          class="button button-primary"
-          id="registration-button"
-          type="button"
-        >
-          Inscrições em breve
-        </button>
-
-        <p class="small-note">
-          Data, local e regulamento serão divulgados pela organização.
+        <p>
+          O tempo passou. As casas apodreceram. Os animais desapareceram.
+          Mas as tocas continuaram abertas, esperando por alguém curioso
+          o bastante para olhar lá dentro.
         </p>
 
+        <p>Agora, o bosque despertou. E você recebeu um convite.</p>
       </div>
 
+      <blockquote>
+        <span class="quote-symbol">☠</span>
+        “O coelhinho disse que era seguro.”
+        <small>FRAGMENTO ENCONTRADO NA LAMA</small>
+      </blockquote>
     </section>
 
-    <!-- PARTICIPANTES -->
+    <section class="registration-section" id="inscricao">
+      <p class="eyebrow">02 / O CHAMADO</p>
+      <h2>Você vai entrar?</h2>
 
-    <section class="content-section participants-section" id="participantes">
+      <p>
+        Prepare sua fantasia. Escolha quem você será quando as luzes
+        apagarem. Mostre sua criação e deixe que a floresta decida
+        se o seu nome merece ser lembrado.
+      </p>
 
-      <div class="section-inner">
+      <button class="button button-primary" id="registration-button">
+        Inscrições em breve
+      </button>
 
-        <p class="section-label">03 / OS QUE ENTRARAM</p>
+      <small>Data, local e regulamento serão divulgados pela organização.</small>
+    </section>
 
-        <h2>Habitantes da toca</h2>
+    <section class="content-section lower-sections" id="participantes">
+      <p class="eyebrow">03 / OS QUE ENTRARAM</p>
+      <h2>Habitantes da toca</h2>
 
-        <div class="empty-state">
-
-          <span class="empty-symbol" aria-hidden="true">☠</span>
-
-          <h3>Nenhum rosto foi revelado.</h3>
-
-          <p>
-            Os participantes aprovados aparecerão aqui
-            quando as inscrições forem abertas.
-          </p>
-
-        </div>
-
+      <div class="empty-state">
+        <span>☠</span>
+        <h3>Nenhum rosto foi revelado.</h3>
+        <p>Os participantes aprovados aparecerão aqui quando as inscrições forem abertas.</p>
       </div>
-
     </section>
 
-    <!-- RANKINGS -->
+    <section class="content-section ranking-section" id="ranking">
+      <p class="eyebrow">04 / O JULGAMENTO</p>
+      <h2>Quem será lembrado?</h2>
 
-    <section class="content-section rankings-section" id="ranking">
+      <div class="ranking-grid">
+        <article class="ranking-card">
+          <span>01</span>
+          <h3>Voto popular</h3>
+          <p>O público observa. O público escolhe. Qual fantasia vai conquistar a floresta?</p>
+          <small>DISPONÍVEL EM BREVE</small>
+        </article>
 
-      <div class="section-inner">
-
-        <p class="section-label">04 / O JULGAMENTO</p>
-
-        <h2>Quem será lembrado?</h2>
-
-        <div class="ranking-grid">
-
-          <article class="ranking-card">
-
-            <p class="ranking-number">01</p>
-
-            <h3>Voto popular</h3>
-
-            <p>
-              O público observa. O público escolhe.
-              Qual fantasia vai conquistar a floresta?
-            </p>
-
-            <span class="status-label">
-              DISPONÍVEL EM BREVE
-            </span>
-
-          </article>
-
-          <article class="ranking-card">
-
-            <p class="ranking-number">02</p>
-
-            <h3>O julgamento</h3>
-
-            <p>
-              A Atlética avaliará as fantasias conforme
-              os critérios definidos no regulamento.
-            </p>
-
-            <span class="status-label">
-              NOTAS EM BREVE
-            </span>
-
-          </article>
-
-        </div>
-
+        <article class="ranking-card">
+          <span>02</span>
+          <h3>O julgamento</h3>
+          <p>A Atlética avaliará as fantasias conforme os critérios definidos no regulamento.</p>
+          <small>NOTAS EM BREVE</small>
+        </article>
       </div>
-
     </section>
-
   </main>
 
-  <!-- RODAPÉ -->
-
   <footer class="site-footer">
-
-    <a class="brand" href="#inicio">A Toca do Mal</a>
-
-    <p>
-      ALGUMAS PORTAS DEVERIAM PERMANECER FECHADAS.
-    </p>
-
-    <p class="copyright">
-      © A TOCA DO MAL — EVENTO INDEPENDENTE
-    </p>
-
+    <img src="logo-atletica.jpeg" alt="" class="footer-logo">
+    <p>ALGUMAS PORTAS DEVERIAM PERMANECER FECHADAS.</p>
+    <small>A TOCA DO MAL — EVENTO DA ATLÉTICA FSA</small>
   </footer>
 
   <script>
-    const registrationButton = document.querySelector(
-      "#registration-button"
-    );
-
-    registrationButton.addEventListener("click", function () {
-      alert(
-        "A toca ainda está sendo preparada. As inscrições serão abertas em breve."
-      );
-    });
+    document
+      .getElementById("registration-button")
+      .addEventListener("click", function () {
+        alert("As inscrições ainda não foram abertas. Fique de olho!");
+      });
   </script>
-
 </body>
 </html>
