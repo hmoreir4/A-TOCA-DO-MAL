@@ -3,26 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050604">
+  <meta name="description" content="A Toca do Mal — evento de Halloween da Atlética Fundação Santo André.">
   <title>A Toca do Mal | Atlética FSA</title>
 
   <link rel="stylesheet" href="style.css">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <header class="site-header">
     <a class="brand" href="#inicio">
-      <img
-        class="brand-logo"
-        src="logo-atletica.jpeg"
-        alt="Logo da Atlética Fundação Santo André"
-      >
+      <img src="logo-atletica.jpeg" alt="Logo da Atlética FSA">
       <span>A Toca do Mal</span>
     </a>
 
-    <nav class="navigation">
+    <nav class="navigation" aria-label="Navegação principal">
       <a href="#inicio">Início</a>
       <a href="#historia">O bosque</a>
       <a href="#inscricao">Inscrição</a>
@@ -33,114 +31,169 @@
 
   <main>
     <section class="hero" id="inicio">
-      <div class="hero-content">
-        <p class="eyebrow">VOCÊ OUVIU ALGUMA COISA LÁ DENTRO?</p>
-
-        <h1>A TOCA <span>DO MAL</span></h1>
+      <div class="hero-copy">
+        <p class="eyebrow">HÁ ALGO SE MOVENDO ENTRE AS ÁRVORES</p>
+        <h1>A TOCA<br><span>DO MAL</span></h1>
 
         <p class="hero-description">
-          Existe um lugar onde as histórias terminam errado.
-          As árvores se lembram. A terra respira.
-          E alguma coisa espera no fundo da toca.
+          Você entrou no bosque errado.<br>
+          Os coelhos não deveriam ter olhos assim.<br>
+          E agora eles sabem o seu nome.
         </p>
 
         <div class="hero-actions">
-          <a class="button button-primary" href="#inscricao">
-            Entrar na toca
-          </a>
-
-          <a class="button button-secondary" href="#historia">
-            Conhecer o bosque
-          </a>
+          <a class="button button-primary" href="#inscricao">Entrar na toca</a>
+          <a class="button button-secondary" href="#historia">Conhecer o bosque</a>
         </div>
 
-        <p class="hero-warning">
-          NÃO SIGA OS COELHOS. NÃO CONFIE NA FLORESTA.
-        </p>
+        <small class="hero-warning">NÃO OLHE PARA TRÁS.</small>
       </div>
 
-      <div class="rabbit-scene" aria-label="Coelho macabro na floresta">
-        <div class="rabbit-eyes">●　●</div>
-        <div class="rabbit-silhouette">☠</div>
-        <p>ELE SABE QUE VOCÊ ESTÁ AQUI.</p>
-      </div>
+      <div class="hero-creature" role="img" aria-label="Imagem decorativa de uma criatura na floresta"></div>
+      <p class="creature-caption">ELE ESTÁ ESPERANDO.</p>
     </section>
 
-    <div class="warning-strip">
-      A FLORESTA NÃO ESTÁ VAZIA ✦ A FLORESTA NÃO ESTÁ VAZIA ✦
+    <div class="warning-strip" aria-hidden="true">
+      NÃO SIGA OS COELHOS ✦ NÃO SIGA OS COELHOS ✦ NÃO SIGA OS COELHOS
     </div>
 
-    <section class="content-section story-section" id="historia">
-      <div>
+    <section class="story-section section" id="historia">
+      <div class="story-copy">
         <p class="eyebrow">01 / O CONTO ESQUECIDO</p>
-        <h2>Era uma vez.<br>Até deixar de ser.</h2>
+        <h2>Era uma vez.<br>Até alguém desaparecer.</h2>
 
         <p>
-          Dizem que existia um bosque onde os coelhos nunca envelheciam,
-          as árvores nunca davam frutos e as crianças nunca voltavam
-          pelo mesmo caminho.
+          Dizem que havia um bosque onde os coelhos nunca envelheciam.
+          Os moradores trancavam as janelas quando ouviam arranhões
+          vindos debaixo da terra.
         </p>
 
         <p>
-          O tempo passou. As casas apodreceram. Os animais desapareceram.
-          Mas as tocas continuaram abertas, esperando por alguém curioso
-          o bastante para olhar lá dentro.
+          As casas foram abandonadas. As trilhas desapareceram.
+          Mas as tocas continuaram abertas, esperando por alguém
+          curioso o bastante para olhar lá dentro.
         </p>
-
-        <p>Agora, o bosque despertou. E você recebeu um convite.</p>
       </div>
 
-      <blockquote>
-        <span class="quote-symbol">☠</span>
-        “O coelhinho disse que era seguro.”
+      <blockquote class="story-quote">
+        <span class="quote-mark">“</span>
+        <p>Se encontrar um coelho na floresta, não deixe que ele sorria.</p>
         <small>FRAGMENTO ENCONTRADO NA LAMA</small>
       </blockquote>
     </section>
 
-    <section class="registration-section" id="inscricao">
-      <p class="eyebrow">02 / O CHAMADO</p>
-      <h2>Você vai entrar?</h2>
+    <section class="registration-section section" id="inscricao">
+      <div class="registration-content">
+        <p class="eyebrow">02 / O CHAMADO</p>
+        <h2>Você vai entrar?</h2>
+        <p class="section-intro">
+          Prepare sua fantasia. Escolha quem você será quando as luzes
+          se apagarem. A floresta está procurando novos habitantes.
+        </p>
 
-      <p>
-        Prepare sua fantasia. Escolha quem você será quando as luzes
-        apagarem. Mostre sua criação e deixe que a floresta decida
-        se o seu nome merece ser lembrado.
-      </p>
+        <form id="registration-form" class="registration-form">
+          <div class="form-field">
+            <label for="full-name">Nome completo *</label>
+            <input
+              type="text"
+              id="full-name"
+              name="fullName"
+              placeholder="Seu nome e sobrenome"
+              autocomplete="name"
+              maxlength="100"
+              required
+            >
+          </div>
 
-      <button class="button button-primary" id="registration-button">
-        Inscrições em breve
-      </button>
+          <div class="form-field">
+            <label for="costume-name">Nome da fantasia *</label>
+            <input
+              type="text"
+              id="costume-name"
+              name="costumeName"
+              placeholder="Como sua criatura será conhecida?"
+              maxlength="80"
+              required
+            >
+          </div>
 
-      <small>Data, local e regulamento serão divulgados pela organização.</small>
+          <div class="form-field">
+            <label for="inspiration">Inspiração da fantasia</label>
+            <textarea
+              id="inspiration"
+              name="inspiration"
+              placeholder="Conte a história por trás da sua fantasia..."
+              rows="4"
+              maxlength="500"
+            ></textarea>
+          </div>
+
+          <div class="form-field">
+            <label for="costume-photo">Foto da fantasia *</label>
+            <input
+              type="file"
+              id="costume-photo"
+              name="costumePhoto"
+              accept="image/jpeg,image/png,image/webp"
+              required
+            >
+            <small>JPG, PNG ou WEBP. Tamanho máximo: 5 MB.</small>
+            <p id="photo-name" class="photo-name">Nenhuma imagem selecionada.</p>
+            <img id="photo-preview" class="photo-preview" alt="Prévia da foto selecionada" hidden>
+          </div>
+
+          <label class="consent-field" for="consent">
+            <input type="checkbox" id="consent" required>
+            <span>
+              Confirmo que as informações são verdadeiras e declaro que
+              li as orientações de participação e de uso da imagem do evento. *
+            </span>
+          </label>
+
+          <button class="button button-primary submit-button" type="submit">
+            Enviar para a toca
+          </button>
+
+          <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+
+          <small class="form-note">
+            Demonstração: o envio definitivo será ativado após a conexão
+            com o sistema de inscrições.
+          </small>
+        </form>
+      </div>
     </section>
 
-    <section class="content-section lower-sections" id="participantes">
+    <section class="participants-section section" id="participantes">
       <p class="eyebrow">03 / OS QUE ENTRARAM</p>
       <h2>Habitantes da toca</h2>
 
       <div class="empty-state">
-        <span>☠</span>
+        <span class="empty-symbol" aria-hidden="true">?</span>
         <h3>Nenhum rosto foi revelado.</h3>
-        <p>Os participantes aprovados aparecerão aqui quando as inscrições forem abertas.</p>
+        <p>
+          Os participantes aprovados aparecerão aqui depois que as inscrições
+          forem abertas e o sistema estiver conectado.
+        </p>
       </div>
     </section>
 
-    <section class="content-section ranking-section" id="ranking">
+    <section class="rankings-section section" id="ranking">
       <p class="eyebrow">04 / O JULGAMENTO</p>
       <h2>Quem será lembrado?</h2>
 
       <div class="ranking-grid">
         <article class="ranking-card">
-          <span>01</span>
+          <span class="ranking-number">01</span>
           <h3>Voto popular</h3>
-          <p>O público observa. O público escolhe. Qual fantasia vai conquistar a floresta?</p>
+          <p>O público escolhe a fantasia que vai conquistar a floresta.</p>
           <small>DISPONÍVEL EM BREVE</small>
         </article>
 
         <article class="ranking-card">
-          <span>02</span>
+          <span class="ranking-number">02</span>
           <h3>O julgamento</h3>
-          <p>A Atlética avaliará as fantasias conforme os critérios definidos no regulamento.</p>
+          <p>A Atlética avaliará as fantasias conforme os critérios do regulamento.</p>
           <small>NOTAS EM BREVE</small>
         </article>
       </div>
@@ -148,17 +201,70 @@
   </main>
 
   <footer class="site-footer">
-    <img src="logo-atletica.jpeg" alt="" class="footer-logo">
+    <img src="logo-atletica.jpeg" alt="Logo da Atlética FSA" class="footer-logo">
     <p>ALGUMAS PORTAS DEVERIAM PERMANECER FECHADAS.</p>
-    <small>A TOCA DO MAL — EVENTO DA ATLÉTICA FSA</small>
+    <small>A TOCA DO MAL — ATLÉTICA FUNDAÇÃO SANTO ANDRÉ</small>
   </footer>
 
   <script>
-    document
-      .getElementById("registration-button")
-      .addEventListener("click", function () {
-        alert("As inscrições ainda não foram abertas. Fique de olho!");
-      });
+    const form = document.getElementById("registration-form");
+    const photoInput = document.getElementById("costume-photo");
+    const photoName = document.getElementById("photo-name");
+    const photoPreview = document.getElementById("photo-preview");
+    const formMessage = document.getElementById("form-message");
+
+    const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+    const maxSize = 5 * 1024 * 1024;
+    let previewUrl = null;
+
+    photoInput.addEventListener("change", () => {
+      const file = photoInput.files[0];
+
+      formMessage.textContent = "";
+
+      if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+        previewUrl = null;
+      }
+
+      photoPreview.hidden = true;
+      photoPreview.removeAttribute("src");
+
+      if (!file) {
+        photoName.textContent = "Nenhuma imagem selecionada.";
+        return;
+      }
+
+      if (!allowedTypes.includes(file.type) || file.size > maxSize) {
+        photoInput.value = "";
+        photoName.textContent = "Nenhuma imagem selecionada.";
+        formMessage.textContent =
+          "Arquivo inválido. Escolha JPG, PNG ou WEBP de até 5 MB.";
+        return;
+      }
+
+      photoName.textContent = "Imagem selecionada: " + file.name;
+      previewUrl = URL.createObjectURL(file);
+      photoPreview.src = previewUrl;
+      photoPreview.hidden = false;
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!form.reportValidity()) return;
+
+      const file = photoInput.files[0];
+
+      if (!file || !allowedTypes.includes(file.type) || file.size > maxSize) {
+        formMessage.textContent = "Selecione uma imagem válida de até 5 MB.";
+        return;
+      }
+
+      formMessage.textContent =
+        "Formulário testado! Ainda não foi enviada nenhuma inscrição. " +
+        "Vamos conectar o sistema ao Google Sheets na próxima etapa.";
+    });
   </script>
 </body>
 </html>
