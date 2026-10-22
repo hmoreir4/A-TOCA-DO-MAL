@@ -3,268 +3,351 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#050604">
-  <meta name="description" content="A Toca do Mal — evento de Halloween da Atlética Fundação Santo André.">
+  <meta name="theme-color" content="#090d08">
+  <meta name="description" content="Entre na Toca do Mal. Inscreva sua fantasia e enfrente os habitantes da floresta.">
   <title>A Toca do Mal | Atlética FSA</title>
 
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <header class="site-header">
     <a class="brand" href="#inicio">
-      <img src="logo-atletica.jpeg" alt="Logo da Atlética FSA">
-      <span>A Toca do Mal</span>
+      <img src="logo-atletica.jpeg" alt="Logo da Atlética">
+      <span>A TOCA DO MAL</span>
     </a>
 
-    <nav class="navigation" aria-label="Navegação principal">
-      <a href="#inicio">Início</a>
-      <a href="#historia">O bosque</a>
+    <nav>
+      <a href="#historia">A lenda</a>
       <a href="#inscricao">Inscrição</a>
-      <a href="#participantes">Participantes</a>
+      <a href="#habitantes">Habitantes</a>
       <a href="#ranking">Ranking</a>
     </nav>
   </header>
 
   <main>
     <section class="hero" id="inicio">
-      <div class="hero-copy">
-        <p class="eyebrow">HÁ ALGO SE MOVENDO ENTRE AS ÁRVORES</p>
-        <h1>A TOCA<br><span>DO MAL</span></h1>
-
-        <p class="hero-description">
-          Você entrou no bosque errado.<br>
-          Os coelhos não deveriam ter olhos assim.<br>
-          E agora eles sabem o seu nome.
+      <div class="hero-content">
+        <p class="eyebrow">ATLÉTICA FUNDAÇÃO SANTO ANDRÉ APRESENTA</p>
+        <h1>A TOCA<br>DO MAL</h1>
+        <p>
+          A floresta está faminta. As histórias são reais.
+          E nem todo habitante quer ser encontrado.
         </p>
-
-        <div class="hero-actions">
-          <a class="button button-primary" href="#inscricao">Entrar na toca</a>
-          <a class="button button-secondary" href="#historia">Conhecer o bosque</a>
-        </div>
-
-        <small class="hero-warning">NÃO OLHE PARA TRÁS.</small>
+        <a class="button" href="#inscricao">ENTRE NA TOCA</a>
       </div>
-
-      <div class="hero-creature" role="img" aria-label="Imagem decorativa de uma criatura na floresta"></div>
-      <p class="creature-caption">ELE ESTÁ ESPERANDO.</p>
+      <div class="hero-creature" role="img" aria-label="Criatura à espreita na floresta"></div>
+      <p class="creature-caption">ELE JÁ SABE QUE VOCÊ CHEGOU.</p>
     </section>
 
-    <div class="warning-strip" aria-hidden="true">
-      NÃO SIGA OS COELHOS ✦ NÃO SIGA OS COELHOS ✦ NÃO SIGA OS COELHOS
+    <div class="warning-strip">
+      NÃO ENTRE NA FLORESTA DEPOIS DA MEIA-NOITE.
+      NÃO SIGA AS VOZES. NÃO CONFIE NO COELHO.
     </div>
 
-    <section class="story-section section" id="historia">
-      <div class="story-copy">
-        <p class="eyebrow">01 / O CONTO ESQUECIDO</p>
-        <h2>Era uma vez.<br>Até alguém desaparecer.</h2>
-
-        <p>
-          Dizem que havia um bosque onde os coelhos nunca envelheciam.
-          Os moradores trancavam as janelas quando ouviam arranhões
-          vindos debaixo da terra.
-        </p>
-
-        <p>
-          As casas foram abandonadas. As trilhas desapareceram.
-          Mas as tocas continuaram abertas, esperando por alguém
-          curioso o bastante para olhar lá dentro.
-        </p>
-      </div>
-
-      <blockquote class="story-quote">
-        <span class="quote-mark">“</span>
-        <p>Se encontrar um coelho na floresta, não deixe que ele sorria.</p>
-        <small>FRAGMENTO ENCONTRADO NA LAMA</small>
-      </blockquote>
+    <section class="story section" id="historia">
+      <p class="eyebrow">REGISTROS ENCONTRADOS</p>
+      <h2>A LENDA DA TOCA</h2>
+      <p>
+        Dizem que existe uma toca escondida onde as fantasias ganham vida,
+        os nomes desaparecem e cada sombra esconde um segredo.
+        Alguns entram para participar. Outros entram para disputar.
+        Poucos saem sem deixar uma história.
+      </p>
     </section>
 
-    <section class="registration-section section" id="inscricao">
-      <div class="registration-content">
-        <p class="eyebrow">02 / O CHAMADO</p>
-        <h2>Você vai entrar?</h2>
-        <p class="section-intro">
-          Prepare sua fantasia. Escolha quem você será quando as luzes
-          se apagarem. A floresta está procurando novos habitantes.
-        </p>
+    <section class="registration section" id="inscricao">
+      <p class="eyebrow">REGISTRO DE NOVOS HABITANTES</p>
+      <h2>INSCREVA SUA FANTASIA</h2>
+      <p>Preencha os dados abaixo. Sua inscrição será analisada pela organização.</p>
 
-        <form id="registration-form" class="registration-form">
-          <div class="form-field">
-            <label for="full-name">Nome completo *</label>
-            <input
-              type="text"
-              id="full-name"
-              name="fullName"
-              placeholder="Seu nome e sobrenome"
-              autocomplete="name"
-              maxlength="100"
-              required
-            >
-          </div>
+      <form id="registration-form">
+        <label for="nome">Nome completo *</label>
+        <input id="nome" name="nome" type="text" maxlength="150"
+          autocomplete="name" required>
 
-          <div class="form-field">
-            <label for="costume-name">Nome da fantasia *</label>
-            <input
-              type="text"
-              id="costume-name"
-              name="costumeName"
-              placeholder="Como sua criatura será conhecida?"
-              maxlength="80"
-              required
-            >
-          </div>
+        <label for="fantasia">Nome da fantasia *</label>
+        <input id="fantasia" name="fantasia" type="text" maxlength="100"
+          required>
 
-          <div class="form-field">
-            <label for="inspiration">Inspiração da fantasia</label>
-            <textarea
-              id="inspiration"
-              name="inspiration"
-              placeholder="Conte a história por trás da sua fantasia..."
-              rows="4"
-              maxlength="500"
-            ></textarea>
-          </div>
+        <label for="inspiracao">Inspiração da fantasia</label>
+        <textarea id="inspiracao" name="inspiracao" maxlength="500"
+          rows="3" placeholder="Qual é a história por trás do personagem?"></textarea>
 
-          <div class="form-field">
-            <label for="costume-photo">Foto da fantasia *</label>
-            <input
-              type="file"
-              id="costume-photo"
-              name="costumePhoto"
-              accept="image/jpeg,image/png,image/webp"
-              required
-            >
-            <small>JPG, PNG ou WEBP. Tamanho máximo: 5 MB.</small>
-            <p id="photo-name" class="photo-name">Nenhuma imagem selecionada.</p>
-            <img id="photo-preview" class="photo-preview" alt="Prévia da foto selecionada" hidden>
-          </div>
+        <label for="foto">Foto da fantasia * (máximo 5 MB)</label>
+        <input id="foto" name="foto" type="file"
+          accept="image/jpeg,image/png,image/webp" required>
+        <p class="form-note">Formatos aceitos: JPG, PNG e WEBP.</p>
 
-          <label class="consent-field" for="consent">
-            <input type="checkbox" id="consent" required>
-            <span>
-              Confirmo que as informações são verdadeiras e declaro que
-              li as orientações de participação e de uso da imagem do evento. *
-            </span>
-          </label>
+        <div id="photo-preview" hidden>
+          <img id="preview-image" alt="Prévia da fantasia"
+            style="max-width:100%;max-height:300px;object-fit:contain">
+        </div>
 
-          <button class="button button-primary submit-button" type="submit">
-            Enviar para a toca
-          </button>
+        <label class="consent">
+          <input id="consentimento" type="checkbox" required>
+          Confirmo que posso enviar esta foto e autorizo seu uso pela
+          organização para análise da inscrição. A publicação da imagem
+          na galeria dependerá de aprovação e autorização apropriada.
+        </label>
 
-          <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+        <button class="button" id="submit-button" type="submit">
+          ENVIAR PARA A TOCA
+        </button>
 
-          <small class="form-note">
-            Demonstração: o envio definitivo será ativado após a conexão
-            com o sistema de inscrições.
-          </small>
-        </form>
+        <p id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="inhabitants section" id="habitantes">
+      <p class="eyebrow">ARQUIVO DA FLORESTA</p>
+      <h2>HABITANTES DA TOCA</h2>
+      <p>Somente inscrições aprovadas aparecem neste registro.</p>
+
+      <div id="inhabitants-list" class="inhabitants-grid" aria-live="polite">
+        <p>Consultando os registros da floresta...</p>
       </div>
     </section>
 
-    <section class="participants-section section" id="participantes">
-      <p class="eyebrow">03 / OS QUE ENTRARAM</p>
-      <h2>Habitantes da toca</h2>
-
-      <div class="empty-state">
-        <span class="empty-symbol" aria-hidden="true">?</span>
-        <h3>Nenhum rosto foi revelado.</h3>
-        <p>
-          Os participantes aprovados aparecerão aqui depois que as inscrições
-          forem abertas e o sistema estiver conectado.
-        </p>
-      </div>
-    </section>
-
-    <section class="rankings-section section" id="ranking">
-      <p class="eyebrow">04 / O JULGAMENTO</p>
-      <h2>Quem será lembrado?</h2>
+    <section class="ranking section" id="ranking">
+      <p class="eyebrow">A DISPUTA COMEÇOU</p>
+      <h2>RANKING DA TOCA</h2>
 
       <div class="ranking-grid">
         <article class="ranking-card">
-          <span class="ranking-number">01</span>
-          <h3>Voto popular</h3>
-          <p>O público escolhe a fantasia que vai conquistar a floresta.</p>
-          <small>DISPONÍVEL EM BREVE</small>
+          <h3>POPULARIDADE</h3>
+          <p>O favorito do público.</p>
+          <p>Os resultados serão divulgados pela organização.</p>
         </article>
 
         <article class="ranking-card">
-          <span class="ranking-number">02</span>
-          <h3>O julgamento</h3>
-          <p>A Atlética avaliará as fantasias conforme os critérios do regulamento.</p>
-          <small>NOTAS EM BREVE</small>
+          <h3>JÚRI DA ATLÉTICA</h3>
+          <p>A avaliação oficial das fantasias.</p>
+          <p>Os resultados serão divulgados pela organização.</p>
         </article>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <img src="logo-atletica.jpeg" alt="Logo da Atlética FSA" class="footer-logo">
-    <p>ALGUMAS PORTAS DEVERIAM PERMANECER FECHADAS.</p>
-    <small>A TOCA DO MAL — ATLÉTICA FUNDAÇÃO SANTO ANDRÉ</small>
+    <img src="logo-atletica.jpeg" alt="Atlética Fundação Santo André">
+    <p>A TOCA DO MAL — ALGUMAS HISTÓRIAS NÃO TERMINAM QUANDO A LUZ ACENDE.</p>
   </footer>
 
   <script>
-    const form = document.getElementById("registration-form");
-    const photoInput = document.getElementById("costume-photo");
-    const photoName = document.getElementById("photo-name");
-    const photoPreview = document.getElementById("photo-preview");
-    const formMessage = document.getElementById("form-message");
+    // Cole aqui a URL /exec da implantação do Apps Script.
+    const API_URL = "COLE_A_URL_DO_APPS_SCRIPT_AQUI";
 
-    const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
-    const maxSize = 5 * 1024 * 1024;
-    let previewUrl = null;
+    const form = document.getElementById("registration-form");
+    const statusEl = document.getElementById("form-status");
+    const submitButton = document.getElementById("submit-button");
+    const photoInput = document.getElementById("foto");
+    const preview = document.getElementById("photo-preview");
+    const previewImage = document.getElementById("preview-image");
+    const inhabitantsList = document.getElementById("inhabitants-list");
+
+    let fotoSelecionada = null;
+    let previewURL = null;
+
+    const tiposPermitidos = [
+      "image/jpeg",
+      "image/png",
+      "image/webp"
+    ];
+    const limiteFoto = 5 * 1024 * 1024;
+
+    function validarFoto(arquivo) {
+      if (!arquivo) {
+        throw new Error("Selecione uma foto da fantasia.");
+      }
+
+      if (!tiposPermitidos.includes(arquivo.type)) {
+        throw new Error("Use uma foto JPG, PNG ou WEBP.");
+      }
+
+      if (arquivo.size > limiteFoto) {
+        throw new Error("A foto precisa ter no máximo 5 MB.");
+      }
+
+      return arquivo;
+    }
 
     photoInput.addEventListener("change", () => {
-      const file = photoInput.files[0];
+      try {
+        const arquivo = photoInput.files[0];
+        if (!arquivo) {
+          fotoSelecionada = null;
+          preview.hidden = true;
+          return;
+        }
 
-      formMessage.textContent = "";
+        validarFoto(arquivo);
+        fotoSelecionada = arquivo;
 
-      if (previewUrl) {
-        URL.revokeObjectURL(previewUrl);
-        previewUrl = null;
-      }
-
-      photoPreview.hidden = true;
-      photoPreview.removeAttribute("src");
-
-      if (!file) {
-        photoName.textContent = "Nenhuma imagem selecionada.";
-        return;
-      }
-
-      if (!allowedTypes.includes(file.type) || file.size > maxSize) {
+        if (previewURL) URL.revokeObjectURL(previewURL);
+        previewURL = URL.createObjectURL(arquivo);
+        previewImage.src = previewURL;
+        preview.hidden = false;
+        statusEl.textContent = "";
+      } catch (erro) {
+        fotoSelecionada = null;
         photoInput.value = "";
-        photoName.textContent = "Nenhuma imagem selecionada.";
-        formMessage.textContent =
-          "Arquivo inválido. Escolha JPG, PNG ou WEBP de até 5 MB.";
+        preview.hidden = true;
+        statusEl.textContent = erro.message;
+      }
+    });
+
+    function lerComoDataURL(arquivo) {
+      return new Promise((resolve, reject) => {
+        const leitor = new FileReader();
+        leitor.onload = () => resolve(leitor.result);
+        leitor.onerror = () => reject(new Error("Não foi possível ler a foto."));
+        leitor.readAsDataURL(arquivo);
+      });
+    }
+
+    function carregarHabitantes() {
+      if (API_URL.includes("COLE_A_URL")) {
+        inhabitantsList.textContent = "A conexão ainda não foi configurada.";
         return;
       }
 
-      photoName.textContent = "Imagem selecionada: " + file.name;
-      previewUrl = URL.createObjectURL(file);
-      photoPreview.src = previewUrl;
-      photoPreview.hidden = false;
-    });
+      const callback = "tocaHabitantesCallback";
+      const script = document.createElement("script");
+      const timeout = setTimeout(() => {
+        delete window[callback];
+        script.remove();
+        inhabitantsList.textContent =
+          "Não foi possível carregar os habitantes agora.";
+      }, 12000);
 
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
+      window[callback] = (habitantes) => {
+        clearTimeout(timeout);
+        script.remove();
+        delete window[callback];
+        renderizarHabitantes(habitantes);
+      };
 
-      if (!form.reportValidity()) return;
+      script.onerror = () => {
+        clearTimeout(timeout);
+        delete window[callback];
+        script.remove();
+        inhabitantsList.textContent =
+          "Erro ao consultar os habitantes. Tente novamente mais tarde.";
+      };
 
-      const file = photoInput.files[0];
+      script.src = API_URL + "?acao=habitantes&callback=" + callback;
+      document.body.appendChild(script);
+    }
 
-      if (!file || !allowedTypes.includes(file.type) || file.size > maxSize) {
-        formMessage.textContent = "Selecione uma imagem válida de até 5 MB.";
+    function renderizarHabitantes(habitantes) {
+      inhabitantsList.replaceChildren();
+
+      if (!Array.isArray(habitantes) || habitantes.length === 0) {
+        const mensagem = document.createElement("p");
+        mensagem.textContent = "A toca ainda não revelou seus habitantes.";
+        inhabitantsList.appendChild(mensagem);
         return;
       }
 
-      formMessage.textContent =
-        "Formulário testado! Ainda não foi enviada nenhuma inscrição. " +
-        "Vamos conectar o sistema ao Google Sheets na próxima etapa.";
+      habitantes.forEach((pessoa) => {
+        const card = document.createElement("article");
+        card.className = "inhabitant-card";
+
+        if (pessoa.foto) {
+          const imagem = document.createElement("img");
+          imagem.src = pessoa.foto;
+          imagem.alt = "Fantasia de " + pessoa.fantasia;
+          imagem.loading = "lazy";
+          card.appendChild(imagem);
+        }
+
+        const titulo = document.createElement("h3");
+        titulo.textContent = pessoa.fantasia || "Habitante sem nome";
+        card.appendChild(titulo);
+
+        const nome = document.createElement("p");
+        nome.textContent = pessoa.nome || "";
+        card.appendChild(nome);
+
+        if (pessoa.inspiracao) {
+          const descricao = document.createElement("p");
+          descricao.textContent = pessoa.inspiracao;
+          card.appendChild(descricao);
+        }
+
+        inhabitantsList.appendChild(card);
+      });
+    }
+
+    form.addEventListener("submit", async (evento) => {
+      evento.preventDefault();
+
+      try {
+        if (API_URL.includes("COLE_A_URL")) {
+          throw new Error("A conexão com a planilha ainda não foi configurada.");
+        }
+
+        const nome = document.getElementById("nome").value.trim();
+        const fantasia = document.getElementById("fantasia").value.trim();
+        const inspiracao = document.getElementById("inspiracao").value.trim();
+
+        if (!nome || !fantasia) {
+          throw new Error("Preencha seu nome e o nome da fantasia.");
+        }
+
+        const arquivo = validarFoto(fotoSelecionada || photoInput.files[0]);
+
+        if (!document.getElementById("consentimento").checked) {
+          throw new Error("Confirme a autorização antes de continuar.");
+        }
+
+        submitButton.disabled = true;
+        submitButton.textContent = "ENVIANDO...";
+        statusEl.textContent = "Enviando sua inscrição para a toca...";
+
+        const foto = await lerComoDataURL(arquivo);
+
+        const dados = {
+          nome,
+          fantasia,
+          inspiracao,
+          foto
+        };
+
+        // O Apps Script recebe a requisição como texto simples.
+        // O modo no-cors impede a leitura da resposta pelo navegador.
+        // Por isso, não é possível confirmar aqui se o servidor gravou
+        // os dados; uma falha de rede ainda pode impedir o envio.
+        await fetch(API_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain;charset=UTF-8"
+          },
+          body: JSON.stringify(dados)
+        });
+
+        statusEl.textContent =
+          "Solicitação enviada. Aguarde a confirmação da organização; " +
+          "se necessário, verifique com a Atlética se o registro chegou.";
+
+        form.reset();
+        fotoSelecionada = null;
+        preview.hidden = true;
+
+      } catch (erro) {
+        statusEl.textContent =
+          erro.message || "Não foi possível iniciar o envio.";
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "ENVIAR PARA A TOCA";
+      }
     });
+
+    carregarHabitantes();
   </script>
 </body>
 </html>
