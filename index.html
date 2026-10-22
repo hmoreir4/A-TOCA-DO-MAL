@@ -1,442 +1,280 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#090d08">
-  <title>A Toca do Mal | Halloween</title>
-  <meta name="description" content="Entre na Toca do Mal. Inscreva sua fantasia e descubra os habitantes da floresta.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10150d">
+  <title>A Toca do Mal | Atlética Fundação Santo André</title>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Roboto+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <div class="neblina" aria-hidden="true"></div>
+<header>
+  <a class="brand" href="#inicio">☠ <span><b>A TOCA DO MAL</b><small>ATLÉTICA FUNDAÇÃO SANTO ANDRÉ</small></span></a>
+  <button id="menuToggle" aria-label="Abrir menu">☰</button>
+  <nav id="nav">
+    <a href="#manifesto">A lenda</a>
+    <a href="#inscricao">Inscrição</a>
+    <a href="#habitantes">Habitantes</a>
+    <a href="#ranking">Rankings</a>
+  </nav>
+</header>
 
-  <header class="topo">
-    <a class="marca" href="#inicio" aria-label="A Toca do Mal - início">
-      <img src="logo-atletica.jpeg" alt="Logo da Atlética Fundação Santo André"
-           onerror="this.style.display='none'">
-      <span>ATLÉTICA FSA</span>
-    </a>
+<main>
+  <section class="hero wrap" id="inicio">
+    <div>
+      <p class="eyebrow">— UM CHAMADO DA ESCURIDÃO —</p>
+      <h1>A TOCA<br><em>DO MAL</em></h1>
+      <p class="lead">A floresta está doente. As criaturas despertaram.<br>Você tem coragem de entrar?</p>
+      <p class="muted">Vista seu pior pesadelo, conte a origem da sua criatura e dispute seu lugar entre as lendas desta noite.</p>
+      <a class="btn" href="#inscricao">ENTRAR NA TOCA ↗</a>
+    </div>
+    <div class="art">
+      <div class="moon"></div><div class="tree left"></div><div class="tree right"></div>
+      <div class="eyes"></div><div class="grave">R.I.P.</div>
+      <span class="art-note">NÃO SIGA<br>OS SUSSURROS</span>
+      <span class="stamp">FSA<br><small>HALLOWEEN</small></span>
+    </div>
+    <div class="hero-foot"><span>NOITE • MEDO • CAOS</span><span>DESÇA SE TIVER CORAGEM ↓</span></div>
+  </section>
 
-    <nav aria-label="Navegação principal">
-      <a href="#historia">A lenda</a>
-      <a href="#inscricao">Inscrição</a>
-      <a href="#habitantes">Habitantes</a>
-      <a href="#ranking">Rankings</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero" id="inicio">
-      <div class="hero-texto">
-        <p class="sobretitulo">FUNDAÇÃO SANTO ANDRÉ APRESENTA</p>
-        <h1>A TOCA<br><span>DO MAL</span></h1>
-        <p class="frase-hero">
-          A floresta está doente. As raízes estão famintas.
-          E alguma coisa está esperando por você.
-        </p>
-        <a class="botao botao-principal" href="#inscricao">ENTRE NA TOCA</a>
-        <p class="aviso-hero">Nem toda criatura consegue sair.</p>
+  <section class="wrap section" id="manifesto">
+    <p class="kicker">01 / A LENDA</p>
+    <div class="two">
+      <h2>ALGUMAS COISAS<br>DEVERIAM FICAR<br><em>ENTERRADAS.</em></h2>
+      <div class="copy">
+        <p>Há uma toca no limite da floresta. As árvores apodreceram, a terra respira e alguma coisa observa por trás dos galhos.</p>
+        <p>Dizem que, uma vez por ano, a passagem se abre. Só os mais ousados atravessam — e só os mais assustadores conquistam a noite.</p>
+        <p class="green">A sua criatura já está pronta. Falta só mostrar ao mundo.</p>
       </div>
+    </div>
+    <div class="warning">⚠　 ENTRE POR SUA CONTA E RISCO　 ⚠</div>
+  </section>
 
-      <div class="imagem-hero">
-        <img src="coelho-terror.png" alt="Coelho macabro da Toca do Mal"
-             onerror="this.style.display='none'">
-        <div class="selo">VOCÊ FOI<br>AVISADO</div>
-      </div>
+  <section class="wrap section" id="inscricao">
+    <p class="kicker">02 / SUA ENTRADA</p>
+    <div class="heading">
+      <h2>DEIXE SUA<br><em>MARCA.</em></h2>
+      <p class="muted">Preencha os registros. Sua criatura será analisada antes de aparecer entre os habitantes da toca.</p>
+    </div>
 
-      <div class="risco-decorativo" aria-hidden="true">✳</div>
-    </section>
-
-    <section class="historia secao" id="historia">
-      <p class="sobretitulo">UMA HISTÓRIA QUE NÃO DEVERIA SER CONTADA</p>
-      <h2>Bem-vindo à <span>floresta morta.</span></h2>
-      <p>
-        Dizem que existe uma toca escondida onde os contos de fadas apodreceram.
-        Os animais não dormem. As árvores sussurram. E as criaturas que entram
-        nunca voltam iguais.
-      </p>
-      <p>
-        Nesta noite, a floresta abre suas portas. Vista sua fantasia,
-        revele sua criatura e prove que merece um lugar entre os habitantes.
-      </p>
-    </section>
-
-    <section class="inscricao secao" id="inscricao">
-      <div class="cabecalho-secao">
-        <p class="sobretitulo">SUA HISTÓRIA COMEÇA AQUI</p>
-        <h2>Faça sua <span>inscrição.</span></h2>
-        <p>Preencha os campos e envie uma foto da sua fantasia.</p>
-      </div>
-
-      <form id="form-inscricao">
-        <label for="nome">Nome completo</label>
-        <input
-          type="text"
-          id="nome"
-          name="nome"
-          placeholder="Como te chamam no mundo dos vivos?"
-          autocomplete="name"
-          maxlength="120"
-          required
-        >
-
-        <label for="fantasia">Nome da fantasia</label>
-        <input
-          type="text"
-          id="fantasia"
-          name="fantasia"
-          placeholder="Dê um nome à sua criatura..."
-          maxlength="100"
-          required
-        >
-
-        <label for="inspiracao">Inspiração da fantasia</label>
-        <textarea
-          id="inspiracao"
-          name="inspiracao"
-          placeholder="Conte de onde veio essa criatura..."
-          rows="4"
-          maxlength="1000"
-          required
-        ></textarea>
-
-        <label for="foto">Foto da fantasia</label>
-        <div class="upload-area">
-          <input
-            type="file"
-            id="foto"
-            name="foto"
-            accept="image/jpeg,image/png,image/webp"
-            required
-          >
-          <span>Escolha uma imagem JPG, PNG ou WEBP de até 5 MB.</span>
-          <p id="nome-arquivo">Nenhuma imagem selecionada.</p>
-          <img id="previa-foto" alt="Prévia da foto selecionada" hidden>
-        </div>
-
-        <label class="consentimento">
-          <input type="checkbox" id="autorizacao" required>
-          <span>
-            Confirmo que posso enviar esta foto para a inscrição e compreendo
-            que a imagem só deverá ser publicada caso eu seja aprovado e exista
-            autorização adequada para sua divulgação.
-          </span>
+    <form id="form">
+      <div class="fields">
+        <label>SEU NOME COMPLETO *
+          <input id="nome" maxlength="120" required placeholder="Como você se chama?">
         </label>
-
-        <button class="botao botao-principal botao-enviar" id="botao-enviar" type="submit">
-          ENVIAR MINHA INSCRIÇÃO
-        </button>
-
-        <p id="mensagem-form" class="mensagem-form" role="status" aria-live="polite"></p>
-        <p class="nota-privacidade">
-          As inscrições ficam pendentes até a organização aprová-las.
-        </p>
-      </form>
-    </section>
-
-    <section class="habitantes secao" id="habitantes">
-      <div class="cabecalho-secao">
-        <p class="sobretitulo">A FLORESTA ESCOLHEU</p>
-        <h2>Habitantes da <span>Toca.</span></h2>
-        <p>Somente as criaturas aprovadas serão reveladas.</p>
+        <label>NOME DA FANTASIA *
+          <input id="fantasia" maxlength="100" required placeholder="Como sua criatura é conhecida?">
+        </label>
+        <label class="full">A INSPIRAÇÃO DA CRIATURA *
+          <textarea id="inspiracao" maxlength="1200" rows="4" required placeholder="Conte a história ou origem da sua fantasia..."></textarea>
+        </label>
+        <div class="full">
+          <label>REGISTRO VISUAL DA CRIATURA *</label>
+          <label class="upload" for="foto">
+            <input id="foto" type="file" accept="image/jpeg,image/png,image/webp" required>
+            <strong id="fileName">＋　ANEXAR FOTOGRAFIA</strong>
+            <small id="fileHint">JPG, PNG ou WEBP • até 4 MB</small>
+          </label>
+          <img id="preview" hidden alt="Prévia da foto">
+        </div>
       </div>
 
-      <div id="lista-habitantes" class="grade-habitantes">
-        <p class="estado-vazio">A floresta ainda está em silêncio...</p>
-      </div>
+      <label class="consent">
+        <input id="consent" type="checkbox" required>
+        Confirmo que as informações são verdadeiras e autorizo o uso da foto para divulgação do concurso.
+      </label>
 
-      <button type="button" class="botao botao-secundario" id="atualizar-habitantes">
-        ATUALIZAR HABITANTES
-      </button>
-    </section>
+      <button class="btn" id="submit" type="submit">ENVIAR MEU REGISTRO ↗</button>
+      <p id="status" role="status"></p>
+      <small class="note">Seu registro começa como PENDENTE e só aparece na galeria após aprovação.</small>
+    </form>
+  </section>
 
-    <section class="ranking secao" id="ranking">
-      <div class="cabecalho-secao">
-        <p class="sobretitulo">QUEM VAI DOMINAR A FLORESTA?</p>
-        <h2>O julgamento <span>começou.</span></h2>
-        <p>Os resultados serão exibidos quando a votação e as notas forem registradas.</p>
-      </div>
+  <section class="wrap section" id="habitantes">
+    <p class="kicker">03 / QUEM JÁ ATRAVESSOU</p>
+    <div class="heading">
+      <h2>HABITANTES<br><em>DA TOCA.</em></h2>
+      <p class="muted">As criaturas autorizadas a sair das sombras. Registros pendentes permanecem ocultos.</p>
+    </div>
+    <div id="grid" class="cards"><p class="muted">OS ARQUIVOS ESTÃO SENDO DESENTERRADOS...</p></div>
+    <p id="empty" class="muted center"></p>
+  </section>
 
-      <div class="grade-ranking">
-        <article class="cartao-ranking">
-          <div class="icone-ranking" aria-hidden="true">♛</div>
-          <p class="sobretitulo">A VOZ DA FLORESTA</p>
-          <h3>Voto popular</h3>
-          <p>O público decide qual criatura merece o topo.</p>
-          <ol id="ranking-popular" class="lista-ranking">
-            <li class="ranking-vazio">A votação ainda não começou.</li>
-          </ol>
-        </article>
+  <section class="wrap section" id="ranking">
+    <p class="kicker">04 / O JULGAMENTO</p>
+    <div class="heading">
+      <h2>QUEM VAI<br><em>DOMINAR A NOITE?</em></h2>
+      <p class="muted">Dois caminhos para a glória: conquistar o público ou convencer a banca.</p>
+    </div>
+    <div class="rankings">
+      <article>
+        <p class="kicker">☞　VOTO POPULAR</p>
+        <h3>A VOZ DA<br>MULTIDÃO</h3>
+        <p class="muted">O público decide qual criatura merece ser a lenda da noite.</p>
+        <hr><small>✦　RESULTADOS SERÃO REVELADOS AQUI</small>
+      </article>
+      <article>
+        <p class="kicker">♜　JÚRI OFICIAL</p>
+        <h3>O VEREDITO<br>DAS SOMBRAS</h3>
+        <p class="muted">A banca avaliará criatividade, execução e presença monstruosa.</p>
+        <hr><small>✦　RESULTADOS SERÃO REVELADOS AQUI</small>
+      </article>
+    </div>
+    <p class="note">Os rankings são painéis visuais; votação e classificação reais ainda precisam ser implementadas.</p>
+  </section>
+</main>
 
-        <article class="cartao-ranking">
-          <div class="icone-ranking" aria-hidden="true">☠</div>
-          <p class="sobretitulo">O VEREDITO</p>
-          <h3>Escolha dos jurados</h3>
-          <p>Uma avaliação feita pela banca julgadora.</p>
-          <ol id="ranking-juri" class="lista-ranking">
-            <li class="ranking-vazio">As notas ainda não foram registradas.</li>
-          </ol>
-        </article>
-      </div>
-    </section>
-  </main>
+<footer>
+  <div>☠</div><h3>A TOCA DO MAL</h3>
+  <p>ATLÉTICA FUNDAÇÃO SANTO ANDRÉ</p>
+  <small>Se ouvir seu nome vindo da floresta, não responda.</small>
+</footer>
 
-  <footer class="rodape">
-    <p class="rodape-titulo">A TOCA DO MAL</p>
-    <p>Uma produção da Atlética Fundação Santo André.</p>
-    <p class="rodape-final">A floresta nunca esquece.</p>
-  </footer>
+<script>
+const URL_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbxmYrRCB0f36xYhblmJnRnWaJxo5EuggZHBApUgXhhHcEsHTSVLgIB9U6tovIu_HgEQ/exec";
+const MAX = 4 * 1024 * 1024;
+const $ = id => document.getElementById(id);
 
-  <script>
-    // Cole aqui a URL do aplicativo da Web do Google Apps Script, terminada em /exec.
-    const URL_APPS_SCRIPT = "COLE_AQUI_SUA_URL_EXEC";
+$("menuToggle").onclick = () => $("nav").classList.toggle("open");
+document.querySelectorAll("nav a").forEach(a => {
+  a.onclick = () => $("nav").classList.remove("open");
+});
 
-    const form = document.getElementById("form-inscricao");
-    const campoFoto = document.getElementById("foto");
-    const previaFoto = document.getElementById("previa-foto");
-    const nomeArquivo = document.getElementById("nome-arquivo");
-    const mensagemForm = document.getElementById("mensagem-form");
-    const botaoEnviar = document.getElementById("botao-enviar");
+function status(msg, type = "") {
+  $("status").textContent = msg;
+  $("status").className = type;
+}
 
-    campoFoto.addEventListener("change", () => {
-      const arquivo = campoFoto.files[0];
+function dataURL(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
 
-      if (!arquivo) {
-        nomeArquivo.textContent = "Nenhuma imagem selecionada.";
-        previaFoto.hidden = true;
-        previaFoto.removeAttribute("src");
-        return;
-      }
+$("foto").addEventListener("change", () => {
+  const file = $("foto").files[0];
+  if (!file) return;
 
-      nomeArquivo.textContent = arquivo.name;
+  if (!["image/jpeg", "image/png", "image/webp"].includes(file.type) || file.size > MAX) {
+    $("foto").value = "";
+    $("preview").hidden = true;
+    status("Use uma foto JPG, PNG ou WEBP de até 4 MB.", "error");
+    return;
+  }
 
-      if (arquivo.size > 5 * 1024 * 1024) {
-        mensagemForm.textContent = "A foto deve ter no máximo 5 MB.";
-        mensagemForm.className = "mensagem-form erro";
-        campoFoto.value = "";
-        previaFoto.hidden = true;
-        return;
-      }
+  $("fileName").textContent = file.name;
+  $("fileHint").textContent = (file.size / 1048576).toFixed(2) + " MB • arquivo selecionado";
+  $("preview").src = URL.createObjectURL(file);
+  $("preview").hidden = false;
+  status("");
+});
 
-      if (!["image/jpeg", "image/png", "image/webp"].includes(arquivo.type)) {
-        mensagemForm.textContent = "Escolha uma imagem JPG, PNG ou WEBP.";
-        mensagemForm.className = "mensagem-form erro";
-        campoFoto.value = "";
-        previaFoto.hidden = true;
-        return;
-      }
+$("form").addEventListener("submit", async event => {
+  event.preventDefault();
+  const file = $("foto").files[0];
 
-      mensagemForm.textContent = "";
-      previaFoto.src = URL.createObjectURL(arquivo);
-      previaFoto.hidden = false;
+  if (!file) return status("Escolha uma foto.", "error");
+  if (!$("consent").checked) return status("Confirme a autorização para continuar.", "error");
+
+  $("submit").disabled = true;
+  $("submit").textContent = "ENVIANDO PARA A TOCA…";
+
+  try {
+    const payload = {
+      nome: $("nome").value.trim(),
+      fantasia: $("fantasia").value.trim(),
+      inspiracao: $("inspiracao").value.trim(),
+      fotoNome: file.name,
+      fotoTipo: file.type,
+      fotoDataUrl: await dataURL(file)
+    };
+
+    // O modo no-cors não permite confirmar a resposta do Google Apps Script.
+    await fetch(URL_APPS_SCRIPT, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
     });
 
-    function arquivoParaDataURL(arquivo) {
-      return new Promise((resolve, reject) => {
-        const leitor = new FileReader();
-        leitor.onload = () => resolve(leitor.result);
-        leitor.onerror = () => reject(new Error("Não foi possível ler a foto."));
-        leitor.readAsDataURL(arquivo);
-      });
+    status("Solicitação enviada. O registro fica pendente até aprovação. Confira a planilha após o teste: o navegador não consegue confirmar a gravação nesta etapa.", "success");
+    $("form").reset();
+    $("preview").hidden = true;
+    $("fileName").textContent = "＋　ANEXAR FOTOGRAFIA";
+    $("fileHint").textContent = "JPG, PNG ou WEBP • até 4 MB";
+  } catch (error) {
+    status("Falha no envio. Verifique sua conexão e a implantação do Apps Script.", "error");
+  } finally {
+    $("submit").disabled = false;
+    $("submit").textContent = "ENVIAR MEU REGISTRO ↗";
+  }
+});
+
+function esc(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  })[char]);
+}
+
+function loadPeople() {
+  const callback = "toca_" + Math.random().toString(36).slice(2);
+  const script = document.createElement("script");
+  let done = false;
+  const timer = setTimeout(() => finish(), 12000);
+
+  function finish(data) {
+    if (done) return;
+    done = true;
+    clearTimeout(timer);
+    delete window[callback];
+    script.remove();
+
+    if (!data || data.ok !== true) {
+      $("grid").innerHTML = "";
+      $("empty").textContent = "Não foi possível carregar a galeria. Confira se o Apps Script está implantado para qualquer pessoa.";
+      return;
     }
 
-    form.addEventListener("submit", async (evento) => {
-      evento.preventDefault();
-
-      if (!URL_APPS_SCRIPT.startsWith("https://script.google.com/macros/s/") ||
-          !URL_APPS_SCRIPT.endsWith("/exec")) {
-        mensagemForm.textContent = "A organização precisa configurar a URL do Apps Script no site.";
-        mensagemForm.className = "mensagem-form erro";
-        return;
-      }
-
-      const arquivo = campoFoto.files[0];
-
-      if (!arquivo) {
-        mensagemForm.textContent = "Selecione uma foto antes de enviar.";
-        mensagemForm.className = "mensagem-form erro";
-        return;
-      }
-
-      if (arquivo.size > 5 * 1024 * 1024) {
-        mensagemForm.textContent = "A foto deve ter no máximo 5 MB.";
-        mensagemForm.className = "mensagem-form erro";
-        return;
-      }
-
-      botaoEnviar.disabled = true;
-      botaoEnviar.textContent = "ENVIANDO PARA A TOCA...";
-      mensagemForm.textContent = "Enviando sua inscrição. Aguarde...";
-      mensagemForm.className = "mensagem-form";
-
+    const people = Array.isArray(data.habitantes) ? data.habitantes : [];
+    $("grid").innerHTML = people.map(person => {
+      let imageUrl = "";
       try {
-        const foto = await arquivoParaDataURL(arquivo);
-
-        const dados = {
-          nome: document.getElementById("nome").value.trim(),
-          fantasia: document.getElementById("fantasia").value.trim(),
-          inspiracao: document.getElementById("inspiracao").value.trim(),
-          foto: foto
-        };
-
-        // O modo no-cors permite enviar uma requisição simples entre domínios,
-        // mas o navegador não deixa o site ler a resposta do Apps Script.
-        // Por isso, a confirmação abaixo é de envio, não uma garantia de gravação.
-        await fetch(URL_APPS_SCRIPT, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(dados)
-        });
-
-        mensagemForm.textContent =
-          "Solicitação enviada. Confira com a organização se sua inscrição apareceu na planilha antes de enviar novamente.";
-        mensagemForm.className = "mensagem-form sucesso";
-        form.reset();
-        nomeArquivo.textContent = "Nenhuma imagem selecionada.";
-        previaFoto.hidden = true;
-        previaFoto.removeAttribute("src");
-
-      } catch (erro) {
-        mensagemForm.textContent =
-          "Não foi possível enviar. Verifique sua conexão e tente novamente.";
-        mensagemForm.className = "mensagem-form erro";
-      } finally {
-        botaoEnviar.disabled = false;
-        botaoEnviar.textContent = "ENVIAR MINHA INSCRIÇÃO";
-      }
-    });
-
-    function carregarHabitantes() {
-      const lista = document.getElementById("lista-habitantes");
-
-      if (!URL_APPS_SCRIPT.startsWith("https://script.google.com/macros/s/") ||
-          !URL_APPS_SCRIPT.endsWith("/exec")) {
-        lista.innerHTML = '<p class="estado-vazio">A conexão com a floresta ainda não foi configurada.</p>';
-        return;
-      }
-
-      const callback = "receberHabitantes_" + Date.now();
-
-      window[callback] = (habitantes) => {
-        delete window[callback];
-
-        const script = document.getElementById("script-habitantes");
-        if (script) script.remove();
-
-        lista.replaceChildren();
-
-        if (!Array.isArray(habitantes) || habitantes.length === 0) {
-          lista.innerHTML = '<p class="estado-vazio">Nenhum habitante aprovado por enquanto...</p>';
-          atualizarRankings([]);
-          return;
+        const url = new URL(person.fotoUrl);
+        if (url.protocol === "https:" &&
+            (url.hostname === "drive.google.com" || url.hostname.endsWith(".googleusercontent.com"))) {
+          imageUrl = url.href;
         }
+      } catch (error) {}
 
-        habitantes.forEach((habitante) => {
-          const cartao = document.createElement("article");
-          cartao.className = "cartao-habitante";
+      return `<article class="person">
+        ${imageUrl
+          ? `<img src="${esc(imageUrl)}" alt="Fantasia ${esc(person.fantasia)}" loading="lazy">`
+          : `<div class="no-photo">☠</div>`}
+        <div class="person-info">
+          <small>REGISTRO DA TOCA • APROVADO</small>
+          <h3>${esc(person.fantasia)}</h3>
+          <p>${esc(person.nome)}</p>
+          <div>${esc(person.inspiracao)}</div>
+        </div>
+      </article>`;
+    }).join("");
 
-          const foto = document.createElement("img");
-          foto.className = "foto-habitante";
-          foto.alt = "Foto da fantasia de " + (habitante.fantasia || "habitante");
-          foto.loading = "lazy";
-          foto.src = habitante.foto || "";
-          foto.onerror = () => {
-            foto.style.display = "none";
-          };
+    $("empty").textContent = people.length
+      ? ""
+      : "Ainda não há habitantes aprovados. A toca aguarda suas primeiras criaturas.";
+  }
 
-          const conteudo = document.createElement("div");
-          conteudo.className = "conteudo-habitante";
+  window[callback] = data => finish(data);
+  script.onerror = () => finish();
+  script.src = URL_APPS_SCRIPT + "?acao=habitantes&callback=" + callback + "&t=" + Date.now();
+  document.body.appendChild(script);
+}
 
-          const titulo = document.createElement("h3");
-          titulo.textContent = habitante.fantasia || "Criatura sem nome";
-
-          const autor = document.createElement("p");
-          autor.className = "nome-habitante";
-          autor.textContent = habitante.nome || "Habitante desconhecido";
-
-          const descricao = document.createElement("p");
-          descricao.className = "inspiracao-habitante";
-          descricao.textContent = habitante.inspiracao || "";
-
-          conteudo.append(titulo, autor, descricao);
-          cartao.append(foto, conteudo);
-          lista.append(cartao);
-        });
-
-        atualizarRankings(habitantes);
-      };
-
-      const script = document.createElement("script");
-      script.id = "script-habitantes";
-      script.src = URL_APPS_SCRIPT + "?acao=habitantes&callback=" + callback;
-      script.onerror = () => {
-        delete window[callback];
-        script.remove();
-        lista.innerHTML = '<p class="estado-vazio">A floresta não respondeu. Tente atualizar.</p>';
-      };
-      document.body.appendChild(script);
-    }
-
-    function atualizarRankings(habitantes) {
-      // Só organiza os números existentes na planilha.
-      // Não é um sistema de votação: os votos e as notas precisam ser registrados
-      // pela organização em "Votos populares" e "Nota dos jurados".
-      const popular = [...habitantes]
-        .filter(p => Number(p.votos) > 0)
-        .sort((a, b) => Number(b.votos) - Number(a.votos));
-
-      const juri = [...habitantes]
-        .filter(p => Number(p.notaJuri) > 0)
-        .sort((a, b) => Number(b.notaJuri) - Number(a.notaJuri));
-
-      preencherRanking("ranking-popular", popular, "votos", "votos");
-      preencherRanking("ranking-juri", juri, "notaJuri", "nota");
-    }
-
-    function preencherRanking(id, dados, campo, tipo) {
-      const lista = document.getElementById(id);
-      lista.replaceChildren();
-
-      if (!dados.length) {
-        const item = document.createElement("li");
-        item.className = "ranking-vazio";
-        item.textContent = tipo === "votos"
-          ? "A votação ainda não começou."
-          : "As notas ainda não foram registradas.";
-        lista.append(item);
-        return;
-      }
-
-      dados.forEach((pessoa, indice) => {
-        const item = document.createElement("li");
-        item.className = "item-ranking";
-
-        const posicao = document.createElement("span");
-        posicao.className = "posicao-ranking";
-        posicao.textContent = String(indice + 1).padStart(2, "0");
-
-        const nome = document.createElement("span");
-        nome.className = "nome-ranking";
-        nome.textContent = pessoa.fantasia || "Criatura";
-
-        const pontuacao = document.createElement("strong");
-        pontuacao.className = "pontuacao-ranking";
-        pontuacao.textContent = tipo === "votos"
-          ? Number(pessoa[campo]) + " votos"
-          : Number(pessoa[campo]).toLocaleString("pt-BR") + " pts";
-
-        item.append(posicao, nome, pontuacao);
-        lista.append(item);
-      });
-    }
-
-    document.getElementById("atualizar-habitantes")
-      .addEventListener("click", carregarHabitantes);
-
-    carregarHabitantes();
-  </script>
+loadPeople();
+</script>
 </body>
 </html>
