@@ -7,24 +7,161 @@
   <meta name="description" content="A Toca do Mal — entre na floresta, revele sua criatura e sobreviva à noite.">
   <title>A Toca do Mal | Atlética FSA</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Ajustes do cabeçalho para evitar logo e título gigantes */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      padding: 42px 20px 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 0;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .logo-atletica {
+      position: relative;
+      z-index: 2;
+      width: clamp(120px, 20vw, 220px);
+      margin: 0 auto 22px;
+      flex: 0 0 auto;
+    }
+
+    .logo-atletica img {
+      display: block;
+      width: 100%;
+      max-height: 220px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .hero .eyebrow,
+    .hero h1,
+    .hero .frase,
+    .hero .button,
+    .hero .aviso,
+    .hero .descer {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero .eyebrow {
+      margin: 0 0 18px;
+      font-size: clamp(10px, 1.5vw, 13px);
+      letter-spacing: .16em;
+    }
+
+    .hero h1 {
+      width: 100%;
+      max-width: 950px;
+      margin: 0 auto 24px;
+      font-family: "Creepster", cursive;
+      font-size: clamp(48px, 9vw, 104px);
+      line-height: .98;
+      letter-spacing: .025em;
+      text-wrap: balance;
+    }
+
+    .hero h1 span {
+      display: inline;
+    }
+
+    .hero .frase {
+      max-width: 620px;
+      margin: 0 auto 24px;
+      font-size: clamp(16px, 2.4vw, 22px);
+      line-height: 1.6;
+    }
+
+    .hero .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 25px;
+    }
+
+    .hero .aviso {
+      margin: 0;
+      font-size: 10px;
+      letter-spacing: .15em;
+      line-height: 1.7;
+    }
+
+    .hero .descer {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 28px;
+    }
+
+    .hero .nevoa,
+    .hero .olhos {
+      pointer-events: none;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        min-height: 100vh;
+        padding: 34px 18px 65px;
+      }
+
+      .logo-atletica {
+        width: clamp(115px, 35vw, 170px);
+        margin-bottom: 22px;
+      }
+
+      .logo-atletica img {
+        max-height: 170px;
+      }
+
+      .hero h1 {
+        font-size: clamp(42px, 11vw, 64px);
+        line-height: 1;
+        margin-bottom: 20px;
+      }
+
+      .hero h1 span {
+        display: block;
+      }
+
+      .hero .frase {
+        font-size: 16px;
+      }
+
+      .hero .aviso {
+        max-width: 290px;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <header class="hero">
-    <div class="nevoa nevoa-1"></div>
-    <div class="nevoa nevoa-2"></div>
-    <div class="olhos olhos-1">• •</div>
-    <div class="olhos olhos-2">• •</div>
+    <!-- Efeitos de terror preservados -->
+    <div class="nevoa nevoa-1" aria-hidden="true"></div>
+    <div class="nevoa nevoa-2" aria-hidden="true"></div>
+    <div class="olhos olhos-1" aria-hidden="true">• •</div>
+    <div class="olhos olhos-2" aria-hidden="true">• •</div>
 
+    <!-- Logo da Atlética -->
     <div class="logo-atletica">
-      <img src="logo-atletica.jpeg" alt="Logo da Atlética FSA">
+      <img
+        src="logo-atletica.jpeg"
+        alt="Logo da Atlética Fundação Santo André"
+      >
     </div>
 
     <p class="eyebrow">Atlética Fundação Santo André apresenta</p>
 
     <h1>A TOCA <span>DO MAL</span></h1>
 
-    <div class="ornamento">✳ ━━━━━━━━━ ✳</div>
+    <!-- Enfeite ✳ ━━━━━━━━━ ✳ removido -->
 
     <p class="frase">
       A floresta está faminta.<br>
@@ -35,13 +172,20 @@
 
     <p class="aviso">NEM TODAS AS CRIATURAS VOLTAM IGUAIS.</p>
 
-    <a class="descer" href="#inscricao" aria-label="Descer para inscrição">↓</a>
+    <a
+      class="descer"
+      href="#inscricao"
+      aria-label="Descer para inscrição"
+    >↓</a>
   </header>
 
   <main>
+    <!-- INSCRIÇÃO -->
     <section class="panel" id="inscricao">
       <p class="eyebrow">✳ Recrutamento aberto ✳</p>
+
       <h2>Inscreva sua fantasia</h2>
+
       <p>
         A entrada está aberta. Conte-nos quem você será quando a noite cair.
         Sua inscrição será analisada pela organização.
@@ -49,47 +193,84 @@
 
       <form id="form-inscricao">
         <label for="nome">Nome completo</label>
-        <input id="nome" name="nome" maxlength="150"
-          autocomplete="name" required>
+        <input
+          id="nome"
+          name="nome"
+          maxlength="150"
+          autocomplete="name"
+          required
+        >
 
         <label for="fantasia">Nome da fantasia</label>
-        <input id="fantasia" name="fantasia" maxlength="150" required>
+        <input
+          id="fantasia"
+          name="fantasia"
+          maxlength="150"
+          required
+        >
 
         <label for="inspiracao">Inspiração da fantasia</label>
-        <textarea id="inspiracao" name="inspiracao"
-          maxlength="1000" rows="3" required></textarea>
+        <textarea
+          id="inspiracao"
+          name="inspiracao"
+          maxlength="1000"
+          rows="3"
+          required
+        ></textarea>
 
         <label for="foto">Foto da fantasia</label>
-        <input id="foto" name="foto" type="file"
-          accept="image/jpeg,image/png,image/webp" required>
+        <input
+          id="foto"
+          name="foto"
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          required
+        >
 
         <p class="hint">JPG, PNG ou WEBP. Máximo de 4 MB.</p>
 
-        <button id="botao-enviar" type="submit">Enviar inscrição</button>
+        <button id="botao-enviar" type="submit">
+          Enviar inscrição
+        </button>
+
         <p id="mensagem" role="status" aria-live="polite"></p>
       </form>
 
-      <iframe name="resposta-toca" id="resposta-toca"
-        title="Resposta do envio" hidden></iframe>
+      <iframe
+        name="resposta-toca"
+        id="resposta-toca"
+        title="Resposta do envio"
+        hidden
+      ></iframe>
 
-      <form id="form-transmissao" method="POST"
-        target="resposta-toca" hidden>
+      <form
+        id="form-transmissao"
+        method="POST"
+        target="resposta-toca"
+        hidden
+      >
         <input type="hidden" name="payload" id="payload">
         <input type="hidden" name="token" id="token">
       </form>
     </section>
 
+    <!-- GALERIA -->
     <section class="panel panel-galeria" id="habitantes">
       <p class="eyebrow">✳ Os que foram aceitos ✳</p>
+
       <h2>Habitantes da Toca</h2>
+
       <p id="status-galeria" role="status" aria-live="polite">
         A floresta está procurando...
       </p>
+
       <div id="galeria" class="gallery"></div>
     </section>
 
+    <!-- RANKINGS -->
     <section class="panel" id="ranking">
       <p class="eyebrow">✳ O destino será decidido ✳</p>
+
       <h2>O julgamento</h2>
 
       <div class="rankings">
@@ -146,7 +327,8 @@
       botao.textContent = "Enviar inscrição";
 
       if (resultado && resultado.ok) {
-        mensagem.textContent = resultado.mensagem;
+        mensagem.textContent =
+          resultado.mensagem || "Inscrição enviada com sucesso!";
         formulario.reset();
       } else {
         mensagem.textContent =
@@ -172,7 +354,9 @@
         return;
       }
 
-      if (!["image/jpeg", "image/png", "image/webp"].includes(arquivo.type)) {
+      if (
+        !["image/jpeg", "image/png", "image/webp"].includes(arquivo.type)
+      ) {
         mensagem.textContent = "Use uma foto JPG, PNG ou WEBP.";
         return;
       }
@@ -184,16 +368,19 @@
 
       const lerFoto = () => new Promise((resolve, reject) => {
         const leitor = new FileReader();
+
         leitor.onload = () => resolve(leitor.result);
         leitor.onerror = () =>
           reject(new Error("Não foi possível ler a foto."));
+
         leitor.readAsDataURL(arquivo);
       });
 
       try {
         botao.disabled = true;
         botao.textContent = "Enviando...";
-        mensagem.textContent = "A floresta está recebendo sua inscrição...";
+        mensagem.textContent =
+          "A floresta está recebendo sua inscrição...";
 
         const payload = {
           nome: document.getElementById("nome").value.trim(),
@@ -206,9 +393,11 @@
           throw new Error("Preencha todos os campos.");
         }
 
-        const token = (crypto.randomUUID
-          ? crypto.randomUUID()
-          : String(Date.now()) + Math.random().toString(36).slice(2));
+        const token = (
+          crypto.randomUUID
+            ? crypto.randomUUID()
+            : String(Date.now()) + Math.random().toString(36).slice(2)
+        );
 
         envioPendente = {
           token,
@@ -223,7 +412,9 @@
         };
 
         formularioTransmissao.action = URL_APPS_SCRIPT;
-        document.getElementById("payload").value = JSON.stringify(payload);
+
+        document.getElementById("payload").value =
+          JSON.stringify(payload);
         document.getElementById("token").value = token;
 
         mensagem.textContent = "Enviando para a Toca...";
@@ -232,7 +423,9 @@
       } catch (erro) {
         console.error(erro);
 
-        if (envioPendente) clearTimeout(envioPendente.timeout);
+        if (envioPendente) {
+          clearTimeout(envioPendente.timeout);
+        }
 
         envioPendente = null;
         botao.disabled = false;
@@ -255,7 +448,9 @@
           let id = endereco.searchParams.get("id") || "";
 
           if (!id) {
-            const match = endereco.pathname.match(/\/file\/d\/([^/]+)/);
+            const match =
+              endereco.pathname.match(/\/file\/d\/([^/]+)/);
+
             if (match) id = match[1];
           }
 
@@ -272,19 +467,24 @@
     }
 
     function criarImagem(pessoa) {
-      const original = String(pessoa.foto || pessoa.fotoUrl || "").trim();
+      const original =
+        String(pessoa.foto || pessoa.fotoUrl || "").trim();
+
       if (!original) return null;
 
       const imagem = document.createElement("img");
-      imagem.alt = "Fantasia de " + (pessoa.nome || "participante");
+      imagem.alt =
+        "Fantasia de " + (pessoa.nome || "participante");
       imagem.loading = "lazy";
       imagem.decoding = "async";
 
       const miniatura = prepararUrlImagem(original);
 
       imagem.onerror = () => {
-        if (imagem.dataset.tentouOriginal !== "sim" &&
-            miniatura !== original) {
+        if (
+          imagem.dataset.tentouOriginal !== "sim" &&
+          miniatura !== original
+        ) {
           imagem.dataset.tentouOriginal = "sim";
           imagem.src = original;
           return;
@@ -295,7 +495,9 @@
 
         const aviso = document.createElement("p");
         aviso.className = "foto-indisponivel";
-        aviso.textContent = "A imagem desta criatura está oculta.";
+        aviso.textContent =
+          "A imagem desta criatura está oculta.";
+
         imagem.parentElement?.appendChild(aviso);
       };
 
@@ -313,7 +515,8 @@
         script.remove();
 
         if (!resposta || !resposta.ok) {
-          status.textContent = "Não foi possível carregar os habitantes.";
+          status.textContent =
+            "Não foi possível carregar os habitantes.";
           return;
         }
 
@@ -323,7 +526,8 @@
         const habitantes = resposta.habitantes || [];
 
         if (!habitantes.length) {
-          status.textContent = "A floresta ainda guarda seus segredos.";
+          status.textContent =
+            "A floresta ainda guarda seus segredos.";
           return;
         }
 
@@ -338,7 +542,8 @@
           if (imagem) card.append(imagem);
 
           const titulo = document.createElement("h3");
-          titulo.textContent = pessoa.fantasia || "Criatura sem nome";
+          titulo.textContent =
+            pessoa.fantasia || "Criatura sem nome";
 
           const nome = document.createElement("p");
           nome.textContent = pessoa.nome || "";
@@ -354,6 +559,7 @@
       script.onerror = () => {
         delete window[callback];
         script.remove();
+
         status.textContent =
           "Falha de conexão. Confira a implantação do Apps Script.";
       };
