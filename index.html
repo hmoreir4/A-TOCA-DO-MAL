@@ -3,24 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090b08">
-  <meta name="description" content="Entre na floresta, revele sua criatura e sobreviva à noite. A Toca do Mal, da Atlética Fundação Santo André.">
+  <meta name="theme-color" content="#090806">
+  <meta name="description" content="A Toca do Mal — entre na floresta, revele sua criatura e sobreviva à noite.">
   <title>A Toca do Mal | Atlética FSA</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <header class="hero">
+    <div class="nevoa nevoa-1"></div>
+    <div class="nevoa nevoa-2"></div>
+    <div class="olhos olhos-1">• •</div>
+    <div class="olhos olhos-2">• •</div>
+
+    <div class="logo-atletica">
+      <img src="logo-atletica.jpeg" alt="Logo da Atlética FSA">
+    </div>
+
     <p class="eyebrow">Atlética Fundação Santo André apresenta</p>
-    <h1>A Toca <span>do Mal</span></h1>
-    <p>Entre na floresta. Revele sua criatura. Sobreviva à noite.</p>
+
+    <h1>A TOCA <span>DO MAL</span></h1>
+
+    <div class="ornamento">✳ ━━━━━━━━━ ✳</div>
+
+    <p class="frase">
+      A floresta está faminta.<br>
+      <strong>Qual criatura você vai libertar?</strong>
+    </p>
+
     <a class="button" href="#inscricao">Entrar na Toca</a>
+
+    <p class="aviso">NEM TODAS AS CRIATURAS VOLTAM IGUAIS.</p>
+
+    <a class="descer" href="#inscricao" aria-label="Descer para inscrição">↓</a>
   </header>
 
   <main>
     <section class="panel" id="inscricao">
-      <p class="eyebrow">Recrutamento aberto</p>
+      <p class="eyebrow">✳ Recrutamento aberto ✳</p>
       <h2>Inscreva sua fantasia</h2>
-      <p>Conte quem você será quando a floresta despertar. Sua inscrição será analisada pela organização.</p>
+      <p>
+        A entrada está aberta. Conte-nos quem você será quando a noite cair.
+        Sua inscrição será analisada pela organização.
+      </p>
 
       <form id="form-inscricao">
         <label for="nome">Nome completo</label>
@@ -38,7 +63,7 @@
         <input id="foto" name="foto" type="file"
           accept="image/jpeg,image/png,image/webp" required>
 
-        <p class="hint">JPG, PNG ou WEBP. Tamanho máximo: 4 MB.</p>
+        <p class="hint">JPG, PNG ou WEBP. Máximo de 4 MB.</p>
 
         <button id="botao-enviar" type="submit">Enviar inscrição</button>
         <p id="mensagem" role="status" aria-live="polite"></p>
@@ -54,35 +79,43 @@
       </form>
     </section>
 
-    <section class="panel" id="habitantes">
-      <p class="eyebrow">Os que já foram aceitos</p>
+    <section class="panel panel-galeria" id="habitantes">
+      <p class="eyebrow">✳ Os que foram aceitos ✳</p>
       <h2>Habitantes da Toca</h2>
       <p id="status-galeria" role="status" aria-live="polite">
-        Consultando a floresta...
+        A floresta está procurando...
       </p>
       <div id="galeria" class="gallery"></div>
     </section>
 
     <section class="panel" id="ranking">
-      <p class="eyebrow">O destino será decidido</p>
-      <h2>Ranking da Toca</h2>
+      <p class="eyebrow">✳ O destino será decidido ✳</p>
+      <h2>O julgamento</h2>
 
       <div class="rankings">
         <div>
+          <span class="simbolo">☠</span>
           <h3>Voto popular</h3>
-          <p>Votação ainda não ativada.</p>
+          <p>A votação ainda não foi aberta.</p>
         </div>
+
         <div>
+          <span class="simbolo">♜</span>
           <h3>Escolha dos jurados</h3>
           <p>As notas serão divulgadas pela organização.</p>
         </div>
       </div>
 
-      <p class="hint">Os rankings são informativos nesta versão.</p>
+      <p class="hint">
+        Os rankings serão atualizados quando a organização ativar a votação.
+      </p>
     </section>
   </main>
 
-  <footer>© A Toca do Mal · Atlética Fundação Santo André</footer>
+  <footer>
+    <p>© A Toca do Mal</p>
+    <p>Atlética Fundação Santo André · A floresta nunca esquece.</p>
+  </footer>
 
   <script>
     const URL_APPS_SCRIPT =
@@ -103,13 +136,12 @@
         return;
       }
 
-      if (dados.token !== envioPendente.token) {
-        return;
-      }
+      if (dados.token !== envioPendente.token) return;
 
       clearTimeout(envioPendente.timeout);
       const resultado = dados.resultado;
       envioPendente = null;
+
       botao.disabled = false;
       botao.textContent = "Enviar inscrição";
 
@@ -161,7 +193,7 @@
       try {
         botao.disabled = true;
         botao.textContent = "Enviando...";
-        mensagem.textContent = "Preparando sua inscrição...";
+        mensagem.textContent = "A floresta está recebendo sua inscrição...";
 
         const payload = {
           nome: document.getElementById("nome").value.trim(),
@@ -176,8 +208,7 @@
 
         const token = (crypto.randomUUID
           ? crypto.randomUUID()
-          : String(Date.now()) +
-            Math.random().toString(36).slice(2));
+          : String(Date.now()) + Math.random().toString(36).slice(2));
 
         envioPendente = {
           token,
@@ -192,8 +223,7 @@
         };
 
         formularioTransmissao.action = URL_APPS_SCRIPT;
-        document.getElementById("payload").value =
-          JSON.stringify(payload);
+        document.getElementById("payload").value = JSON.stringify(payload);
         document.getElementById("token").value = token;
 
         mensagem.textContent = "Enviando para a Toca...";
@@ -202,9 +232,7 @@
       } catch (erro) {
         console.error(erro);
 
-        if (envioPendente) {
-          clearTimeout(envioPendente.timeout);
-        }
+        if (envioPendente) clearTimeout(envioPendente.timeout);
 
         envioPendente = null;
         botao.disabled = false;
@@ -214,31 +242,30 @@
       }
     });
 
-    // Converte links comuns do Drive em uma URL de imagem.
     function prepararUrlImagem(url) {
       const original = String(url || "").trim();
       if (!original) return "";
 
-      let id = "";
-
       try {
         const endereco = new URL(original);
-        id = endereco.searchParams.get("id") || "";
+        const hostPermitido =
+          /(^|\.)drive\.google\.com$/i.test(endereco.hostname);
 
-        if (!id) {
-          const correspondencia =
-            endereco.pathname.match(/\/file\/d\/([^/]+)/);
-          if (correspondencia) id = correspondencia[1];
+        if (hostPermitido) {
+          let id = endereco.searchParams.get("id") || "";
+
+          if (!id) {
+            const match = endereco.pathname.match(/\/file\/d\/([^/]+)/);
+            if (match) id = match[1];
+          }
+
+          if (id) {
+            return "https://drive.google.com/thumbnail?id=" +
+              encodeURIComponent(id) + "&sz=w1200";
+          }
         }
       } catch (erro) {
         return original;
-      }
-
-      if (id && /(^|\.)drive\.google\.com$/i.test(
-        new URL(original).hostname
-      )) {
-        return "https://drive.google.com/thumbnail?id=" +
-          encodeURIComponent(id) + "&sz=w1200";
       }
 
       return original;
@@ -253,24 +280,26 @@
       imagem.loading = "lazy";
       imagem.decoding = "async";
 
-      const alternativa = prepararUrlImagem(original);
-      let tentouOriginal = false;
+      const miniatura = prepararUrlImagem(original);
 
       imagem.onerror = () => {
-        if (!tentouOriginal && alternativa !== original) {
-          tentouOriginal = true;
+        if (imagem.dataset.tentouOriginal !== "sim" &&
+            miniatura !== original) {
+          imagem.dataset.tentouOriginal = "sim";
           imagem.src = original;
           return;
         }
 
         imagem.onerror = null;
-        imagem.alt = "Não foi possível carregar a foto desta fantasia.";
-        imagem.removeAttribute("src");
-        imagem.style.aspectRatio = "4 / 5";
-        imagem.style.objectFit = "contain";
+        imagem.style.display = "none";
+
+        const aviso = document.createElement("p");
+        aviso.className = "foto-indisponivel";
+        aviso.textContent = "A imagem desta criatura está oculta.";
+        imagem.parentElement?.appendChild(aviso);
       };
 
-      imagem.src = alternativa;
+      imagem.src = miniatura || original;
       return imagem;
     }
 
@@ -278,10 +307,8 @@
       const callback = "receberHabitantesToca";
       const status = document.getElementById("status-galeria");
       const script = document.createElement("script");
-      let finalizado = false;
 
       window[callback] = (resposta) => {
-        finalizado = true;
         delete window[callback];
         script.remove();
 
