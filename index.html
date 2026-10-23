@@ -9,133 +9,596 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* Ajustes do cabeçalho para evitar logo e título gigantes */
+    :root {
+      --fundo: #090b08;
+      --painel: #141a10;
+      --verde: #b6e344;
+      --osso: #e8e5d9;
+      --muted: #a4a895;
+      --linha: rgba(182, 227, 68, .24);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--fundo);
+      color: var(--osso);
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Textura e vinheta */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      pointer-events: none;
+      opacity: .06;
+      background-image: radial-gradient(#b6e344 .5px, transparent .5px);
+      background-size: 5px 5px;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 19;
+      pointer-events: none;
+      background: radial-gradient(ellipse at center, transparent 45%, #000 115%);
+    }
+
+    /* Cabeçalho cinematográfico */
     .hero {
-      position: relative;
       min-height: 100vh;
-      padding: 42px 20px 70px;
+      min-height: 100svh;
+      padding: 35px 20px 75px;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       text-align: center;
-      gap: 0;
-      overflow: hidden;
-      isolation: isolate;
+      background:
+        radial-gradient(ellipse at 50% 43%, #202719 0%, #0b0d09 54%, #050605 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, #05060480, transparent 25%, transparent 75%, #05060480),
+        linear-gradient(0deg, #090b08 0%, transparent 30%, #05060435 100%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      pointer-events: none;
+      width: min(96vw, 760px);
+      aspect-ratio: 1;
+      border: 1px solid rgba(182, 227, 68, .16);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 24px rgba(182, 227, 68, .035),
+        0 0 0 65px rgba(182, 227, 68, .025),
+        inset 0 0 75px rgba(182, 227, 68, .025);
+    }
+
+    .nevoa {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: .3;
+      background: linear-gradient(
+        110deg,
+        transparent 15%,
+        #9ab65a12 40%,
+        #b6e3440b 52%,
+        transparent 78%
+      );
+      filter: blur(18px);
+    }
+
+    .nevoa-1 {
+      animation: nevoa-move 12s ease-in-out infinite alternate;
+    }
+
+    .nevoa-2 {
+      opacity: .18;
+      transform: scaleX(-1);
+      animation: nevoa-move 17s ease-in-out infinite alternate-reverse;
+    }
+
+    .olhos {
+      position: absolute;
+      z-index: 1;
+      color: #e8e5d9;
+      font-size: 22px;
+      letter-spacing: 13px;
+      text-shadow: 0 0 8px #e8e5d9, 0 0 24px #b6e34455;
+      opacity: .8;
+      pointer-events: none;
+      animation: olhos-piscar 6s infinite;
+    }
+
+    .olhos-1 {
+      top: 10%;
+      left: 48%;
+      transform: translateX(-50%);
+    }
+
+    .olhos-2 {
+      top: 14%;
+      left: 48%;
+      transform: translateX(-50%);
+      animation-delay: 2.5s;
     }
 
     .logo-atletica {
       position: relative;
-      z-index: 2;
-      width: clamp(120px, 20vw, 220px);
-      margin: 0 auto 22px;
-      flex: 0 0 auto;
+      z-index: 3;
+      width: clamp(120px, 25vw, 185px);
+      margin: 0 auto 42px;
     }
 
     .logo-atletica img {
       display: block;
       width: 100%;
-      max-height: 220px;
       height: auto;
+      max-height: 185px;
       object-fit: contain;
-    }
-
-    .hero .eyebrow,
-    .hero h1,
-    .hero .frase,
-    .hero .button,
-    .hero .aviso,
-    .hero .descer {
-      position: relative;
-      z-index: 2;
+      filter: drop-shadow(0 0 18px #000b);
     }
 
     .hero .eyebrow {
-      margin: 0 0 18px;
-      font-size: clamp(10px, 1.5vw, 13px);
-      letter-spacing: .16em;
+      position: relative;
+      z-index: 2;
+      margin: 0 0 48px;
+      color: #c1d88b;
+      font-family: "Special Elite", cursive;
+      font-size: clamp(10px, 2.4vw, 15px);
+      letter-spacing: .18em;
+      line-height: 1.8;
+      text-transform: uppercase;
     }
 
     .hero h1 {
+      position: relative;
+      z-index: 2;
       width: 100%;
-      max-width: 950px;
-      margin: 0 auto 24px;
+      max-width: 680px;
+      margin: 0 auto 35px;
+      color: #e8e5d9;
       font-family: "Creepster", cursive;
-      font-size: clamp(48px, 9vw, 104px);
+      font-size: clamp(68px, 12vw, 112px);
+      font-weight: 400;
       line-height: .98;
-      letter-spacing: .025em;
-      text-wrap: balance;
+      letter-spacing: .035em;
+      text-shadow: 0 0 22px rgba(0, 0, 0, .35);
     }
 
     .hero h1 span {
-      display: inline;
+      display: block;
+      margin-top: 8px;
+      color: #b6d477;
     }
 
     .hero .frase {
-      max-width: 620px;
-      margin: 0 auto 24px;
-      font-size: clamp(16px, 2.4vw, 22px);
-      line-height: 1.6;
+      position: relative;
+      z-index: 2;
+      max-width: 650px;
+      margin: 0 auto 48px;
+      color: #e8e5d9;
+      font-family: "Special Elite", cursive;
+      font-size: clamp(15px, 3vw, 22px);
+      line-height: 1.8;
+    }
+
+    .hero .frase strong {
+      color: #e8e5d9;
+      font-weight: 400;
     }
 
     .hero .button {
+      position: relative;
+      z-index: 2;
       display: inline-flex;
-      justify-content: center;
       align-items: center;
-      margin: 0 auto 25px;
+      justify-content: center;
+      min-width: 250px;
+      min-height: 60px;
+      margin: 0 auto;
+      padding: 20px 32px;
+      border: 0;
+      background: #b6ca78;
+      color: #10130b;
+      box-shadow: 7px 8px 0 #0008;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: .25s ease;
+    }
+
+    .hero .button:hover {
+      background: #d0e69a;
+      color: #10130b;
+      transform: translateY(-2px);
     }
 
     .hero .aviso {
-      margin: 0;
-      font-size: 10px;
-      letter-spacing: .15em;
-      line-height: 1.7;
+      position: relative;
+      z-index: 2;
+      margin: 45px 0 0;
+      color: #c49b92;
+      font-family: "Special Elite", cursive;
+      font-size: 11px;
+      letter-spacing: .17em;
+      line-height: 1.8;
     }
 
     .hero .descer {
       position: absolute;
-      bottom: 20px;
+      z-index: 2;
+      bottom: 22px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 28px;
+      color: #b6ca78;
+      font-size: 40px;
+      text-decoration: none;
+      animation: descer 1.8s ease-in-out infinite;
     }
 
-    .hero .nevoa,
-    .hero .olhos {
-      pointer-events: none;
+    /* Seções */
+    main {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--linha);
+      background:
+        radial-gradient(ellipse at 50% 0%, #182014 0%, #090b08 65%);
     }
 
-    @media (max-width: 600px) {
+    .panel {
+      position: relative;
+      width: min(920px, calc(100% - 36px));
+      margin: 48px auto;
+      padding: clamp(24px, 5vw, 55px);
+      border: 1px solid var(--linha);
+      background: linear-gradient(145deg, #171e12f5, #0d100bf7);
+      box-shadow: 0 25px 90px #0005;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 25px;
+      width: 75px;
+      border-top: 2px solid var(--verde);
+    }
+
+    .panel h2 {
+      margin: 8px 0 20px;
+      color: var(--osso);
+      font: 400 clamp(40px, 6vw, 68px)/.95 "Creepster", cursive;
+    }
+
+    .panel > p:not(.eyebrow):not(.hint):not(#status-galeria) {
+      color: #b9bdad;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .panel .eyebrow {
+      margin: 0 0 14px;
+      color: var(--verde);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .panel form:not([hidden]) {
+      margin-top: 30px;
+    }
+
+    .panel label {
+      display: block;
+      margin: 22px 0 9px;
+      color: var(--verde);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .panel input:not([type="file"]):not([type="hidden"]),
+    .panel textarea {
+      display: block;
+      width: 100%;
+      padding: 14px 15px;
+      border: 1px solid #39432d;
+      border-radius: 0;
+      outline: none;
+      background: #090c08;
+      color: var(--osso);
+      font: 14px "DM Sans", sans-serif;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .panel input:focus,
+    .panel textarea:focus {
+      border-color: var(--verde);
+      box-shadow: 0 0 0 2px #b6e34412;
+    }
+
+    .panel input[type="file"] {
+      display: block;
+      max-width: 100%;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .panel textarea {
+      resize: vertical;
+    }
+
+    .hint {
+      color: #939987;
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    #botao-enviar {
+      min-height: 48px;
+      margin-top: 20px;
+      padding: 14px 24px;
+      border: 1px solid var(--verde);
+      background: var(--verde);
+      color: #10140b;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    #botao-enviar:hover:not(:disabled) {
+      background: transparent;
+      color: var(--verde);
+    }
+
+    #botao-enviar:disabled {
+      opacity: .6;
+      cursor: wait;
+    }
+
+    #mensagem,
+    #status-galeria {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    /* Galeria */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .inhabitant {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--linha);
+      background: #0b0e09;
+      transition: border-color .25s, transform .25s;
+    }
+
+    .inhabitant:hover {
+      border-color: var(--verde);
+      transform: translateY(-4px);
+    }
+
+    .inhabitant img {
+      display: block;
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      background: #141a10;
+    }
+
+    .inhabitant h3 {
+      margin: 17px 16px 8px;
+      color: var(--verde);
+      font: 400 28px "Creepster", cursive;
+      overflow-wrap: anywhere;
+    }
+
+    .inhabitant p {
+      margin: 8px 16px 14px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+      overflow-wrap: anywhere;
+    }
+
+    .foto-indisponivel {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* Julgamento */
+    .rankings {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .rankings > div {
+      min-width: 0;
+      padding: 25px;
+      border: 1px solid var(--linha);
+      background: #0b0f09;
+    }
+
+    .simbolo {
+      color: var(--verde);
+      font-size: 30px;
+      text-shadow: 0 0 15px #b6e34440;
+    }
+
+    .rankings h3 {
+      margin: 16px 0 10px;
+      color: var(--osso);
+      font: 400 32px "Creepster", cursive;
+    }
+
+    .rankings p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    /* Rodapé */
+    footer {
+      padding: 35px 20px;
+      border-top: 1px solid var(--linha);
+      background: #070906;
+      text-align: center;
+    }
+
+    footer p {
+      color: #929985;
+      font-size: 10px;
+      line-height: 1.8;
+      letter-spacing: .08em;
+    }
+
+    footer p:first-child {
+      color: var(--verde);
+      font: 27px "Creepster", cursive;
+    }
+
+    /* Animações */
+    @keyframes nevoa-move {
+      from { transform: translateX(-3%) scale(1); }
+      to { transform: translateX(3%) scale(1.08); }
+    }
+
+    @keyframes olhos-piscar {
+      0%, 44%, 48%, 100% { opacity: .8; }
+      46%, 47% { opacity: .08; }
+    }
+
+    @keyframes descer {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, 7px); }
+    }
+
+    /* Responsividade */
+    @media (max-width: 700px) {
       .hero {
-        min-height: 100vh;
-        padding: 34px 18px 65px;
+        padding: 30px 18px 75px;
       }
 
       .logo-atletica {
-        width: clamp(115px, 35vw, 170px);
-        margin-bottom: 22px;
+        width: 145px;
+        margin-bottom: 40px;
       }
 
       .logo-atletica img {
-        max-height: 170px;
+        max-height: 160px;
+      }
+
+      .hero .eyebrow {
+        font-size: 11px;
+        margin-bottom: 48px;
       }
 
       .hero h1 {
-        font-size: clamp(42px, 11vw, 64px);
+        font-size: clamp(64px, 14vw, 94px);
         line-height: 1;
-        margin-bottom: 20px;
-      }
-
-      .hero h1 span {
-        display: block;
+        margin-bottom: 35px;
       }
 
       .hero .frase {
-        font-size: 16px;
+        margin-bottom: 48px;
+      }
+
+      .hero .button {
+        width: min(100%, 330px);
       }
 
       .hero .aviso {
-        max-width: 290px;
+        margin-top: 45px;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .inhabitant img {
+        height: 200px;
+      }
+
+      .rankings {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero h1 {
+        font-size: clamp(54px, 14vw, 72px);
+      }
+
+      .hero .eyebrow {
+        font-size: 10px;
+        letter-spacing: .13em;
+      }
+
+      .hero .frase {
+        font-size: 15px;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .inhabitant img {
+        height: 280px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
       }
     }
   </style>
@@ -143,25 +606,18 @@
 
 <body>
   <header class="hero">
-    <!-- Efeitos de terror preservados -->
     <div class="nevoa nevoa-1" aria-hidden="true"></div>
     <div class="nevoa nevoa-2" aria-hidden="true"></div>
     <div class="olhos olhos-1" aria-hidden="true">• •</div>
     <div class="olhos olhos-2" aria-hidden="true">• •</div>
 
-    <!-- Logo da Atlética -->
     <div class="logo-atletica">
-      <img
-        src="logo-atletica.jpeg"
-        alt="Logo da Atlética Fundação Santo André"
-      >
+      <img src="logo-atletica.jpeg" alt="Logo da Atlética Fundação Santo André">
     </div>
 
     <p class="eyebrow">Atlética Fundação Santo André apresenta</p>
 
     <h1>A TOCA <span>DO MAL</span></h1>
-
-    <!-- Enfeite ✳ ━━━━━━━━━ ✳ removido -->
 
     <p class="frase">
       A floresta está faminta.<br>
@@ -172,20 +628,13 @@
 
     <p class="aviso">NEM TODAS AS CRIATURAS VOLTAM IGUAIS.</p>
 
-    <a
-      class="descer"
-      href="#inscricao"
-      aria-label="Descer para inscrição"
-    >↓</a>
+    <a class="descer" href="#inscricao" aria-label="Descer para inscrição">↓</a>
   </header>
 
   <main>
-    <!-- INSCRIÇÃO -->
     <section class="panel" id="inscricao">
-      <p class="eyebrow">✳ Recrutamento aberto ✳</p>
-
+      <p class="eyebrow">Recrutamento aberto</p>
       <h2>Inscreva sua fantasia</h2>
-
       <p>
         A entrada está aberta. Conte-nos quem você será quando a noite cair.
         Sua inscrição será analisada pela organização.
@@ -193,84 +642,40 @@
 
       <form id="form-inscricao">
         <label for="nome">Nome completo</label>
-        <input
-          id="nome"
-          name="nome"
-          maxlength="150"
-          autocomplete="name"
-          required
-        >
+        <input id="nome" name="nome" maxlength="150" autocomplete="name" required>
 
         <label for="fantasia">Nome da fantasia</label>
-        <input
-          id="fantasia"
-          name="fantasia"
-          maxlength="150"
-          required
-        >
+        <input id="fantasia" name="fantasia" maxlength="150" required>
 
         <label for="inspiracao">Inspiração da fantasia</label>
-        <textarea
-          id="inspiracao"
-          name="inspiracao"
-          maxlength="1000"
-          rows="3"
-          required
-        ></textarea>
+        <textarea id="inspiracao" name="inspiracao" maxlength="1000" rows="3" required></textarea>
 
         <label for="foto">Foto da fantasia</label>
-        <input
-          id="foto"
-          name="foto"
-          type="file"
-          accept="image/jpeg,image/png,image/webp"
-          required
-        >
+        <input id="foto" name="foto" type="file" accept="image/jpeg,image/png,image/webp" required>
 
         <p class="hint">JPG, PNG ou WEBP. Máximo de 4 MB.</p>
 
-        <button id="botao-enviar" type="submit">
-          Enviar inscrição
-        </button>
-
+        <button id="botao-enviar" type="submit">Enviar inscrição</button>
         <p id="mensagem" role="status" aria-live="polite"></p>
       </form>
 
-      <iframe
-        name="resposta-toca"
-        id="resposta-toca"
-        title="Resposta do envio"
-        hidden
-      ></iframe>
+      <iframe name="resposta-toca" id="resposta-toca" title="Resposta do envio" hidden></iframe>
 
-      <form
-        id="form-transmissao"
-        method="POST"
-        target="resposta-toca"
-        hidden
-      >
+      <form id="form-transmissao" method="POST" target="resposta-toca" hidden>
         <input type="hidden" name="payload" id="payload">
         <input type="hidden" name="token" id="token">
       </form>
     </section>
 
-    <!-- GALERIA -->
     <section class="panel panel-galeria" id="habitantes">
-      <p class="eyebrow">✳ Os que foram aceitos ✳</p>
-
+      <p class="eyebrow">Os que foram aceitos</p>
       <h2>Habitantes da Toca</h2>
-
-      <p id="status-galeria" role="status" aria-live="polite">
-        A floresta está procurando...
-      </p>
-
+      <p id="status-galeria" role="status" aria-live="polite">A floresta está procurando...</p>
       <div id="galeria" class="gallery"></div>
     </section>
 
-    <!-- RANKINGS -->
     <section class="panel" id="ranking">
-      <p class="eyebrow">✳ O destino será decidido ✳</p>
-
+      <p class="eyebrow">O destino será decidido</p>
       <h2>O julgamento</h2>
 
       <div class="rankings">
@@ -303,8 +708,7 @@
       "https://script.google.com/macros/s/AKfycbxmYrRCB0f36xYhblmJnRnWaJxo5EuggZHBApUgXhhHcEsHTSVLgIB9U6tovIu_HgEQ/exec";
 
     const formulario = document.getElementById("form-inscricao");
-    const formularioTransmissao =
-      document.getElementById("form-transmissao");
+    const formularioTransmissao = document.getElementById("form-transmissao");
     const botao = document.getElementById("botao-enviar");
     const mensagem = document.getElementById("mensagem");
 
@@ -313,10 +717,7 @@
     window.addEventListener("message", (evento) => {
       const dados = evento.data;
 
-      if (!dados || dados.tipo !== "TOCA_RESULTADO" || !envioPendente) {
-        return;
-      }
-
+      if (!dados || dados.tipo !== "TOCA_RESULTADO" || !envioPendente) return;
       if (dados.token !== envioPendente.token) return;
 
       clearTimeout(envioPendente.timeout);
@@ -327,15 +728,11 @@
       botao.textContent = "Enviar inscrição";
 
       if (resultado && resultado.ok) {
-        mensagem.textContent =
-          resultado.mensagem || "Inscrição enviada com sucesso!";
+        mensagem.textContent = resultado.mensagem || "Inscrição enviada com sucesso!";
         formulario.reset();
       } else {
-        mensagem.textContent =
-          "Não foi possível salvar: " +
-          (resultado && resultado.mensagem
-            ? resultado.mensagem
-            : "erro desconhecido.");
+        mensagem.textContent = "Não foi possível salvar: " +
+          (resultado && resultado.mensagem ? resultado.mensagem : "erro desconhecido.");
       }
     });
 
@@ -354,9 +751,7 @@
         return;
       }
 
-      if (
-        !["image/jpeg", "image/png", "image/webp"].includes(arquivo.type)
-      ) {
+      if (!["image/jpeg", "image/png", "image/webp"].includes(arquivo.type)) {
         mensagem.textContent = "Use uma foto JPG, PNG ou WEBP.";
         return;
       }
@@ -368,19 +763,15 @@
 
       const lerFoto = () => new Promise((resolve, reject) => {
         const leitor = new FileReader();
-
         leitor.onload = () => resolve(leitor.result);
-        leitor.onerror = () =>
-          reject(new Error("Não foi possível ler a foto."));
-
+        leitor.onerror = () => reject(new Error("Não foi possível ler a foto."));
         leitor.readAsDataURL(arquivo);
       });
 
       try {
         botao.disabled = true;
         botao.textContent = "Enviando...";
-        mensagem.textContent =
-          "A floresta está recebendo sua inscrição...";
+        mensagem.textContent = "A floresta está recebendo sua inscrição...";
 
         const payload = {
           nome: document.getElementById("nome").value.trim(),
@@ -393,11 +784,9 @@
           throw new Error("Preencha todos os campos.");
         }
 
-        const token = (
-          crypto.randomUUID
-            ? crypto.randomUUID()
-            : String(Date.now()) + Math.random().toString(36).slice(2)
-        );
+        const token = crypto.randomUUID
+          ? crypto.randomUUID()
+          : String(Date.now()) + Math.random().toString(36).slice(2);
 
         envioPendente = {
           token,
@@ -406,15 +795,12 @@
             botao.disabled = false;
             botao.textContent = "Enviar inscrição";
             mensagem.textContent =
-              "Não recebemos confirmação. Confira a aba Inscricoes " +
-              "antes de tentar novamente.";
+              "Não recebemos confirmação. Confira a aba Inscricoes antes de tentar novamente.";
           }, 45000)
         };
 
         formularioTransmissao.action = URL_APPS_SCRIPT;
-
-        document.getElementById("payload").value =
-          JSON.stringify(payload);
+        document.getElementById("payload").value = JSON.stringify(payload);
         document.getElementById("token").value = token;
 
         mensagem.textContent = "Enviando para a Toca...";
@@ -423,15 +809,12 @@
       } catch (erro) {
         console.error(erro);
 
-        if (envioPendente) {
-          clearTimeout(envioPendente.timeout);
-        }
+        if (envioPendente) clearTimeout(envioPendente.timeout);
 
         envioPendente = null;
         botao.disabled = false;
         botao.textContent = "Enviar inscrição";
-        mensagem.textContent =
-          erro.message || "Falha ao enviar a inscrição.";
+        mensagem.textContent = erro.message || "Falha ao enviar a inscrição.";
       }
     });
 
@@ -441,16 +824,13 @@
 
       try {
         const endereco = new URL(original);
-        const hostPermitido =
-          /(^|\.)drive\.google\.com$/i.test(endereco.hostname);
+        const hostPermitido = /(^|\.)drive\.google\.com$/i.test(endereco.hostname);
 
         if (hostPermitido) {
           let id = endereco.searchParams.get("id") || "";
 
           if (!id) {
-            const match =
-              endereco.pathname.match(/\/file\/d\/([^/]+)/);
-
+            const match = endereco.pathname.match(/\/file\/d\/([^/]+)/);
             if (match) id = match[1];
           }
 
@@ -467,24 +847,18 @@
     }
 
     function criarImagem(pessoa) {
-      const original =
-        String(pessoa.foto || pessoa.fotoUrl || "").trim();
-
+      const original = String(pessoa.foto || pessoa.fotoUrl || "").trim();
       if (!original) return null;
 
       const imagem = document.createElement("img");
-      imagem.alt =
-        "Fantasia de " + (pessoa.nome || "participante");
+      imagem.alt = "Fantasia de " + (pessoa.nome || "participante");
       imagem.loading = "lazy";
       imagem.decoding = "async";
 
       const miniatura = prepararUrlImagem(original);
 
       imagem.onerror = () => {
-        if (
-          imagem.dataset.tentouOriginal !== "sim" &&
-          miniatura !== original
-        ) {
+        if (imagem.dataset.tentouOriginal !== "sim" && miniatura !== original) {
           imagem.dataset.tentouOriginal = "sim";
           imagem.src = original;
           return;
@@ -495,9 +869,7 @@
 
         const aviso = document.createElement("p");
         aviso.className = "foto-indisponivel";
-        aviso.textContent =
-          "A imagem desta criatura está oculta.";
-
+        aviso.textContent = "A imagem desta criatura está oculta.";
         imagem.parentElement?.appendChild(aviso);
       };
 
@@ -515,8 +887,7 @@
         script.remove();
 
         if (!resposta || !resposta.ok) {
-          status.textContent =
-            "Não foi possível carregar os habitantes.";
+          status.textContent = "Não foi possível carregar os habitantes.";
           return;
         }
 
@@ -526,13 +897,11 @@
         const habitantes = resposta.habitantes || [];
 
         if (!habitantes.length) {
-          status.textContent =
-            "A floresta ainda guarda seus segredos.";
+          status.textContent = "A floresta ainda guarda seus segredos.";
           return;
         }
 
-        status.textContent =
-          habitantes.length + " habitante(s) aprovado(s).";
+        status.textContent = habitantes.length + " habitante(s) aprovado(s).";
 
         habitantes.forEach((pessoa) => {
           const card = document.createElement("article");
@@ -542,8 +911,7 @@
           if (imagem) card.append(imagem);
 
           const titulo = document.createElement("h3");
-          titulo.textContent =
-            pessoa.fantasia || "Criatura sem nome";
+          titulo.textContent = pessoa.fantasia || "Criatura sem nome";
 
           const nome = document.createElement("p");
           nome.textContent = pessoa.nome || "";
@@ -559,14 +927,10 @@
       script.onerror = () => {
         delete window[callback];
         script.remove();
-
-        status.textContent =
-          "Falha de conexão. Confira a implantação do Apps Script.";
+        status.textContent = "Falha de conexão. Confira a implantação do Apps Script.";
       };
 
-      script.src = URL_APPS_SCRIPT +
-        "?callback=" + callback + "&t=" + Date.now();
-
+      script.src = URL_APPS_SCRIPT + "?callback=" + callback + "&t=" + Date.now();
       document.body.appendChild(script);
     }
 
