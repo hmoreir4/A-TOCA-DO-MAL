@@ -22,10 +22,7 @@ html {
 body {
   margin: 0;
   color: var(--texto);
-  background:
-    radial-gradient(ellipse at 50% 0%, #28301e 0%, transparent 45%),
-    radial-gradient(ellipse at 100% 65%, #281714 0%, transparent 38%),
-    var(--fundo);
+  background: var(--fundo);
   font-family: 'DM Sans', Arial, sans-serif;
   line-height: 1.7;
 }
@@ -35,9 +32,12 @@ body {
   background: var(--verde);
 }
 
+a {
+  color: inherit;
+}
+
 .hero {
   position: relative;
-  isolation: isolate;
   min-height: 94vh;
   padding: 80px 22px 95px;
   display: flex;
@@ -46,64 +46,11 @@ body {
   justify-content: center;
   overflow: hidden;
   text-align: center;
-  background:
-    linear-gradient(180deg, #02030230, #03040388 65%, var(--fundo)),
-    radial-gradient(ellipse at 50% 40%, #3a4827 0%, #192015 38%, #080907 78%);
+  background: linear-gradient(180deg, #192015, #080907 85%);
   border-bottom: 1px solid var(--borda);
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: .8;
-  background:
-    linear-gradient(90deg, #000b, transparent 18%, transparent 82%, #000b),
-    radial-gradient(ellipse at 0% 55%, #000 0%, transparent 35%),
-    radial-gradient(ellipse at 100% 45%, #000 0%, transparent 35%);
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  width: min(720px, 95vw);
-  aspect-ratio: 1;
-  border: 1px solid #a6b96b24;
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 22px #a6b96b08,
-    0 0 0 48px #a6b96b05,
-    inset 0 0 100px #000b;
-  pointer-events: none;
-}
-
-.nevoa {
-  position: absolute;
-  z-index: -1;
-  width: 70vw;
-  height: 120px;
-  border-radius: 50%;
-  background: #b7c2a0;
-  opacity: .055;
-  filter: blur(38px);
-  pointer-events: none;
-  animation: nevoa-mover 15s ease-in-out infinite alternate;
-}
-
-.nevoa-1 {
-  left: -20%;
-  bottom: 15%;
-}
-
-.nevoa-2 {
-  right: -25%;
-  bottom: 28%;
-  animation-delay: -7s;
-}
-
+/* Logo da Atlética */
 .logo-atletica {
   position: relative;
   z-index: 1;
@@ -118,10 +65,7 @@ body {
   width: clamp(105px, 17vw, 165px);
   max-height: 165px;
   object-fit: contain;
-  filter:
-    drop-shadow(0 0 8px #a6b96b55)
-    drop-shadow(0 0 24px #7c2b2550);
-  animation: logo-assombrada 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px #a6b96b33);
 }
 
 .eyebrow {
@@ -139,28 +83,21 @@ h1 {
   font-family: 'Creepster', Georgia, serif;
   font-size: clamp(4.5rem, 15vw, 10rem);
   font-weight: 400;
-  line-height: .77;
+  line-height: .85;
   letter-spacing: .015em;
   text-transform: uppercase;
-  transform: rotate(-2deg);
-  text-shadow:
-    3px 5px 0 #180d0b,
-    0 0 18px #000,
-    0 0 48px #783b354d;
+  text-shadow: 3px 5px 0 #180d0b;
 }
 
 h1 span {
   display: block;
   margin-top: 19px;
   color: var(--verde);
-  text-shadow:
-    0 0 15px #a6b96b3d,
-    3px 4px 0 #170d0b;
 }
 
 .ornamento {
   margin: 14px 0;
-  color: #a6b96b8a;
+  color: var(--verde);
   font-size: .75rem;
   letter-spacing: .2em;
 }
@@ -233,7 +170,6 @@ button:disabled {
   color: var(--verde);
   font-size: 1.8rem;
   text-decoration: none;
-  animation: descer 1.8s ease-in-out infinite;
 }
 
 main {
@@ -245,23 +181,11 @@ main {
   position: relative;
   margin: 30px 0;
   padding: clamp(24px, 5vw, 52px);
-  background:
-    linear-gradient(145deg, #171b12f5, #0d100cf7);
+  background: linear-gradient(145deg, #171b12, #0d100c);
   border: 1px solid var(--borda);
   border-top: 2px solid #675047;
   border-radius: 2px;
-  box-shadow:
-    0 24px 70px #0009,
-    inset 0 0 50px #05060555;
-}
-
-.panel::before {
-  content: "✳";
-  position: absolute;
-  top: 12px;
-  right: 17px;
-  color: #9cae6b48;
-  font-size: 1.2rem;
+  box-shadow: 0 24px 70px #0009;
 }
 
 h2 {
@@ -383,7 +307,7 @@ textarea {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  background: radial-gradient(ellipse, #303b25, #11150f 70%);
+  background: #11150f;
 }
 
 .inhabitant h3 {
@@ -446,29 +370,6 @@ footer {
 
 footer p {
   margin: 5px 0;
-}
-
-@keyframes logo-assombrada {
-  0%, 100% {
-    transform: translateY(0) rotate(-1deg);
-    filter: drop-shadow(0 0 8px #a6b96b55);
-  }
-  50% {
-    transform: translateY(-5px) rotate(1deg);
-    filter:
-      drop-shadow(0 0 14px #a6b96b88)
-      drop-shadow(0 0 28px #7c2b2555);
-  }
-}
-
-@keyframes nevoa-mover {
-  from { transform: translateX(-5%) scale(1); }
-  to { transform: translateX(20%) scale(1.2); }
-}
-
-@keyframes descer {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
