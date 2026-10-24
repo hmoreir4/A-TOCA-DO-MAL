@@ -4,27 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#090806">
-  <meta name="description" content="A Toca do Mal — entre na floresta, revele sua criatura e sobreviva à noite.">
+  <meta name="description" content="A Toca do Mal — Atlética Fundação Santo André">
   <title>A Toca do Mal | Atlética FSA</title>
-  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=DM+Sans:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --fundo: #090b08;
       --painel: #141a10;
       --verde: #b6e344;
+      --verde-claro: #b6ca78;
       --osso: #e8e5d9;
       --muted: #a4a895;
-      --linha: rgba(182, 227, 68, .24);
+      --linha: rgba(182,227,68,.24);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 24px;
+      scroll-padding-top: 85px;
     }
 
     body {
@@ -35,28 +37,56 @@
       overflow-x: hidden;
     }
 
-    /* Textura e vinheta */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: 20;
-      pointer-events: none;
-      opacity: .06;
-      background-image: radial-gradient(#b6e344 .5px, transparent .5px);
-      background-size: 5px 5px;
+    a { -webkit-tap-highlight-color: transparent; }
+
+    /* MENU FIXO */
+    .menu-toca {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 13px clamp(14px, 4vw, 40px);
+      background: rgba(7,9,6,.96);
+      border-bottom: 1px solid var(--linha);
+      backdrop-filter: blur(12px);
     }
 
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: 19;
-      pointer-events: none;
-      background: radial-gradient(ellipse at center, transparent 45%, #000 115%);
+    .menu-logo {
+      color: var(--verde-claro);
+      font: 25px "Creepster", cursive;
+      text-decoration: none;
+      white-space: nowrap;
     }
 
-    /* Cabeçalho cinematográfico */
+    .menu-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 18px;
+    }
+
+    .menu-links a {
+      color: var(--osso);
+      font-size: 11px;
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .menu-links a:hover { color: var(--verde); }
+
+    .menu-links .menu-votacao {
+      padding: 10px 15px;
+      background: var(--verde-claro);
+      color: #10130b;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    /* CAPA */
     .hero {
       min-height: 100vh;
       min-height: 100svh;
@@ -69,8 +99,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      background:
-        radial-gradient(ellipse at 50% 43%, #202719 0%, #0b0d09 54%, #050605 100%);
+      background: radial-gradient(ellipse at 50% 43%, #202719 0%, #0b0d09 54%, #050605 100%);
     }
 
     .hero::before {
@@ -79,9 +108,7 @@
       inset: 0;
       z-index: -1;
       pointer-events: none;
-      background:
-        linear-gradient(90deg, #05060480, transparent 25%, transparent 75%, #05060480),
-        linear-gradient(0deg, #090b08 0%, transparent 30%, #05060435 100%);
+      background: linear-gradient(90deg,#05060480,transparent 25%,transparent 75%,#05060480);
     }
 
     .hero::after {
@@ -89,14 +116,13 @@
       position: absolute;
       z-index: -1;
       pointer-events: none;
-      width: min(96vw, 760px);
+      width: min(96vw,760px);
       aspect-ratio: 1;
-      border: 1px solid rgba(182, 227, 68, .16);
+      border: 1px solid rgba(182,227,68,.16);
       border-radius: 50%;
-      box-shadow:
-        0 0 0 24px rgba(182, 227, 68, .035),
-        0 0 0 65px rgba(182, 227, 68, .025),
-        inset 0 0 75px rgba(182, 227, 68, .025);
+      box-shadow: 0 0 0 24px rgba(182,227,68,.035),
+                  0 0 0 65px rgba(182,227,68,.025),
+                  inset 0 0 75px rgba(182,227,68,.025);
     }
 
     .nevoa {
@@ -105,19 +131,11 @@
       z-index: 0;
       pointer-events: none;
       opacity: .3;
-      background: linear-gradient(
-        110deg,
-        transparent 15%,
-        #9ab65a12 40%,
-        #b6e3440b 52%,
-        transparent 78%
-      );
+      background: linear-gradient(110deg,transparent 15%,#9ab65a12 40%,#b6e3440b 52%,transparent 78%);
       filter: blur(18px);
     }
 
-    .nevoa-1 {
-      animation: nevoa-move 12s ease-in-out infinite alternate;
-    }
+    .nevoa-1 { animation: nevoa-move 12s ease-in-out infinite alternate; }
 
     .nevoa-2 {
       opacity: .18;
@@ -128,32 +146,22 @@
     .olhos {
       position: absolute;
       z-index: 1;
-      color: #e8e5d9;
+      color: var(--osso);
       font-size: 22px;
       letter-spacing: 13px;
-      text-shadow: 0 0 8px #e8e5d9, 0 0 24px #b6e34455;
+      text-shadow: 0 0 8px var(--osso),0 0 24px #b6e34455;
       opacity: .8;
       pointer-events: none;
       animation: olhos-piscar 6s infinite;
     }
 
-    .olhos-1 {
-      top: 10%;
-      left: 48%;
-      transform: translateX(-50%);
-    }
-
-    .olhos-2 {
-      top: 14%;
-      left: 48%;
-      transform: translateX(-50%);
-      animation-delay: 2.5s;
-    }
+    .olhos-1 { top: 10%; left: 48%; transform: translateX(-50%); }
+    .olhos-2 { top: 14%; left: 48%; transform: translateX(-50%); animation-delay: 2.5s; }
 
     .logo-atletica {
       position: relative;
       z-index: 3;
-      width: clamp(120px, 25vw, 185px);
+      width: clamp(120px,25vw,185px);
       margin: 0 auto 42px;
     }
 
@@ -161,7 +169,6 @@
       display: block;
       width: 100%;
       height: auto;
-      max-height: 185px;
       object-fit: contain;
       filter: drop-shadow(0 0 18px #000b);
     }
@@ -171,8 +178,7 @@
       z-index: 2;
       margin: 0 0 48px;
       color: #c1d88b;
-      font-family: "Special Elite", cursive;
-      font-size: clamp(10px, 2.4vw, 15px);
+      font: clamp(10px,2.4vw,15px) "Special Elite", cursive;
       letter-spacing: .18em;
       line-height: 1.8;
       text-transform: uppercase;
@@ -184,13 +190,10 @@
       width: 100%;
       max-width: 680px;
       margin: 0 auto 35px;
-      color: #e8e5d9;
-      font-family: "Creepster", cursive;
-      font-size: clamp(68px, 12vw, 112px);
-      font-weight: 400;
-      line-height: .98;
+      color: var(--osso);
+      font: 400 clamp(68px,12vw,112px)/.98 "Creepster", cursive;
       letter-spacing: .035em;
-      text-shadow: 0 0 22px rgba(0, 0, 0, .35);
+      text-shadow: 0 0 22px #0006;
     }
 
     .hero h1 span {
@@ -204,16 +207,10 @@
       z-index: 2;
       max-width: 650px;
       margin: 0 auto 48px;
-      color: #e8e5d9;
-      font-family: "Special Elite", cursive;
-      font-size: clamp(15px, 3vw, 22px);
-      line-height: 1.8;
+      font: clamp(15px,3vw,22px)/1.8 "Special Elite", cursive;
     }
 
-    .hero .frase strong {
-      color: #e8e5d9;
-      font-weight: 400;
-    }
+    .hero .frase strong { font-weight: 400; }
 
     .hero .button {
       position: relative;
@@ -223,23 +220,20 @@
       justify-content: center;
       min-width: 250px;
       min-height: 60px;
-      margin: 0 auto;
       padding: 20px 32px;
-      border: 0;
-      background: #b6ca78;
+      background: var(--verde-claro);
       color: #10130b;
       box-shadow: 7px 8px 0 #0008;
       font-size: 14px;
       font-weight: 700;
       letter-spacing: .1em;
-      text-transform: uppercase;
       text-decoration: none;
-      transition: .25s ease;
+      text-transform: uppercase;
+      transition: .25s;
     }
 
     .hero .button:hover {
       background: #d0e69a;
-      color: #10130b;
       transform: translateY(-2px);
     }
 
@@ -248,10 +242,8 @@
       z-index: 2;
       margin: 45px 0 0;
       color: #c49b92;
-      font-family: "Special Elite", cursive;
-      font-size: 11px;
+      font: 11px/1.8 "Special Elite", cursive;
       letter-spacing: .17em;
-      line-height: 1.8;
     }
 
     .hero .descer {
@@ -260,28 +252,27 @@
       bottom: 22px;
       left: 50%;
       transform: translateX(-50%);
-      color: #b6ca78;
+      color: var(--verde-claro);
       font-size: 40px;
       text-decoration: none;
       animation: descer 1.8s ease-in-out infinite;
     }
 
-    /* Seções */
+    /* SEÇÕES */
     main {
       position: relative;
       z-index: 1;
       border-top: 1px solid var(--linha);
-      background:
-        radial-gradient(ellipse at 50% 0%, #182014 0%, #090b08 65%);
+      background: radial-gradient(ellipse at 50% 0%,#182014 0%,#090b08 65%);
     }
 
     .panel {
       position: relative;
-      width: min(920px, calc(100% - 36px));
+      width: min(920px,calc(100% - 36px));
       margin: 48px auto;
-      padding: clamp(24px, 5vw, 55px);
+      padding: clamp(24px,5vw,55px);
       border: 1px solid var(--linha);
-      background: linear-gradient(145deg, #171e12f5, #0d100bf7);
+      background: linear-gradient(145deg,#171e12f5,#0d100bf7);
       box-shadow: 0 25px 90px #0005;
     }
 
@@ -297,7 +288,7 @@
     .panel h2 {
       margin: 8px 0 20px;
       color: var(--osso);
-      font: 400 clamp(40px, 6vw, 68px)/.95 "Creepster", cursive;
+      font: 400 clamp(40px,6vw,68px)/.95 "Creepster", cursive;
     }
 
     .panel > p:not(.eyebrow):not(.hint):not(#status-galeria) {
@@ -315,9 +306,7 @@
       text-transform: uppercase;
     }
 
-    .panel form:not([hidden]) {
-      margin-top: 30px;
-    }
+    .panel form:not([hidden]) { margin-top: 30px; }
 
     .panel label {
       display: block;
@@ -339,8 +328,7 @@
       outline: none;
       background: #090c08;
       color: var(--osso);
-      font: 14px "DM Sans", sans-serif;
-      transition: border-color .2s, box-shadow .2s;
+      font: 14px "DM Sans",sans-serif;
     }
 
     .panel input:focus,
@@ -356,9 +344,7 @@
       font-size: 12px;
     }
 
-    .panel textarea {
-      resize: vertical;
-    }
+    .panel textarea { resize: vertical; }
 
     .hint {
       color: #939987;
@@ -378,30 +364,20 @@
       letter-spacing: .12em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: .2s;
     }
 
-    #botao-enviar:hover:not(:disabled) {
-      background: transparent;
-      color: var(--verde);
-    }
+    #botao-enviar:disabled { opacity: .6; cursor: wait; }
 
-    #botao-enviar:disabled {
-      opacity: .6;
-      cursor: wait;
-    }
-
-    #mensagem,
-    #status-galeria {
+    #mensagem, #status-galeria {
       color: var(--muted);
       font-size: 13px;
       line-height: 1.7;
     }
 
-    /* Galeria */
+    /* GALERIA */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(3,minmax(0,1fr));
       gap: 18px;
       margin-top: 30px;
     }
@@ -411,7 +387,7 @@
       overflow: hidden;
       border: 1px solid var(--linha);
       background: #0b0e09;
-      transition: border-color .25s, transform .25s;
+      transition: border-color .25s,transform .25s;
     }
 
     .inhabitant:hover {
@@ -424,13 +400,13 @@
       width: 100%;
       height: 240px;
       object-fit: cover;
-      background: #141a10;
+      background: var(--painel);
     }
 
     .inhabitant h3 {
       margin: 17px 16px 8px;
       color: var(--verde);
-      font: 400 28px "Creepster", cursive;
+      font: 400 28px "Creepster",cursive;
       overflow-wrap: anywhere;
     }
 
@@ -442,15 +418,12 @@
       overflow-wrap: anywhere;
     }
 
-    .foto-indisponivel {
-      color: var(--muted);
-      font-size: 12px;
-    }
+    .foto-indisponivel { color: var(--muted); font-size: 12px; }
 
-    /* Julgamento */
+    /* VOTAÇÃO */
     .rankings {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2,minmax(0,1fr));
       gap: 18px;
       margin-top: 30px;
     }
@@ -471,7 +444,7 @@
     .rankings h3 {
       margin: 16px 0 10px;
       color: var(--osso);
-      font: 400 32px "Creepster", cursive;
+      font: 400 32px "Creepster",cursive;
     }
 
     .rankings p {
@@ -480,7 +453,6 @@
       line-height: 1.7;
     }
 
-    /* Rodapé */
     footer {
       padding: 35px 20px;
       border-top: 1px solid var(--linha);
@@ -497,38 +469,48 @@
 
     footer p:first-child {
       color: var(--verde);
-      font: 27px "Creepster", cursive;
+      font: 27px "Creepster",cursive;
     }
 
-    /* Animações */
     @keyframes nevoa-move {
       from { transform: translateX(-3%) scale(1); }
       to { transform: translateX(3%) scale(1.08); }
     }
 
     @keyframes olhos-piscar {
-      0%, 44%, 48%, 100% { opacity: .8; }
-      46%, 47% { opacity: .08; }
+      0%,44%,48%,100% { opacity: .8; }
+      46%,47% { opacity: .08; }
     }
 
     @keyframes descer {
-      0%, 100% { transform: translate(-50%, 0); }
-      50% { transform: translate(-50%, 7px); }
+      0%,100% { transform: translate(-50%,0); }
+      50% { transform: translate(-50%,7px); }
     }
 
-    /* Responsividade */
     @media (max-width: 700px) {
-      .hero {
-        padding: 30px 18px 75px;
+      .menu-toca {
+        flex-direction: column;
+        gap: 9px;
+        padding: 10px 8px;
       }
+
+      .menu-logo { font-size: 22px; }
+
+      .menu-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .menu-links a { font-size: 10px; }
+
+      .menu-links .menu-votacao { padding: 8px 10px; }
+
+      .hero { padding: 30px 18px 75px; }
 
       .logo-atletica {
         width: 145px;
         margin-bottom: 40px;
-      }
-
-      .logo-atletica img {
-        max-height: 160px;
       }
 
       .hero .eyebrow {
@@ -537,64 +519,44 @@
       }
 
       .hero h1 {
-        font-size: clamp(64px, 14vw, 94px);
+        font-size: clamp(64px,14vw,94px);
         line-height: 1;
         margin-bottom: 35px;
       }
 
-      .hero .frase {
-        margin-bottom: 48px;
-      }
+      .hero .frase { margin-bottom: 48px; }
 
-      .hero .button {
-        width: min(100%, 330px);
-      }
+      .hero .button { width: min(100%,330px); }
 
-      .hero .aviso {
-        margin-top: 45px;
-      }
+      .hero .aviso { margin-top: 45px; }
 
       .gallery {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2,minmax(0,1fr));
         gap: 12px;
       }
 
-      .inhabitant img {
-        height: 200px;
-      }
+      .inhabitant img { height: 200px; }
 
-      .rankings {
-        grid-template-columns: 1fr;
-      }
+      .rankings { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 420px) {
-      .hero h1 {
-        font-size: clamp(54px, 14vw, 72px);
-      }
+      .hero h1 { font-size: clamp(54px,14vw,72px); }
 
       .hero .eyebrow {
         font-size: 10px;
         letter-spacing: .13em;
       }
 
-      .hero .frase {
-        font-size: 15px;
-      }
+      .hero .frase { font-size: 15px; }
 
-      .gallery {
-        grid-template-columns: 1fr;
-      }
+      .gallery { grid-template-columns: 1fr; }
 
-      .inhabitant img {
-        height: 280px;
-      }
+      .inhabitant img { height: 280px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
+      *,*::before,*::after {
         scroll-behavior: auto !important;
         animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
@@ -605,7 +567,17 @@
 </head>
 
 <body>
-  <header class="hero">
+  <nav class="menu-toca" aria-label="Menu principal">
+    <a class="menu-logo" href="#inicio">A TOCA DO MAL</a>
+    <div class="menu-links">
+      <a href="#inicio">Início</a>
+      <a href="#inscricao">Inscrição</a>
+      <a href="#habitantes">Habitantes</a>
+      <a class="menu-votacao" href="#ranking">Votação</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="inicio">
     <div class="nevoa nevoa-1" aria-hidden="true"></div>
     <div class="nevoa nevoa-2" aria-hidden="true"></div>
     <div class="olhos olhos-1" aria-hidden="true">• •</div>
@@ -616,7 +588,6 @@
     </div>
 
     <p class="eyebrow">Atlética Fundação Santo André apresenta</p>
-
     <h1>A TOCA <span>DO MAL</span></h1>
 
     <p class="frase">
@@ -625,10 +596,8 @@
     </p>
 
     <a class="button" href="#inscricao">Entrar na Toca</a>
-
     <p class="aviso">NEM TODAS AS CRIATURAS VOLTAM IGUAIS.</p>
-
-    <a class="descer" href="#inscricao" aria-label="Descer para inscrição">↓</a>
+    <a class="descer" href="#inscricao" aria-label="Ir para inscrição">↓</a>
   </header>
 
   <main>
@@ -644,24 +613,32 @@
         <label for="nome">Nome completo</label>
         <input id="nome" name="nome" maxlength="150" autocomplete="name" required>
 
+        <label for="telefone">Telefone / WhatsApp</label>
+        <input id="telefone" name="telefone" type="tel"
+          placeholder="(11) 99999-9999" autocomplete="tel"
+          inputmode="tel" maxlength="20" required>
+
         <label for="fantasia">Nome da fantasia</label>
         <input id="fantasia" name="fantasia" maxlength="150" required>
 
         <label for="inspiracao">Inspiração da fantasia</label>
-        <textarea id="inspiracao" name="inspiracao" maxlength="1000" rows="3" required></textarea>
+        <textarea id="inspiracao" name="inspiracao"
+          maxlength="1000" rows="3" required></textarea>
 
         <label for="foto">Foto da fantasia</label>
-        <input id="foto" name="foto" type="file" accept="image/jpeg,image/png,image/webp" required>
-
+        <input id="foto" name="foto" type="file"
+          accept="image/jpeg,image/png,image/webp" required>
         <p class="hint">JPG, PNG ou WEBP. Máximo de 4 MB.</p>
 
         <button id="botao-enviar" type="submit">Enviar inscrição</button>
         <p id="mensagem" role="status" aria-live="polite"></p>
       </form>
 
-      <iframe name="resposta-toca" id="resposta-toca" title="Resposta do envio" hidden></iframe>
+      <iframe name="resposta-toca" id="resposta-toca"
+        title="Resposta do envio" hidden></iframe>
 
-      <form id="form-transmissao" method="POST" target="resposta-toca" hidden>
+      <form id="form-transmissao" method="POST"
+        target="resposta-toca" hidden>
         <input type="hidden" name="payload" id="payload">
         <input type="hidden" name="token" id="token">
       </form>
@@ -670,7 +647,9 @@
     <section class="panel panel-galeria" id="habitantes">
       <p class="eyebrow">Os que foram aceitos</p>
       <h2>Habitantes da Toca</h2>
-      <p id="status-galeria" role="status" aria-live="polite">A floresta está procurando...</p>
+      <p id="status-galeria" role="status" aria-live="polite">
+        A floresta está procurando...
+      </p>
       <div id="galeria" class="gallery"></div>
     </section>
 
@@ -684,7 +663,6 @@
           <h3>Voto popular</h3>
           <p>A votação ainda não foi aberta.</p>
         </div>
-
         <div>
           <span class="simbolo">♜</span>
           <h3>Escolha dos jurados</h3>
@@ -775,12 +753,14 @@
 
         const payload = {
           nome: document.getElementById("nome").value.trim(),
+          telefone: document.getElementById("telefone").value.trim(),
           fantasia: document.getElementById("fantasia").value.trim(),
           inspiracao: document.getElementById("inspiracao").value.trim(),
           foto: await lerFoto()
         };
 
-        if (!payload.nome || !payload.fantasia || !payload.inspiracao) {
+        if (!payload.nome || !payload.telefone ||
+            !payload.fantasia || !payload.inspiracao) {
           throw new Error("Preencha todos os campos.");
         }
 
@@ -802,15 +782,11 @@
         formularioTransmissao.action = URL_APPS_SCRIPT;
         document.getElementById("payload").value = JSON.stringify(payload);
         document.getElementById("token").value = token;
-
-        mensagem.textContent = "Enviando para a Toca...";
         formularioTransmissao.submit();
 
       } catch (erro) {
         console.error(erro);
-
         if (envioPendente) clearTimeout(envioPendente.timeout);
-
         envioPendente = null;
         botao.disabled = false;
         botao.textContent = "Enviar inscrição";
@@ -824,9 +800,8 @@
 
       try {
         const endereco = new URL(original);
-        const hostPermitido = /(^|\.)drive\.google\.com$/i.test(endereco.hostname);
 
-        if (hostPermitido) {
+        if (/(^|\.)drive\.google\.com$/i.test(endereco.hostname)) {
           let id = endereco.searchParams.get("id") || "";
 
           if (!id) {
@@ -851,7 +826,7 @@
       if (!original) return null;
 
       const imagem = document.createElement("img");
-      imagem.alt = "Fantasia de " + (pessoa.nome || "participante");
+      imagem.alt = "Fantasia de " + (pessoa.fantasia || "participante");
       imagem.loading = "lazy";
       imagem.decoding = "async";
 
@@ -919,6 +894,7 @@
           const inspiracao = document.createElement("p");
           inspiracao.textContent = pessoa.inspiracao || "";
 
+          /* Telefone intencionalmente nunca é exibido na galeria. */
           card.append(titulo, nome, inspiracao);
           galeria.append(card);
         });
@@ -930,7 +906,9 @@
         status.textContent = "Falha de conexão. Confira a implantação do Apps Script.";
       };
 
-      script.src = URL_APPS_SCRIPT + "?callback=" + callback + "&t=" + Date.now();
+      script.src = URL_APPS_SCRIPT + "?acao=habitantes&callback=" +
+        callback + "&t=" + Date.now();
+
       document.body.appendChild(script);
     }
 
