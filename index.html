@@ -15,7 +15,9 @@
 <body>
 
 <header class="topbar">
+
   <a class="brand" href="#inicio">
+
     <img
       src="./logo-atletica.jpeg"
       class="logo-header"
@@ -26,6 +28,7 @@
       <b>A TOCA DO MAL</b>
       <small>ATLÉTICA FUNDAÇÃO SANTO ANDRÉ</small>
     </span>
+
   </a>
 
   <nav id="nav">
@@ -34,6 +37,7 @@
     <a href="#habitantes">HABITANTES</a>
     <a href="#votacao-popular" class="nav-destaque">VOTAÇÃO</a>
   </nav>
+
 </header>
 
 <main>
@@ -86,6 +90,7 @@
 
   </section>
 
+
   <!-- A LENDA -->
 
   <section class="panel" id="manifesto">
@@ -126,6 +131,7 @@
     </div>
 
   </section>
+
 
   <!-- INSCRIÇÃO -->
 
@@ -209,12 +215,14 @@
       </div>
 
       <label class="consent">
+
         <input id="consent" type="checkbox" required>
 
         <span>
           Confirmo que as informações são verdadeiras e autorizo
           o uso da foto para divulgação do concurso.
         </span>
+
       </label>
 
       <button class="button" id="submit" type="submit">
@@ -231,6 +239,7 @@
     </form>
 
   </section>
+
 
   <!-- HABITANTES -->
 
@@ -249,12 +258,17 @@
     </p>
 
     <div id="grid" class="gallery">
-      <p class="hint">OS ARQUIVOS ESTÃO SENDO DESENTERRADOS...</p>
+
+      <p class="hint">
+        OS ARQUIVOS ESTÃO SENDO DESENTERRADOS...
+      </p>
+
     </div>
 
     <p id="empty" class="hint center"></p>
 
   </section>
+
 
   <!-- JULGAMENTO -->
 
@@ -275,6 +289,7 @@
     <div class="rankings">
 
       <article>
+
         <div class="simbolo">☞</div>
 
         <p class="eyebrow">VOTO POPULAR</p>
@@ -289,9 +304,11 @@
         <hr>
 
         <small>RESULTADOS ATUALIZADOS NA VOTAÇÃO</small>
+
       </article>
 
       <article>
+
         <div class="simbolo">♜</div>
 
         <p class="eyebrow">JÚRI OFICIAL</p>
@@ -306,11 +323,13 @@
         <hr>
 
         <small>RESULTADO DO JÚRI</small>
+
       </article>
 
     </div>
 
   </section>
+
 
   <!-- VOTAÇÃO DINÂMICA -->
 
@@ -324,12 +343,19 @@
     </h2>
 
     <div id="area-votacao">
-      <p class="hint">A votação será carregada...</p>
+
+      <p class="hint">
+        A votação será carregada...
+      </p>
+
     </div>
 
   </section>
 
 </main>
+
+
+<!-- RODAPÉ -->
 
 <footer>
 
@@ -345,30 +371,47 @@
 
 </footer>
 
+
 <script>
+
+/* CONFIGURAÇÃO */
+
 const URL_APPS_SCRIPT =
-  "https://script.google.com/macros/s/AKfycbxmYrRC0Bf36xYhblmJnRnWaJxo5EuggZHBApUgXhhHcEsHTSVLgIB9U6tovIu_HgEQ/exec";
+  "https://script.google.com/macros/s/AKfycbxmYrRCB0f36xYhblmJnRnWaJxo5EuggZHBApUgXhhHcEsHTSVLgIB9U6tovIu_HgEQ/exec";
 
 const MAX = 4 * 1024 * 1024;
+
 const $ = id => document.getElementById(id);
+
 
 /* FORMULÁRIO */
 
 function status(msg, type = "") {
+
   $("status").textContent = msg;
   $("status").className = type;
+
 }
 
+
 function dataURL(file) {
+
   return new Promise((resolve, reject) => {
+
     const reader = new FileReader();
 
     reader.onload = () => resolve(reader.result);
+
     reader.onerror = reject;
 
     reader.readAsDataURL(file);
+
   });
+
 }
+
+
+/* PRÉ-VISUALIZAÇÃO DA FOTO */
 
 $("foto").addEventListener("change", () => {
 
@@ -380,7 +423,9 @@ $("foto").addEventListener("change", () => {
     !["image/jpeg", "image/png", "image/webp"].includes(file.type) ||
     file.size > MAX
   ) {
+
     $("foto").value = "";
+
     $("preview").hidden = true;
 
     status(
@@ -389,6 +434,7 @@ $("foto").addEventListener("change", () => {
     );
 
     return;
+
   }
 
   $("fileName").textContent = file.name;
@@ -397,10 +443,15 @@ $("foto").addEventListener("change", () => {
     (file.size / 1048576).toFixed(2) + " MB";
 
   $("preview").src = URL.createObjectURL(file);
+
   $("preview").hidden = false;
 
   status("");
+
 });
+
+
+/* ENVIO DA INSCRIÇÃO */
 
 $("form").addEventListener("submit", async e => {
 
@@ -409,36 +460,60 @@ $("form").addEventListener("submit", async e => {
   const file = $("foto").files[0];
 
   if (!file) {
+
     status("Escolha uma fotografia.", "error");
+
     return;
+
   }
 
   if (!$("consent").checked) {
-    status("Confirme a autorização para continuar.", "error");
+
+    status(
+      "Confirme a autorização para continuar.",
+      "error"
+    );
+
     return;
+
   }
 
   $("submit").disabled = true;
+
   $("submit").textContent = "ENVIANDO PARA A TOCA...";
 
   try {
 
     const payload = {
+
       nome: $("nome").value.trim(),
+
       fantasia: $("fantasia").value.trim(),
+
       inspiracao: $("inspiracao").value.trim(),
+
       fotoNome: file.name,
+
       fotoTipo: file.type,
+
       fotoDataUrl: await dataURL(file)
+
     };
 
     await fetch(URL_APPS_SCRIPT, {
+
       method: "POST",
+
       mode: "no-cors",
+
       headers: {
+
         "Content-Type": "text/plain;charset=utf-8"
+
       },
+
       body: JSON.stringify(payload)
+
     });
 
     status(
@@ -447,12 +522,17 @@ $("form").addEventListener("submit", async e => {
     );
 
     $("form").reset();
+
     $("preview").hidden = true;
 
     $("fileName").textContent = "ANEXAR FOTOGRAFIA";
-    $("fileHint").textContent = "JPG, PNG ou WEBP • até 4 MB";
+
+    $("fileHint").textContent =
+      "JPG, PNG ou WEBP • até 4 MB";
 
   } catch (erro) {
+
+    console.error("Erro na inscrição:", erro);
 
     status(
       "Falha no envio. Verifique a conexão e a implantação do Apps Script.",
@@ -462,27 +542,103 @@ $("form").addEventListener("submit", async e => {
   } finally {
 
     $("submit").disabled = false;
+
     $("submit").textContent = "ENVIAR MEU REGISTRO ↗";
 
   }
 
 });
 
+
 /* SEGURANÇA DE TEXTO */
 
 function escapar(texto) {
+
   return String(texto ?? "").replace(/[&<>"']/g, c => ({
+
     "&": "&amp;",
+
     "<": "&lt;",
+
     ">": "&gt;",
+
     '"': "&quot;",
+
     "'": "&#39;"
+
   })[c]);
+
 }
+
+
+/* CONVERSÃO DOS LINKS DO GOOGLE DRIVE */
+
+function obterLinkFoto(urlOriginal) {
+
+  try {
+
+    const url = new URL(urlOriginal);
+
+    if (url.hostname !== "drive.google.com") {
+
+      if (
+        url.protocol === "https:" &&
+        url.hostname.endsWith(".googleusercontent.com")
+      ) {
+
+        return url.href;
+
+      }
+
+      return "";
+
+    }
+
+    let id = url.searchParams.get("id");
+
+    if (!id) {
+
+      const partes = url.pathname.match(/\/d\/([^/]+)/);
+
+      if (partes) {
+
+        id = partes[1];
+
+      }
+
+    }
+
+    if (!id) return "";
+
+    return (
+      "https://drive.google.com/uc?export=view&id=" +
+      encodeURIComponent(id)
+    );
+
+  } catch (erro) {
+
+    console.error("Link de foto inválido:", erro);
+
+    return "";
+
+  }
+
+}
+
 
 /* GALERIA DE HABITANTES */
 
 function carregarHabitantes() {
+
+  const grid = $("grid");
+
+  const empty = $("empty");
+
+  grid.innerHTML = `
+    <p class="hint">DESENTERRANDO OS ARQUIVOS...</p>
+  `;
+
+  empty.textContent = "";
 
   const callback =
     "toca_" + Math.random().toString(36).slice(2);
@@ -492,8 +648,11 @@ function carregarHabitantes() {
   let concluido = false;
 
   const timeout = setTimeout(() => {
+
     finalizar(null);
+
   }, 20000);
+
 
   function finalizar(dados) {
 
@@ -502,103 +661,168 @@ function carregarHabitantes() {
     concluido = true;
 
     clearTimeout(timeout);
+
     delete window[callback];
+
     script.remove();
+
 
     if (!dados || dados.ok !== true) {
 
-      $("grid").innerHTML = "";
+      grid.innerHTML = "";
 
-      $("empty").textContent =
+      empty.textContent =
         dados?.mensagem ||
-        "Não foi possível carregar os habitantes. Verifique a implantação do Apps Script.";
+        "Não foi possível acessar os arquivos da toca.";
 
       return;
+
     }
+
 
     const habitantes = Array.isArray(dados.habitantes)
+
       ? dados.habitantes
+
       : [];
 
-    if (!habitantes.length) {
 
-      $("grid").innerHTML = "";
+    if (habitantes.length === 0) {
 
-      $("empty").textContent =
-        "Ainda não há habitantes aprovados. A toca aguarda suas primeiras criaturas.";
+      grid.innerHTML = "";
+
+      empty.textContent =
+        "Ainda não existem habitantes aprovados.";
 
       return;
+
     }
 
-    $("empty").textContent = "";
 
-    $("grid").innerHTML = habitantes.map(p => {
+    empty.textContent = "";
 
-      let foto = "";
 
-      try {
+    grid.innerHTML = habitantes.map(p => {
 
-        const url = new URL(p.fotoUrl);
+      const foto = obterLinkFoto(p.fotoUrl);
 
-        if (
-          url.protocol === "https:" &&
-          (
-            url.hostname === "drive.google.com" ||
-            url.hostname.endsWith(".googleusercontent.com")
-          )
-        ) {
-          foto = url.href;
-        }
+      const nome = escapar(p.nome);
 
-      } catch (_) {}
+      const fantasia = escapar(p.fantasia);
+
+      const inspiracao = escapar(p.inspiracao);
+
 
       return `
+
         <article class="inhabitant">
 
-          ${
-            foto
-              ? `<img
-                  src="${escapar(foto)}"
-                  alt="Fantasia ${escapar(p.fantasia)}"
-                  loading="lazy"
-                  onerror="this.style.display='none';this.nextElementSibling.hidden=false"
-                >
-                <div class="foto-indisponivel" hidden>
-                  FOTOGRAFIA INDISPONÍVEL
-                </div>`
-              : `<div class="foto-indisponivel">
-                  FOTOGRAFIA INDISPONÍVEL
-                </div>`
-          }
+          <div class="inhabitant-photo">
 
-          <h3>${escapar(p.fantasia)}</h3>
+            ${
+              foto
 
-          <p>${escapar(p.nome)}</p>
+                ? `
 
-          <p>${escapar(p.inspiracao)}</p>
+                  <img
+
+                    src="${escapar(foto)}"
+
+                    alt="Fantasia ${fantasia}"
+
+                    loading="lazy"
+
+                    onerror="
+                      this.style.display='none';
+                      this.parentElement.querySelector('.foto-indisponivel').hidden=false;
+                    "
+
+                  >
+
+                  <div class="foto-indisponivel" hidden>
+
+                    FOTOGRAFIA INDISPONÍVEL
+
+                  </div>
+
+                `
+
+                : `
+
+                  <div class="foto-indisponivel">
+
+                    FOTOGRAFIA INDISPONÍVEL
+
+                  </div>
+
+                `
+
+            }
+
+          </div>
+
+
+          <h3>${fantasia}</h3>
+
+          <p>${nome}</p>
+
+          <p>${inspiracao}</p>
 
         </article>
+
       `;
 
     }).join("");
 
+
+    console.log(
+      "Habitantes carregados:",
+      habitantes.length
+    );
+
   }
 
-  window[callback] = dados => finalizar(dados);
 
-  script.onerror = () => finalizar(null);
+  window[callback] = function(dados) {
+
+    finalizar(dados);
+
+  };
+
+
+  script.onerror = function() {
+
+    finalizar(null);
+
+  };
+
 
   script.src =
+
     URL_APPS_SCRIPT +
+
     "?acao=habitantes&callback=" +
+
     callback +
-    "&t=" + Date.now();
+
+    "&t=" +
+
+    Date.now();
+
 
   document.body.appendChild(script);
+
 }
 
+
+/* INICIALIZAÇÃO DA GALERIA */
+
 carregarHabitantes();
+
 </script>
+
+
+<!-- SISTEMA DE VOTAÇÃO -->
 
 <script src="./votacao.js" defer></script>
 
