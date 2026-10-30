@@ -3,26 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#10150d">
-
+  <meta name="theme-color" content="#090b08">
   <title>A Toca do Mal | Atlética Fundação Santo André</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Roboto+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header>
+<header class="topbar">
   <a class="brand" href="#inicio">
-    ☠
+    <img class="logo-header" src="logo-atletica.png"
+      alt="Logo da Atlética Fundação Santo André">
     <span>
       <b>A TOCA DO MAL</b>
       <small>ATLÉTICA FUNDAÇÃO SANTO ANDRÉ</small>
     </span>
   </a>
 
-  <button id="menuToggle" aria-label="Abrir menu">☰</button>
+  <button id="menuToggle" type="button"
+    aria-label="Abrir menu" aria-expanded="false">☰</button>
 
   <nav id="nav">
     <a href="#manifesto">A lenda</a>
@@ -36,44 +34,43 @@
 <main>
 
   <!-- INÍCIO -->
-  <section class="hero wrap" id="inicio">
-    <div>
+  <section class="hero" id="inicio">
+    <div class="nevoa nevoa-1"></div>
+    <div class="nevoa nevoa-2"></div>
+    <span class="olhos olhos-1">••</span>
+    <span class="olhos olhos-2">••</span>
+
+    <div class="hero-content">
+      <div class="logo-atletica">
+        <img src="logo-atletica.png"
+          alt="Atlética Fundação Santo André">
+      </div>
+
       <p class="eyebrow">— UM CHAMADO DA ESCURIDÃO —</p>
 
-      <h1>A TOCA<br><em>DO MAL</em></h1>
+      <h1>A TOCA<br><span>DO MAL</span></h1>
 
-      <p class="lead">
+      <p class="frase">
         A floresta está doente. As criaturas despertaram.<br>
-        Você tem coragem de entrar?
+        <strong>Você tem coragem de entrar?</strong>
       </p>
 
-      <p class="muted">
+      <p class="hero-muted">
         Vista seu pior pesadelo, conte a origem da sua criatura
         e dispute seu lugar entre as lendas desta noite.
       </p>
 
-      <a class="btn" href="#inscricao">ENTRAR NA TOCA ↗</a>
+      <a class="button" href="#inscricao">ENTRAR NA TOCA ↗</a>
+
+      <p class="aviso">NOITE • MEDO • CAOS</p>
     </div>
 
-    <div class="art">
-      <div class="moon"></div>
-      <div class="tree left"></div>
-      <div class="tree right"></div>
-      <div class="eyes"></div>
-      <div class="grave">R.I.P.</div>
-      <span class="art-note">NÃO SIGA<br>OS SUSSURROS</span>
-      <span class="stamp">FSA<br><small>HALLOWEEN</small></span>
-    </div>
-
-    <div class="hero-foot">
-      <span>NOITE • MEDO • CAOS</span>
-      <span>DESÇA SE TIVER CORAGEM ↓</span>
-    </div>
+    <a class="descer" href="#manifesto" aria-label="Descer">↓</a>
   </section>
 
   <!-- A LENDA -->
-  <section class="wrap section" id="manifesto">
-    <p class="kicker">01 / A LENDA</p>
+  <section class="panel" id="manifesto">
+    <p class="eyebrow">01 / A LENDA</p>
 
     <div class="two">
       <h2>
@@ -106,17 +103,15 @@
   </section>
 
   <!-- INSCRIÇÃO -->
-  <section class="wrap section" id="inscricao">
-    <p class="kicker">02 / SUA ENTRADA</p>
+  <section class="panel" id="inscricao">
+    <p class="eyebrow">02 / SUA ENTRADA</p>
 
-    <div class="heading">
-      <h2>DEIXE SUA<br><em>MARCA.</em></h2>
+    <h2>DEIXE SUA<br><em>MARCA.</em></h2>
 
-      <p class="muted">
-        Preencha os registros. Sua criatura será analisada
-        antes de aparecer entre os habitantes da toca.
-      </p>
-    </div>
+    <p>
+      Preencha os registros. Sua criatura será analisada
+      antes de aparecer entre os habitantes da toca.
+    </p>
 
     <form id="form">
       <div class="fields">
@@ -141,76 +136,77 @@
         </label>
 
         <div class="full">
-          <label>REGISTRO VISUAL DA CRIATURA *</label>
+          <label for="foto">REGISTRO VISUAL DA CRIATURA *</label>
 
           <label class="upload" for="foto">
             <input id="foto" type="file"
               accept="image/jpeg,image/png,image/webp" required>
 
-            <strong id="fileName">＋　ANEXAR FOTOGRAFIA</strong>
+            <strong id="fileName">＋ ANEXAR FOTOGRAFIA</strong>
             <small id="fileHint">JPG, PNG ou WEBP • até 4 MB</small>
           </label>
 
-          <img id="preview" hidden alt="Prévia da foto">
+          <img id="preview" hidden alt="Prévia da foto selecionada">
         </div>
+
       </div>
 
       <label class="consent">
         <input id="consent" type="checkbox" required>
-        Confirmo que as informações são verdadeiras e autorizo
-        o uso da foto para divulgação do concurso.
+        <span>
+          Confirmo que as informações são verdadeiras e autorizo
+          o uso da foto para divulgação do concurso.
+        </span>
       </label>
 
-      <button class="btn" id="submit" type="submit">
+      <button class="button" id="submit" type="submit">
         ENVIAR MEU REGISTRO ↗
       </button>
 
-      <p id="status" role="status"></p>
+      <p id="status" role="status" aria-live="polite"></p>
 
-      <small class="note">
+      <small class="hint">
         Seu registro começa como PENDENTE e só aparece na galeria após aprovação.
       </small>
     </form>
   </section>
 
-  <!-- GALERIA -->
-  <section class="wrap section" id="habitantes">
-    <p class="kicker">03 / QUEM JÁ ATRAVESSOU</p>
+  <!-- HABITANTES -->
+  <section class="panel" id="habitantes">
+    <p class="eyebrow">03 / QUEM JÁ ATRAVESSOU</p>
 
-    <div class="heading">
-      <h2>HABITANTES<br><em>DA TOCA.</em></h2>
+    <h2>HABITANTES<br><em>DA TOCA.</em></h2>
 
-      <p class="muted">
-        As criaturas autorizadas a sair das sombras.
-        Registros pendentes permanecem ocultos.
-      </p>
+    <p>
+      As criaturas autorizadas a sair das sombras.
+      Registros pendentes permanecem ocultos.
+    </p>
+
+    <div id="grid" class="gallery">
+      <p class="hint">OS ARQUIVOS ESTÃO SENDO DESENTERRADOS...</p>
     </div>
 
-    <div id="grid" class="cards">
-      <p class="muted">OS ARQUIVOS ESTÃO SENDO DESENTERRADOS...</p>
-    </div>
-
-    <p id="empty" class="muted center"></p>
+    <p id="empty" class="center hint"></p>
   </section>
 
   <!-- RANKINGS -->
-  <section class="wrap section" id="ranking">
-    <p class="kicker">04 / O JULGAMENTO</p>
+  <section class="panel" id="ranking">
+    <p class="eyebrow">04 / O JULGAMENTO</p>
 
-    <div class="heading">
-      <h2>QUEM VAI<br><em>DOMINAR A NOITE?</em></h2>
+    <h2>QUEM VAI<br><em>DOMINAR A NOITE?</em></h2>
 
-      <p class="muted">
-        Dois caminhos para a glória: conquistar o público
-        ou convencer a banca.
-      </p>
-    </div>
+    <p>
+      Dois caminhos para a glória: conquistar o público
+      ou convencer a banca.
+    </p>
 
     <div class="rankings">
+
       <article>
-        <p class="kicker">☞　VOTO POPULAR</p>
-        <h3>A VOZ DA<br>MULTIDÃO</h3>
-        <p class="muted">
+        <span class="simbolo">☞</span>
+        <p class="eyebrow">VOTO POPULAR</p>
+        <h3>A VOZ DA MULTIDÃO</h3>
+        <p>
           O público decide qual criatura merece ser a lenda da noite.
         </p>
         <hr>
@@ -218,56 +214,89 @@
       </article>
 
       <article>
-        <p class="kicker">♜　JÚRI OFICIAL</p>
-        <h3>O VEREDITO<br>DAS SOMBRAS</h3>
-        <p class="muted">
+        <span class="simbolo">♜</span>
+        <p class="eyebrow">JÚRI OFICIAL</p>
+        <h3>O VEREDITO DAS SOMBRAS</h3>
+        <p>
           A banca avaliará criatividade, execução e presença monstruosa.
         </p>
         <hr>
         <small>✦ RESULTADO DO JÚRI</small>
       </article>
+
     </div>
   </section>
 
-  <!-- A seção de votação e o ranking popular são inseridos pelo votacao.js -->
+  <!-- A votação popular é inserida pelo votacao.js -->
 
 </main>
 
 <footer>
-  <div>☠</div>
+  <div class="footer-skull">☠</div>
   <h3>A TOCA DO MAL</h3>
   <p>ATLÉTICA FUNDAÇÃO SANTO ANDRÉ</p>
-  <small>Se ouvir seu nome vindo da floresta, não responda.</small>
+  <small>
+    Se ouvir seu nome vindo da floresta, não responda.
+  </small>
 </footer>
 
 <script>
 const URL_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbxmYrRC0Bf36xYhblmJnRnWaJxo5EuggZHBApUgXhhHcEsHTSVLgIB9U6tovIu_HgEQ/exec";
+
 const MAX = 4 * 1024 * 1024;
 const $ = id => document.getElementById(id);
 
-$("menuToggle").onclick = () =>
-  $("nav").classList.toggle("open");
+/* MENU MOBILE */
 
-document.querySelectorAll("nav a").forEach(a => {
-  a.onclick = () => $("nav").classList.remove("open");
+const menuToggle = $("menuToggle");
+const nav = $("nav");
+
+menuToggle.addEventListener("click", () => {
+  const aberto = nav.classList.toggle("open");
+
+  menuToggle.setAttribute("aria-expanded", String(aberto));
+  menuToggle.setAttribute(
+    "aria-label",
+    aberto ? "Fechar menu" : "Abrir menu"
+  );
+
+  menuToggle.textContent = aberto ? "✕" : "☰";
 });
+
+document.querySelectorAll("#nav a").forEach(a => {
+  a.addEventListener("click", () => {
+    nav.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Abrir menu");
+    menuToggle.textContent = "☰";
+  });
+});
+
+/* MENSAGENS */
 
 function status(msg, type = "") {
   $("status").textContent = msg;
   $("status").className = type;
 }
 
+/* CONVERSÃO DA FOTO */
+
 function dataURL(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
+
     reader.onload = () => resolve(reader.result);
     reader.onerror = reject;
+
     reader.readAsDataURL(file);
   });
 }
 
+/* SELEÇÃO E PRÉVIA DA FOTO */
+
 $("foto").addEventListener("change", () => {
   const file = $("foto").files[0];
+
   if (!file) return;
 
   if (
@@ -276,25 +305,36 @@ $("foto").addEventListener("change", () => {
   ) {
     $("foto").value = "";
     $("preview").hidden = true;
+
+    $("fileName").textContent = "＋ ANEXAR FOTOGRAFIA";
+    $("fileHint").textContent = "JPG, PNG ou WEBP • até 4 MB";
+
     status("Use uma foto JPG, PNG ou WEBP de até 4 MB.", "error");
     return;
   }
 
   $("fileName").textContent = file.name;
+
   $("fileHint").textContent =
-    (file.size / 1048576).toFixed(2) + " MB • arquivo selecionado";
+    (file.size / 1048576).toFixed(2) +
+    " MB • arquivo selecionado";
 
   $("preview").src = URL.createObjectURL(file);
   $("preview").hidden = false;
+
   status("");
 });
+
+/* ENVIO DA INSCRIÇÃO */
 
 $("form").addEventListener("submit", async e => {
   e.preventDefault();
 
   const file = $("foto").files[0];
 
-  if (!file) return status("Escolha uma foto.", "error");
+  if (!file) {
+    return status("Escolha uma foto.", "error");
+  }
 
   if (!$("consent").checked) {
     return status("Confirme a autorização para continuar.", "error");
@@ -323,13 +363,15 @@ $("form").addEventListener("submit", async e => {
     });
 
     status(
-      "Solicitação enviada para processamento. O registro fica pendente até aprovação. Confira a planilha para confirmar a gravação.",
+      "Solicitação enviada. O registro permanece pendente até aprovação. Confira a planilha para confirmar a gravação.",
       "success"
     );
 
     $("form").reset();
     $("preview").hidden = true;
-    $("fileName").textContent = "＋　ANEXAR FOTOGRAFIA";
+    $("preview").removeAttribute("src");
+
+    $("fileName").textContent = "＋ ANEXAR FOTOGRAFIA";
     $("fileHint").textContent = "JPG, PNG ou WEBP • até 4 MB";
 
   } catch (erro) {
@@ -337,11 +379,14 @@ $("form").addEventListener("submit", async e => {
       "Falha no envio. Verifique sua conexão e a implantação do Apps Script.",
       "error"
     );
+
   } finally {
     $("submit").disabled = false;
     $("submit").textContent = "ENVIAR MEU REGISTRO ↗";
   }
 });
+
+/* PROTEÇÃO DOS TEXTOS DA GALERIA */
 
 function escapar(texto) {
   return String(texto ?? "").replace(/[&<>"']/g, c => ({
@@ -353,31 +398,36 @@ function escapar(texto) {
   })[c]);
 }
 
+/* CARREGAMENTO DOS HABITANTES APROVADOS */
+
 function carregarHabitantes() {
-  const callback = "toca_" + Math.random().toString(36).slice(2);
+  const callback =
+    "toca_" + Math.random().toString(36).slice(2);
+
   const script = document.createElement("script");
   let concluido = false;
 
-  const timeout = setTimeout(() => finalizar(), 12000);
+  const timeout = setTimeout(() => finalizar(null), 12000);
 
   function finalizar(dados) {
     if (concluido) return;
 
     concluido = true;
+
     clearTimeout(timeout);
     delete window[callback];
     script.remove();
 
-    if (!dados) {
+    if (!dados || !Array.isArray(dados.habitantes)) {
       $("grid").innerHTML = "";
+
       $("empty").textContent =
         "Não foi possível carregar a galeria. Verifique a implantação do Apps Script.";
+
       return;
     }
 
-    const habitantes = Array.isArray(dados.habitantes)
-      ? dados.habitantes
-      : [];
+    const habitantes = dados.habitantes;
 
     $("grid").innerHTML = habitantes.map(p => {
       let foto = "";
@@ -397,18 +447,24 @@ function carregarHabitantes() {
       } catch (_) {}
 
       return `
-        <article class="person">
+        <article class="inhabitant">
+
           ${
             foto
-              ? `<img src="${escapar(foto)}" alt="Fantasia ${escapar(p.fantasia)}" loading="lazy">`
-              : `<div class="no-photo">☠</div>`
+              ? `<img src="${escapar(foto)}"
+                   alt="Fantasia ${escapar(p.fantasia)}"
+                   loading="lazy">`
+              : `<div class="foto-indisponivel">
+                   ☠ FOTO INDISPONÍVEL
+                 </div>`
           }
-          <div class="person-info">
-            <small>REGISTRO DA TOCA • APROVADO</small>
-            <h3>${escapar(p.fantasia)}</h3>
-            <p>${escapar(p.nome)}</p>
-            <div>${escapar(p.inspiracao)}</div>
-          </div>
+
+          <h3>${escapar(p.fantasia)}</h3>
+
+          <p>${escapar(p.nome)}</p>
+
+          <p>${escapar(p.inspiracao)}</p>
+
         </article>
       `;
     }).join("");
@@ -419,11 +475,15 @@ function carregarHabitantes() {
   }
 
   window[callback] = dados => finalizar(dados);
-  script.onerror = () => finalizar();
 
-  script.src = URL_APPS_SCRIPT +
-    "?acao=habitantes&callback=" + callback +
-    "&t=" + Date.now();
+  script.onerror = () => finalizar(null);
+
+  script.src =
+    URL_APPS_SCRIPT +
+    "?acao=habitantes&callback=" +
+    callback +
+    "&t=" +
+    Date.now();
 
   document.body.appendChild(script);
 }
@@ -431,8 +491,8 @@ function carregarHabitantes() {
 carregarHabitantes();
 </script>
 
-<!-- Carrega a votação popular e o ranking dinâmico -->
-<script src="/votacao.js" defer></script>
+<!-- VOTAÇÃO POPULAR E RANKING DINÂMICO -->
+<script src="votacao.js" defer></script>
 
 </body>
 </html>
