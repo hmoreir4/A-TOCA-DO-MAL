@@ -130,21 +130,47 @@
 
         <label>
           SEU NOME COMPLETO *
-          <input id="nome" maxlength="120" required
-                 placeholder="Como você se chama?">
+          <input
+            id="nome"
+            maxlength="120"
+            autocomplete="name"
+            required
+            placeholder="Como você se chama?"
+          >
+        </label>
+
+        <label>
+          TELEFONE COM DDD *
+          <input
+            id="telefone"
+            type="tel"
+            maxlength="15"
+            autocomplete="tel"
+            inputmode="numeric"
+            required
+            placeholder="(11) 99999-9999"
+          >
         </label>
 
         <label>
           NOME DA FANTASIA *
-          <input id="fantasia" maxlength="100" required
-                 placeholder="Como sua criatura é conhecida?">
+          <input
+            id="fantasia"
+            maxlength="100"
+            required
+            placeholder="Como sua criatura é conhecida?"
+          >
         </label>
 
         <label class="full">
           A INSPIRAÇÃO DA CRIATURA *
-          <textarea id="inspiracao" maxlength="1200"
-                    rows="4" required
-                    placeholder="Conte a história ou origem da sua fantasia..."></textarea>
+          <textarea
+            id="inspiracao"
+            maxlength="1200"
+            rows="4"
+            required
+            placeholder="Conte a história ou origem da sua fantasia..."
+          ></textarea>
         </label>
 
         <div class="full">
@@ -153,9 +179,12 @@
 
           <label class="upload" for="foto">
 
-            <input id="foto" type="file"
-                   accept="image/jpeg,image/png,image/webp"
-                   required>
+            <input
+              id="foto"
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              required
+            >
 
             <strong id="fileName">ANEXAR FOTOGRAFIA</strong>
 
@@ -166,6 +195,7 @@
           </label>
 
           <img id="preview" hidden alt="Prévia da fantasia">
+
         </div>
 
       </div>
@@ -283,7 +313,9 @@
 
 <script>
 
-/* CONFIGURAÇÃO */
+// ==========================================
+// CONFIGURAÇÃO
+// ==========================================
 
 const URL_APPS_SCRIPT =
   "https://script.google.com/macros/s/AKfycbxmYrRCB0f36xYhblmJnRnWaJxo5EuggZHBApUgXhhHcEsHTSVLgIB9U6tovIu_HgEQ/exec";
@@ -293,7 +325,9 @@ const MAX = 4 * 1024 * 1024;
 const $ = id => document.getElementById(id);
 
 
-/* MENSAGENS */
+// ==========================================
+// MENSAGENS
+// ==========================================
 
 function status(msg, type = "") {
   $("status").textContent = msg;
@@ -301,21 +335,66 @@ function status(msg, type = "") {
 }
 
 
-/* CONVERTER FOTO PARA BASE64 */
+// ==========================================
+// MÁSCARA DO TELEFONE
+// ==========================================
+
+$("telefone").addEventListener("input", () => {
+
+  let numero = $("telefone").value.replace(/\D/g, "");
+
+  numero = numero.slice(0, 11);
+
+  if (numero.length > 10) {
+
+    numero = numero.replace(
+      /^(\d{2})(\d{5})(\d{4})$/,
+      "($1) $2-$3"
+    );
+
+  } else if (numero.length > 6) {
+
+    numero = numero.replace(
+      /^(\d{2})(\d{4})(\d{0,4})$/,
+      "($1) $2-$3"
+    );
+
+  } else if (numero.length > 2) {
+
+    numero = numero.replace(
+      /^(\d{2})(\d{0,5})$/,
+      "($1) $2"
+    );
+
+  }
+
+  $("telefone").value = numero;
+
+});
+
+
+// ==========================================
+// CONVERTER FOTO PARA BASE64
+// ==========================================
 
 function dataURL(file) {
   return new Promise((resolve, reject) => {
+
     const reader = new FileReader();
 
     reader.onload = () => resolve(reader.result);
+
     reader.onerror = reject;
 
     reader.readAsDataURL(file);
+
   });
 }
 
 
-/* PRÉVIA DA FOTO */
+// ==========================================
+// PRÉVIA DA FOTO
+// ==========================================
 
 $("foto").addEventListener("change", () => {
 
@@ -327,25 +406,37 @@ $("foto").addEventListener("change", () => {
     !["image/jpeg", "image/png", "image/webp"].includes(file.type) ||
     file.size > MAX
   ) {
+
     $("foto").value = "";
+
     $("preview").hidden = true;
 
-    status("Use uma foto JPG, PNG ou WEBP de até 4 MB.", "error");
+    status(
+      "Use uma foto JPG, PNG ou WEBP de até 4 MB.",
+      "error"
+    );
+
     return;
+
   }
 
   $("fileName").textContent = file.name;
+
   $("fileHint").textContent =
     (file.size / 1048576).toFixed(2) + " MB";
 
   $("preview").src = URL.createObjectURL(file);
+
   $("preview").hidden = false;
 
   status("");
+
 });
 
 
-/* ENVIO DO FORMULÁRIO */
+// ==========================================
+// ENVIO DO FORMULÁRIO
+// ==========================================
 
 $("form").addEventListener("submit", async e => {
 
@@ -353,37 +444,80 @@ $("form").addEventListener("submit", async e => {
 
   const file = $("foto").files[0];
 
+  const telefoneNumeros =
+    $("telefone").value.replace(/\D/g, "");
+
   if (!file) {
+
     status("Escolha uma fotografia.", "error");
+
     return;
+
+  }
+
+  if (
+    telefoneNumeros.length !== 10 &&
+    telefoneNumeros.length !== 11
+  ) {
+
+    status(
+      "Informe um telefone válido com DDD.",
+      "error"
+    );
+
+    $("telefone").focus();
+
+    return;
+
   }
 
   if (!$("consent").checked) {
-    status("Confirme a autorização para continuar.", "error");
+
+    status(
+      "Confirme a autorização para continuar.",
+      "error"
+    );
+
     return;
+
   }
 
   $("submit").disabled = true;
+
   $("submit").textContent = "ENVIANDO PARA A TOCA...";
 
   try {
 
     const payload = {
+
       nome: $("nome").value.trim(),
+
+      telefone: telefoneNumeros,
+
       fantasia: $("fantasia").value.trim(),
+
       inspiracao: $("inspiracao").value.trim(),
+
       fotoNome: file.name,
+
       fotoTipo: file.type,
+
       fotoDataUrl: await dataURL(file)
+
     };
 
     await fetch(URL_APPS_SCRIPT, {
+
       method: "POST",
+
       mode: "no-cors",
+
       headers: {
         "Content-Type": "text/plain;charset=utf-8"
       },
+
       body: JSON.stringify(payload)
+
     });
 
     status(
@@ -392,9 +526,14 @@ $("form").addEventListener("submit", async e => {
     );
 
     $("form").reset();
+
     $("preview").hidden = true;
-    $("fileName").textContent = "ANEXAR FOTOGRAFIA";
-    $("fileHint").textContent = "JPG, PNG ou WEBP • até 4 MB";
+
+    $("fileName").textContent =
+      "ANEXAR FOTOGRAFIA";
+
+    $("fileHint").textContent =
+      "JPG, PNG ou WEBP • até 4 MB";
 
   } catch (erro) {
 
@@ -408,27 +547,41 @@ $("form").addEventListener("submit", async e => {
   } finally {
 
     $("submit").disabled = false;
-    $("submit").textContent = "ENVIAR MEU REGISTRO ↗";
+
+    $("submit").textContent =
+      "ENVIAR MEU REGISTRO ↗";
 
   }
 
 });
 
 
-/* PROTEÇÃO CONTRA HTML INJETADO */
+// ==========================================
+// PROTEÇÃO CONTRA HTML INJETADO
+// ==========================================
 
 function escapar(texto) {
+
   return String(texto ?? "").replace(/[&<>"']/g, c => ({
+
     "&": "&amp;",
+
     "<": "&lt;",
+
     ">": "&gt;",
+
     '"': "&quot;",
+
     "'": "&#39;"
+
   })[c]);
+
 }
 
 
-/* LINK DA FOTO DO DRIVE */
+// ==========================================
+// LINK DA FOTO DO DRIVE
+// ==========================================
 
 function obterLinkFoto(urlOriginal) {
 
@@ -453,6 +606,7 @@ function obterLinkFoto(urlOriginal) {
   } catch (erro) {
 
     console.error("Erro no endereço da foto:", erro);
+
     return "";
 
   }
@@ -460,11 +614,14 @@ function obterLinkFoto(urlOriginal) {
 }
 
 
-/* GALERIA DE HABITANTES */
+// ==========================================
+// GALERIA DE HABITANTES
+// ==========================================
 
 function carregarHabitantes() {
 
   const grid = $("grid");
+
   const empty = $("empty");
 
   grid.innerHTML =
@@ -480,7 +637,9 @@ function carregarHabitantes() {
   let concluido = false;
 
   const timeout = setTimeout(() => {
+
     finalizar(null);
+
   }, 20000);
 
 
@@ -535,11 +694,14 @@ function carregarHabitantes() {
       const foto = obterLinkFoto(p.fotoUrl);
 
       const nome = escapar(p.nome);
+
       const fantasia = escapar(p.fantasia);
+
       const inspiracao = escapar(p.inspiracao);
 
 
       return `
+
         <article class="inhabitant">
 
           <div class="inhabitant-photo">
@@ -547,6 +709,7 @@ function carregarHabitantes() {
             ${
               foto
                 ? `
+
                   <img
                     src="${escapar(foto)}"
                     alt="Fantasia ${fantasia}"
@@ -560,23 +723,31 @@ function carregarHabitantes() {
                   <div class="foto-indisponivel" hidden>
                     FOTOGRAFIA INDISPONÍVEL
                   </div>
+
                 `
                 : `
+
                   <div class="foto-indisponivel">
                     FOTOGRAFIA INDISPONÍVEL
                   </div>
+
                 `
             }
 
           </div>
 
           <div class="inhabitant-info">
+
             <h3>${fantasia}</h3>
+
             <p class="inhabitant-name">${nome}</p>
+
             <p class="inhabitant-description">${inspiracao}</p>
+
           </div>
 
         </article>
+
       `;
 
     }).join("");
@@ -591,12 +762,16 @@ function carregarHabitantes() {
 
 
   window[callback] = function(dados) {
+
     finalizar(dados);
+
   };
 
 
   script.onerror = function() {
+
     finalizar(null);
+
   };
 
 
@@ -613,7 +788,9 @@ function carregarHabitantes() {
 }
 
 
-/* INICIALIZAÇÃO */
+// ==========================================
+// INICIALIZAÇÃO
+// ==========================================
 
 carregarHabitantes();
 
