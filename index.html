@@ -1,918 +1,438 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090806">
-  <meta name="description" content="A Toca do Mal — Atlética Fundação Santo André">
-  <title>A Toca do Mal | Atlética FSA</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#10150d">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=DM+Sans:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
+  <title>A Toca do Mal | Atlética Fundação Santo André</title>
 
-  <style>
-    :root {
-      --fundo: #090b08;
-      --painel: #141a10;
-      --verde: #b6e344;
-      --verde-claro: #b6ca78;
-      --osso: #e8e5d9;
-      --muted: #a4a895;
-      --linha: rgba(182,227,68,.24);
-    }
-
-    * { box-sizing: border-box; }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 85px;
-    }
-
-    body {
-      margin: 0;
-      background: var(--fundo);
-      color: var(--osso);
-      font-family: "DM Sans", sans-serif;
-      overflow-x: hidden;
-    }
-
-    a { -webkit-tap-highlight-color: transparent; }
-
-    /* MENU FIXO */
-    .menu-toca {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 13px clamp(14px, 4vw, 40px);
-      background: rgba(7,9,6,.96);
-      border-bottom: 1px solid var(--linha);
-      backdrop-filter: blur(12px);
-    }
-
-    .menu-logo {
-      color: var(--verde-claro);
-      font: 25px "Creepster", cursive;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .menu-links {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 18px;
-    }
-
-    .menu-links a {
-      color: var(--osso);
-      font-size: 11px;
-      text-decoration: none;
-      transition: color .2s;
-    }
-
-    .menu-links a:hover { color: var(--verde); }
-
-    .menu-links .menu-votacao {
-      padding: 10px 15px;
-      background: var(--verde-claro);
-      color: #10130b;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    /* CAPA */
-    .hero {
-      min-height: 100vh;
-      min-height: 100svh;
-      padding: 35px 20px 75px;
-      position: relative;
-      isolation: isolate;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: radial-gradient(ellipse at 50% 43%, #202719 0%, #0b0d09 54%, #050605 100%);
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      background: linear-gradient(90deg,#05060480,transparent 25%,transparent 75%,#05060480);
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      pointer-events: none;
-      width: min(96vw,760px);
-      aspect-ratio: 1;
-      border: 1px solid rgba(182,227,68,.16);
-      border-radius: 50%;
-      box-shadow: 0 0 0 24px rgba(182,227,68,.035),
-                  0 0 0 65px rgba(182,227,68,.025),
-                  inset 0 0 75px rgba(182,227,68,.025);
-    }
-
-    .nevoa {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      opacity: .3;
-      background: linear-gradient(110deg,transparent 15%,#9ab65a12 40%,#b6e3440b 52%,transparent 78%);
-      filter: blur(18px);
-    }
-
-    .nevoa-1 { animation: nevoa-move 12s ease-in-out infinite alternate; }
-
-    .nevoa-2 {
-      opacity: .18;
-      transform: scaleX(-1);
-      animation: nevoa-move 17s ease-in-out infinite alternate-reverse;
-    }
-
-    .olhos {
-      position: absolute;
-      z-index: 1;
-      color: var(--osso);
-      font-size: 22px;
-      letter-spacing: 13px;
-      text-shadow: 0 0 8px var(--osso),0 0 24px #b6e34455;
-      opacity: .8;
-      pointer-events: none;
-      animation: olhos-piscar 6s infinite;
-    }
-
-    .olhos-1 { top: 10%; left: 48%; transform: translateX(-50%); }
-    .olhos-2 { top: 14%; left: 48%; transform: translateX(-50%); animation-delay: 2.5s; }
-
-    .logo-atletica {
-      position: relative;
-      z-index: 3;
-      width: clamp(120px,25vw,185px);
-      margin: 0 auto 42px;
-    }
-
-    .logo-atletica img {
-      display: block;
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 0 18px #000b);
-    }
-
-    .hero .eyebrow {
-      position: relative;
-      z-index: 2;
-      margin: 0 0 48px;
-      color: #c1d88b;
-      font: clamp(10px,2.4vw,15px) "Special Elite", cursive;
-      letter-spacing: .18em;
-      line-height: 1.8;
-      text-transform: uppercase;
-    }
-
-    .hero h1 {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: 680px;
-      margin: 0 auto 35px;
-      color: var(--osso);
-      font: 400 clamp(68px,12vw,112px)/.98 "Creepster", cursive;
-      letter-spacing: .035em;
-      text-shadow: 0 0 22px #0006;
-    }
-
-    .hero h1 span {
-      display: block;
-      margin-top: 8px;
-      color: #b6d477;
-    }
-
-    .hero .frase {
-      position: relative;
-      z-index: 2;
-      max-width: 650px;
-      margin: 0 auto 48px;
-      font: clamp(15px,3vw,22px)/1.8 "Special Elite", cursive;
-    }
-
-    .hero .frase strong { font-weight: 400; }
-
-    .hero .button {
-      position: relative;
-      z-index: 2;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 250px;
-      min-height: 60px;
-      padding: 20px 32px;
-      background: var(--verde-claro);
-      color: #10130b;
-      box-shadow: 7px 8px 0 #0008;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: .25s;
-    }
-
-    .hero .button:hover {
-      background: #d0e69a;
-      transform: translateY(-2px);
-    }
-
-    .hero .aviso {
-      position: relative;
-      z-index: 2;
-      margin: 45px 0 0;
-      color: #c49b92;
-      font: 11px/1.8 "Special Elite", cursive;
-      letter-spacing: .17em;
-    }
-
-    .hero .descer {
-      position: absolute;
-      z-index: 2;
-      bottom: 22px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: var(--verde-claro);
-      font-size: 40px;
-      text-decoration: none;
-      animation: descer 1.8s ease-in-out infinite;
-    }
-
-    /* SEÇÕES */
-    main {
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid var(--linha);
-      background: radial-gradient(ellipse at 50% 0%,#182014 0%,#090b08 65%);
-    }
-
-    .panel {
-      position: relative;
-      width: min(920px,calc(100% - 36px));
-      margin: 48px auto;
-      padding: clamp(24px,5vw,55px);
-      border: 1px solid var(--linha);
-      background: linear-gradient(145deg,#171e12f5,#0d100bf7);
-      box-shadow: 0 25px 90px #0005;
-    }
-
-    .panel::before {
-      content: "";
-      position: absolute;
-      top: -1px;
-      left: 25px;
-      width: 75px;
-      border-top: 2px solid var(--verde);
-    }
-
-    .panel h2 {
-      margin: 8px 0 20px;
-      color: var(--osso);
-      font: 400 clamp(40px,6vw,68px)/.95 "Creepster", cursive;
-    }
-
-    .panel > p:not(.eyebrow):not(.hint):not(#status-galeria) {
-      color: #b9bdad;
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    .panel .eyebrow {
-      margin: 0 0 14px;
-      color: var(--verde);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-    }
-
-    .panel form:not([hidden]) { margin-top: 30px; }
-
-    .panel label {
-      display: block;
-      margin: 22px 0 9px;
-      color: var(--verde);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-    }
-
-    .panel input:not([type="file"]):not([type="hidden"]),
-    .panel textarea {
-      display: block;
-      width: 100%;
-      padding: 14px 15px;
-      border: 1px solid #39432d;
-      border-radius: 0;
-      outline: none;
-      background: #090c08;
-      color: var(--osso);
-      font: 14px "DM Sans",sans-serif;
-    }
-
-    .panel input:focus,
-    .panel textarea:focus {
-      border-color: var(--verde);
-      box-shadow: 0 0 0 2px #b6e34412;
-    }
-
-    .panel input[type="file"] {
-      display: block;
-      max-width: 100%;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .panel textarea { resize: vertical; }
-
-    .hint {
-      color: #939987;
-      font-size: 11px;
-      line-height: 1.7;
-    }
-
-    #botao-enviar {
-      min-height: 48px;
-      margin-top: 20px;
-      padding: 14px 24px;
-      border: 1px solid var(--verde);
-      background: var(--verde);
-      color: #10140b;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      cursor: pointer;
-    }
-
-    #botao-enviar:disabled { opacity: .6; cursor: wait; }
-
-    #mensagem, #status-galeria {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.7;
-    }
-
-    /* GALERIA */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(3,minmax(0,1fr));
-      gap: 18px;
-      margin-top: 30px;
-    }
-
-    .inhabitant {
-      min-width: 0;
-      overflow: hidden;
-      border: 1px solid var(--linha);
-      background: #0b0e09;
-      transition: border-color .25s,transform .25s;
-    }
-
-    .inhabitant:hover {
-      border-color: var(--verde);
-      transform: translateY(-4px);
-    }
-
-    .inhabitant img {
-      display: block;
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-      background: var(--painel);
-    }
-
-    .inhabitant h3 {
-      margin: 17px 16px 8px;
-      color: var(--verde);
-      font: 400 28px "Creepster",cursive;
-      overflow-wrap: anywhere;
-    }
-
-    .inhabitant p {
-      margin: 8px 16px 14px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.65;
-      overflow-wrap: anywhere;
-    }
-
-    .foto-indisponivel { color: var(--muted); font-size: 12px; }
-
-    /* VOTAÇÃO */
-    .rankings {
-      display: grid;
-      grid-template-columns: repeat(2,minmax(0,1fr));
-      gap: 18px;
-      margin-top: 30px;
-    }
-
-    .rankings > div {
-      min-width: 0;
-      padding: 25px;
-      border: 1px solid var(--linha);
-      background: #0b0f09;
-    }
-
-    .simbolo {
-      color: var(--verde);
-      font-size: 30px;
-      text-shadow: 0 0 15px #b6e34440;
-    }
-
-    .rankings h3 {
-      margin: 16px 0 10px;
-      color: var(--osso);
-      font: 400 32px "Creepster",cursive;
-    }
-
-    .rankings p {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.7;
-    }
-
-    footer {
-      padding: 35px 20px;
-      border-top: 1px solid var(--linha);
-      background: #070906;
-      text-align: center;
-    }
-
-    footer p {
-      color: #929985;
-      font-size: 10px;
-      line-height: 1.8;
-      letter-spacing: .08em;
-    }
-
-    footer p:first-child {
-      color: var(--verde);
-      font: 27px "Creepster",cursive;
-    }
-
-    @keyframes nevoa-move {
-      from { transform: translateX(-3%) scale(1); }
-      to { transform: translateX(3%) scale(1.08); }
-    }
-
-    @keyframes olhos-piscar {
-      0%,44%,48%,100% { opacity: .8; }
-      46%,47% { opacity: .08; }
-    }
-
-    @keyframes descer {
-      0%,100% { transform: translate(-50%,0); }
-      50% { transform: translate(-50%,7px); }
-    }
-
-    @media (max-width: 700px) {
-      .menu-toca {
-        flex-direction: column;
-        gap: 9px;
-        padding: 10px 8px;
-      }
-
-      .menu-logo { font-size: 22px; }
-
-      .menu-links {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 14px;
-      }
-
-      .menu-links a { font-size: 10px; }
-
-      .menu-links .menu-votacao { padding: 8px 10px; }
-
-      .hero { padding: 30px 18px 75px; }
-
-      .logo-atletica {
-        width: 145px;
-        margin-bottom: 40px;
-      }
-
-      .hero .eyebrow {
-        font-size: 11px;
-        margin-bottom: 48px;
-      }
-
-      .hero h1 {
-        font-size: clamp(64px,14vw,94px);
-        line-height: 1;
-        margin-bottom: 35px;
-      }
-
-      .hero .frase { margin-bottom: 48px; }
-
-      .hero .button { width: min(100%,330px); }
-
-      .hero .aviso { margin-top: 45px; }
-
-      .gallery {
-        grid-template-columns: repeat(2,minmax(0,1fr));
-        gap: 12px;
-      }
-
-      .inhabitant img { height: 200px; }
-
-      .rankings { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 420px) {
-      .hero h1 { font-size: clamp(54px,14vw,72px); }
-
-      .hero .eyebrow {
-        font-size: 10px;
-        letter-spacing: .13em;
-      }
-
-      .hero .frase { font-size: 15px; }
-
-      .gallery { grid-template-columns: 1fr; }
-
-      .inhabitant img { height: 280px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,*::before,*::after {
-        scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Roboto+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <nav class="menu-toca" aria-label="Menu principal">
-    <a class="menu-logo" href="#inicio">A TOCA DO MAL</a>
-    <div class="menu-links">
-      <a href="#inicio">Início</a>
-      <a href="#inscricao">Inscrição</a>
-      <a href="#habitantes">Habitantes</a>
-      <a class="menu-votacao" href="#ranking">Votação</a>
-    </div>
+
+<header>
+  <a class="brand" href="#inicio">
+    ☠
+    <span>
+      <b>A TOCA DO MAL</b>
+      <small>ATLÉTICA FUNDAÇÃO SANTO ANDRÉ</small>
+    </span>
+  </a>
+
+  <button id="menuToggle" aria-label="Abrir menu">☰</button>
+
+  <nav id="nav">
+    <a href="#manifesto">A lenda</a>
+    <a href="#inscricao">Inscrição</a>
+    <a href="#habitantes">Habitantes</a>
+    <a href="#ranking">Rankings</a>
+    <a href="#votacao-popular">Votação</a>
   </nav>
+</header>
 
-  <header class="hero" id="inicio">
-    <div class="nevoa nevoa-1" aria-hidden="true"></div>
-    <div class="nevoa nevoa-2" aria-hidden="true"></div>
-    <div class="olhos olhos-1" aria-hidden="true">• •</div>
-    <div class="olhos olhos-2" aria-hidden="true">• •</div>
+<main>
 
-    <div class="logo-atletica">
-      <img src="logo-atletica.jpeg" alt="Logo da Atlética Fundação Santo André">
+  <!-- INÍCIO -->
+  <section class="hero wrap" id="inicio">
+    <div>
+      <p class="eyebrow">— UM CHAMADO DA ESCURIDÃO —</p>
+
+      <h1>A TOCA<br><em>DO MAL</em></h1>
+
+      <p class="lead">
+        A floresta está doente. As criaturas despertaram.<br>
+        Você tem coragem de entrar?
+      </p>
+
+      <p class="muted">
+        Vista seu pior pesadelo, conte a origem da sua criatura
+        e dispute seu lugar entre as lendas desta noite.
+      </p>
+
+      <a class="btn" href="#inscricao">ENTRAR NA TOCA ↗</a>
     </div>
 
-    <p class="eyebrow">Atlética Fundação Santo André apresenta</p>
-    <h1>A TOCA <span>DO MAL</span></h1>
+    <div class="art">
+      <div class="moon"></div>
+      <div class="tree left"></div>
+      <div class="tree right"></div>
+      <div class="eyes"></div>
+      <div class="grave">R.I.P.</div>
+      <span class="art-note">NÃO SIGA<br>OS SUSSURROS</span>
+      <span class="stamp">FSA<br><small>HALLOWEEN</small></span>
+    </div>
 
-    <p class="frase">
-      A floresta está faminta.<br>
-      <strong>Qual criatura você vai libertar?</strong>
-    </p>
+    <div class="hero-foot">
+      <span>NOITE • MEDO • CAOS</span>
+      <span>DESÇA SE TIVER CORAGEM ↓</span>
+    </div>
+  </section>
 
-    <a class="button" href="#inscricao">Entrar na Toca</a>
-    <p class="aviso">NEM TODAS AS CRIATURAS VOLTAM IGUAIS.</p>
-    <a class="descer" href="#inscricao" aria-label="Ir para inscrição">↓</a>
-  </header>
+  <!-- A LENDA -->
+  <section class="wrap section" id="manifesto">
+    <p class="kicker">01 / A LENDA</p>
 
-  <main>
-    <section class="panel" id="inscricao">
-      <p class="eyebrow">Recrutamento aberto</p>
-      <h2>Inscreva sua fantasia</h2>
-      <p>
-        A entrada está aberta. Conte-nos quem você será quando a noite cair.
-        Sua inscrição será analisada pela organização.
+    <div class="two">
+      <h2>
+        ALGUMAS COISAS<br>
+        DEVERIAM FICAR<br>
+        <em>ENTERRADAS.</em>
+      </h2>
+
+      <div class="copy">
+        <p>
+          Há uma toca no limite da floresta. As árvores apodreceram,
+          a terra respira e alguma coisa observa por trás dos galhos.
+        </p>
+
+        <p>
+          Dizem que, uma vez por ano, a passagem se abre.
+          Só os mais ousados atravessam — e só os mais assustadores
+          conquistam a noite.
+        </p>
+
+        <p class="green">
+          A sua criatura já está pronta. Falta só mostrar ao mundo.
+        </p>
+      </div>
+    </div>
+
+    <div class="warning">
+      ⚠　ENTRE POR SUA CONTA E RISCO　⚠
+    </div>
+  </section>
+
+  <!-- INSCRIÇÃO -->
+  <section class="wrap section" id="inscricao">
+    <p class="kicker">02 / SUA ENTRADA</p>
+
+    <div class="heading">
+      <h2>DEIXE SUA<br><em>MARCA.</em></h2>
+
+      <p class="muted">
+        Preencha os registros. Sua criatura será analisada
+        antes de aparecer entre os habitantes da toca.
       </p>
+    </div>
 
-      <form id="form-inscricao">
-        <label for="nome">Nome completo</label>
-        <input id="nome" name="nome" maxlength="150" autocomplete="name" required>
+    <form id="form">
+      <div class="fields">
 
-        <label for="telefone">Telefone / WhatsApp</label>
-        <input id="telefone" name="telefone" type="tel"
-          placeholder="(11) 99999-9999" autocomplete="tel"
-          inputmode="tel" maxlength="20" required>
+        <label>
+          SEU NOME COMPLETO *
+          <input id="nome" maxlength="120" required
+            placeholder="Como você se chama?">
+        </label>
 
-        <label for="fantasia">Nome da fantasia</label>
-        <input id="fantasia" name="fantasia" maxlength="150" required>
+        <label>
+          NOME DA FANTASIA *
+          <input id="fantasia" maxlength="100" required
+            placeholder="Como sua criatura é conhecida?">
+        </label>
 
-        <label for="inspiracao">Inspiração da fantasia</label>
-        <textarea id="inspiracao" name="inspiracao"
-          maxlength="1000" rows="3" required></textarea>
+        <label class="full">
+          A INSPIRAÇÃO DA CRIATURA *
+          <textarea id="inspiracao" maxlength="1200"
+            rows="4" required
+            placeholder="Conte a história ou origem da sua fantasia..."></textarea>
+        </label>
 
-        <label for="foto">Foto da fantasia</label>
-        <input id="foto" name="foto" type="file"
-          accept="image/jpeg,image/png,image/webp" required>
-        <p class="hint">JPG, PNG ou WEBP. Máximo de 4 MB.</p>
+        <div class="full">
+          <label>REGISTRO VISUAL DA CRIATURA *</label>
 
-        <button id="botao-enviar" type="submit">Enviar inscrição</button>
-        <p id="mensagem" role="status" aria-live="polite"></p>
-      </form>
+          <label class="upload" for="foto">
+            <input id="foto" type="file"
+              accept="image/jpeg,image/png,image/webp" required>
 
-      <iframe name="resposta-toca" id="resposta-toca"
-        title="Resposta do envio" hidden></iframe>
+            <strong id="fileName">＋　ANEXAR FOTOGRAFIA</strong>
+            <small id="fileHint">JPG, PNG ou WEBP • até 4 MB</small>
+          </label>
 
-      <form id="form-transmissao" method="POST"
-        target="resposta-toca" hidden>
-        <input type="hidden" name="payload" id="payload">
-        <input type="hidden" name="token" id="token">
-      </form>
-    </section>
-
-    <section class="panel panel-galeria" id="habitantes">
-      <p class="eyebrow">Os que foram aceitos</p>
-      <h2>Habitantes da Toca</h2>
-      <p id="status-galeria" role="status" aria-live="polite">
-        A floresta está procurando...
-      </p>
-      <div id="galeria" class="gallery"></div>
-    </section>
-
-    <section class="panel" id="ranking">
-      <p class="eyebrow">O destino será decidido</p>
-      <h2>O julgamento</h2>
-
-      <div class="rankings">
-        <div>
-          <span class="simbolo">☠</span>
-          <h3>Voto popular</h3>
-          <p>A votação ainda não foi aberta.</p>
-        </div>
-        <div>
-          <span class="simbolo">♜</span>
-          <h3>Escolha dos jurados</h3>
-          <p>As notas serão divulgadas pela organização.</p>
+          <img id="preview" hidden alt="Prévia da foto">
         </div>
       </div>
 
-      <p class="hint">
-        Os rankings serão atualizados quando a organização ativar a votação.
+      <label class="consent">
+        <input id="consent" type="checkbox" required>
+        Confirmo que as informações são verdadeiras e autorizo
+        o uso da foto para divulgação do concurso.
+      </label>
+
+      <button class="btn" id="submit" type="submit">
+        ENVIAR MEU REGISTRO ↗
+      </button>
+
+      <p id="status" role="status"></p>
+
+      <small class="note">
+        Seu registro começa como PENDENTE e só aparece na galeria após aprovação.
+      </small>
+    </form>
+  </section>
+
+  <!-- GALERIA -->
+  <section class="wrap section" id="habitantes">
+    <p class="kicker">03 / QUEM JÁ ATRAVESSOU</p>
+
+    <div class="heading">
+      <h2>HABITANTES<br><em>DA TOCA.</em></h2>
+
+      <p class="muted">
+        As criaturas autorizadas a sair das sombras.
+        Registros pendentes permanecem ocultos.
       </p>
-    </section>
-  </main>
+    </div>
 
-  <footer>
-    <p>© A Toca do Mal</p>
-    <p>Atlética Fundação Santo André · A floresta nunca esquece.</p>
-  </footer>
+    <div id="grid" class="cards">
+      <p class="muted">OS ARQUIVOS ESTÃO SENDO DESENTERRADOS...</p>
+    </div>
 
-  <script>
-    const URL_APPS_SCRIPT =
-      "https://script.google.com/macros/s/AKfycbxmYrRCB0f36xYhblmJnRnWaJxo5EuggZHBApUgXhhHcEsHTSVLgIB9U6tovIu_HgEQ/exec";
+    <p id="empty" class="muted center"></p>
+  </section>
 
-    const formulario = document.getElementById("form-inscricao");
-    const formularioTransmissao = document.getElementById("form-transmissao");
-    const botao = document.getElementById("botao-enviar");
-    const mensagem = document.getElementById("mensagem");
+  <!-- RANKINGS -->
+  <section class="wrap section" id="ranking">
+    <p class="kicker">04 / O JULGAMENTO</p>
 
-    let envioPendente = null;
+    <div class="heading">
+      <h2>QUEM VAI<br><em>DOMINAR A NOITE?</em></h2>
 
-    window.addEventListener("message", (evento) => {
-      const dados = evento.data;
+      <p class="muted">
+        Dois caminhos para a glória: conquistar o público
+        ou convencer a banca.
+      </p>
+    </div>
 
-      if (!dados || dados.tipo !== "TOCA_RESULTADO" || !envioPendente) return;
-      if (dados.token !== envioPendente.token) return;
+    <div class="rankings">
+      <article>
+        <p class="kicker">☞　VOTO POPULAR</p>
+        <h3>A VOZ DA<br>MULTIDÃO</h3>
+        <p class="muted">
+          O público decide qual criatura merece ser a lenda da noite.
+        </p>
+        <hr>
+        <small>✦ RESULTADOS ATUALIZADOS ABAIXO</small>
+      </article>
 
-      clearTimeout(envioPendente.timeout);
-      const resultado = dados.resultado;
-      envioPendente = null;
+      <article>
+        <p class="kicker">♜　JÚRI OFICIAL</p>
+        <h3>O VEREDITO<br>DAS SOMBRAS</h3>
+        <p class="muted">
+          A banca avaliará criatividade, execução e presença monstruosa.
+        </p>
+        <hr>
+        <small>✦ RESULTADO DO JÚRI</small>
+      </article>
+    </div>
+  </section>
 
-      botao.disabled = false;
-      botao.textContent = "Enviar inscrição";
+  <!-- A seção de votação e o ranking popular são inseridos pelo votacao.js -->
 
-      if (resultado && resultado.ok) {
-        mensagem.textContent = resultado.mensagem || "Inscrição enviada com sucesso!";
-        formulario.reset();
-      } else {
-        mensagem.textContent = "Não foi possível salvar: " +
-          (resultado && resultado.mensagem ? resultado.mensagem : "erro desconhecido.");
-      }
+</main>
+
+<footer>
+  <div>☠</div>
+  <h3>A TOCA DO MAL</h3>
+  <p>ATLÉTICA FUNDAÇÃO SANTO ANDRÉ</p>
+  <small>Se ouvir seu nome vindo da floresta, não responda.</small>
+</footer>
+
+<script>
+const URL_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbxmYrRC0Bf36xYhblmJnRnWaJxo5EuggZHBApUgXhhHcEsHTSVLgIB9U6tovIu_HgEQ/exec";
+const MAX = 4 * 1024 * 1024;
+const $ = id => document.getElementById(id);
+
+$("menuToggle").onclick = () =>
+  $("nav").classList.toggle("open");
+
+document.querySelectorAll("nav a").forEach(a => {
+  a.onclick = () => $("nav").classList.remove("open");
+});
+
+function status(msg, type = "") {
+  $("status").textContent = msg;
+  $("status").className = type;
+}
+
+function dataURL(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+$("foto").addEventListener("change", () => {
+  const file = $("foto").files[0];
+  if (!file) return;
+
+  if (
+    !["image/jpeg", "image/png", "image/webp"].includes(file.type) ||
+    file.size > MAX
+  ) {
+    $("foto").value = "";
+    $("preview").hidden = true;
+    status("Use uma foto JPG, PNG ou WEBP de até 4 MB.", "error");
+    return;
+  }
+
+  $("fileName").textContent = file.name;
+  $("fileHint").textContent =
+    (file.size / 1048576).toFixed(2) + " MB • arquivo selecionado";
+
+  $("preview").src = URL.createObjectURL(file);
+  $("preview").hidden = false;
+  status("");
+});
+
+$("form").addEventListener("submit", async e => {
+  e.preventDefault();
+
+  const file = $("foto").files[0];
+
+  if (!file) return status("Escolha uma foto.", "error");
+
+  if (!$("consent").checked) {
+    return status("Confirme a autorização para continuar.", "error");
+  }
+
+  $("submit").disabled = true;
+  $("submit").textContent = "ENVIANDO PARA A TOCA…";
+
+  try {
+    const payload = {
+      nome: $("nome").value.trim(),
+      fantasia: $("fantasia").value.trim(),
+      inspiracao: $("inspiracao").value.trim(),
+      fotoNome: file.name,
+      fotoTipo: file.type,
+      fotoDataUrl: await dataURL(file)
+    };
+
+    await fetch(URL_APPS_SCRIPT, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify(payload)
     });
 
-    formulario.addEventListener("submit", async (evento) => {
-      evento.preventDefault();
+    status(
+      "Solicitação enviada para processamento. O registro fica pendente até aprovação. Confira a planilha para confirmar a gravação.",
+      "success"
+    );
 
-      if (envioPendente) {
-        mensagem.textContent = "Já existe um envio em andamento.";
-        return;
-      }
+    $("form").reset();
+    $("preview").hidden = true;
+    $("fileName").textContent = "＋　ANEXAR FOTOGRAFIA";
+    $("fileHint").textContent = "JPG, PNG ou WEBP • até 4 MB";
 
-      const arquivo = document.getElementById("foto").files[0];
+  } catch (erro) {
+    status(
+      "Falha no envio. Verifique sua conexão e a implantação do Apps Script.",
+      "error"
+    );
+  } finally {
+    $("submit").disabled = false;
+    $("submit").textContent = "ENVIAR MEU REGISTRO ↗";
+  }
+});
 
-      if (!arquivo) {
-        mensagem.textContent = "Selecione uma foto.";
-        return;
-      }
+function escapar(texto) {
+  return String(texto ?? "").replace(/[&<>"']/g, c => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[c]);
+}
 
-      if (!["image/jpeg", "image/png", "image/webp"].includes(arquivo.type)) {
-        mensagem.textContent = "Use uma foto JPG, PNG ou WEBP.";
-        return;
-      }
+function carregarHabitantes() {
+  const callback = "toca_" + Math.random().toString(36).slice(2);
+  const script = document.createElement("script");
+  let concluido = false;
 
-      if (arquivo.size > 4 * 1024 * 1024) {
-        mensagem.textContent = "A foto deve ter no máximo 4 MB.";
-        return;
-      }
+  const timeout = setTimeout(() => finalizar(), 12000);
 
-      const lerFoto = () => new Promise((resolve, reject) => {
-        const leitor = new FileReader();
-        leitor.onload = () => resolve(leitor.result);
-        leitor.onerror = () => reject(new Error("Não foi possível ler a foto."));
-        leitor.readAsDataURL(arquivo);
-      });
+  function finalizar(dados) {
+    if (concluido) return;
+
+    concluido = true;
+    clearTimeout(timeout);
+    delete window[callback];
+    script.remove();
+
+    if (!dados) {
+      $("grid").innerHTML = "";
+      $("empty").textContent =
+        "Não foi possível carregar a galeria. Verifique a implantação do Apps Script.";
+      return;
+    }
+
+    const habitantes = Array.isArray(dados.habitantes)
+      ? dados.habitantes
+      : [];
+
+    $("grid").innerHTML = habitantes.map(p => {
+      let foto = "";
 
       try {
-        botao.disabled = true;
-        botao.textContent = "Enviando...";
-        mensagem.textContent = "A floresta está recebendo sua inscrição...";
+        const url = new URL(p.fotoUrl);
 
-        const payload = {
-          nome: document.getElementById("nome").value.trim(),
-          telefone: document.getElementById("telefone").value.trim(),
-          fantasia: document.getElementById("fantasia").value.trim(),
-          inspiracao: document.getElementById("inspiracao").value.trim(),
-          foto: await lerFoto()
-        };
-
-        if (!payload.nome || !payload.telefone ||
-            !payload.fantasia || !payload.inspiracao) {
-          throw new Error("Preencha todos os campos.");
+        if (
+          url.protocol === "https:" &&
+          (
+            url.hostname === "drive.google.com" ||
+            url.hostname.endsWith(".googleusercontent.com")
+          )
+        ) {
+          foto = url.href;
         }
+      } catch (_) {}
 
-        const token = crypto.randomUUID
-          ? crypto.randomUUID()
-          : String(Date.now()) + Math.random().toString(36).slice(2);
-
-        envioPendente = {
-          token,
-          timeout: setTimeout(() => {
-            envioPendente = null;
-            botao.disabled = false;
-            botao.textContent = "Enviar inscrição";
-            mensagem.textContent =
-              "Não recebemos confirmação. Confira a aba Inscricoes antes de tentar novamente.";
-          }, 45000)
-        };
-
-        formularioTransmissao.action = URL_APPS_SCRIPT;
-        document.getElementById("payload").value = JSON.stringify(payload);
-        document.getElementById("token").value = token;
-        formularioTransmissao.submit();
-
-      } catch (erro) {
-        console.error(erro);
-        if (envioPendente) clearTimeout(envioPendente.timeout);
-        envioPendente = null;
-        botao.disabled = false;
-        botao.textContent = "Enviar inscrição";
-        mensagem.textContent = erro.message || "Falha ao enviar a inscrição.";
-      }
-    });
-
-    function prepararUrlImagem(url) {
-      const original = String(url || "").trim();
-      if (!original) return "";
-
-      try {
-        const endereco = new URL(original);
-
-        if (/(^|\.)drive\.google\.com$/i.test(endereco.hostname)) {
-          let id = endereco.searchParams.get("id") || "";
-
-          if (!id) {
-            const match = endereco.pathname.match(/\/file\/d\/([^/]+)/);
-            if (match) id = match[1];
+      return `
+        <article class="person">
+          ${
+            foto
+              ? `<img src="${escapar(foto)}" alt="Fantasia ${escapar(p.fantasia)}" loading="lazy">`
+              : `<div class="no-photo">☠</div>`
           }
+          <div class="person-info">
+            <small>REGISTRO DA TOCA • APROVADO</small>
+            <h3>${escapar(p.fantasia)}</h3>
+            <p>${escapar(p.nome)}</p>
+            <div>${escapar(p.inspiracao)}</div>
+          </div>
+        </article>
+      `;
+    }).join("");
 
-          if (id) {
-            return "https://drive.google.com/thumbnail?id=" +
-              encodeURIComponent(id) + "&sz=w1200";
-          }
-        }
-      } catch (erro) {
-        return original;
-      }
+    $("empty").textContent = habitantes.length
+      ? ""
+      : "Ainda não há habitantes aprovados. A toca aguarda suas primeiras criaturas.";
+  }
 
-      return original;
-    }
+  window[callback] = dados => finalizar(dados);
+  script.onerror = () => finalizar();
 
-    function criarImagem(pessoa) {
-      const original = String(pessoa.foto || pessoa.fotoUrl || "").trim();
-      if (!original) return null;
+  script.src = URL_APPS_SCRIPT +
+    "?acao=habitantes&callback=" + callback +
+    "&t=" + Date.now();
 
-      const imagem = document.createElement("img");
-      imagem.alt = "Fantasia de " + (pessoa.fantasia || "participante");
-      imagem.loading = "lazy";
-      imagem.decoding = "async";
+  document.body.appendChild(script);
+}
 
-      const miniatura = prepararUrlImagem(original);
+carregarHabitantes();
+</script>
 
-      imagem.onerror = () => {
-        if (imagem.dataset.tentouOriginal !== "sim" && miniatura !== original) {
-          imagem.dataset.tentouOriginal = "sim";
-          imagem.src = original;
-          return;
-        }
+<!-- Carrega a votação popular e o ranking dinâmico -->
+<script src="/votacao.js" defer></script>
 
-        imagem.onerror = null;
-        imagem.style.display = "none";
-
-        const aviso = document.createElement("p");
-        aviso.className = "foto-indisponivel";
-        aviso.textContent = "A imagem desta criatura está oculta.";
-        imagem.parentElement?.appendChild(aviso);
-      };
-
-      imagem.src = miniatura || original;
-      return imagem;
-    }
-
-    function carregarHabitantes() {
-      const callback = "receberHabitantesToca";
-      const status = document.getElementById("status-galeria");
-      const script = document.createElement("script");
-
-      window[callback] = (resposta) => {
-        delete window[callback];
-        script.remove();
-
-        if (!resposta || !resposta.ok) {
-          status.textContent = "Não foi possível carregar os habitantes.";
-          return;
-        }
-
-        const galeria = document.getElementById("galeria");
-        galeria.replaceChildren();
-
-        const habitantes = resposta.habitantes || [];
-
-        if (!habitantes.length) {
-          status.textContent = "A floresta ainda guarda seus segredos.";
-          return;
-        }
-
-        status.textContent = habitantes.length + " habitante(s) aprovado(s).";
-
-        habitantes.forEach((pessoa) => {
-          const card = document.createElement("article");
-          card.className = "inhabitant";
-
-          const imagem = criarImagem(pessoa);
-          if (imagem) card.append(imagem);
-
-          const titulo = document.createElement("h3");
-          titulo.textContent = pessoa.fantasia || "Criatura sem nome";
-
-          const nome = document.createElement("p");
-          nome.textContent = pessoa.nome || "";
-
-          const inspiracao = document.createElement("p");
-          inspiracao.textContent = pessoa.inspiracao || "";
-
-          /* Telefone intencionalmente nunca é exibido na galeria. */
-          card.append(titulo, nome, inspiracao);
-          galeria.append(card);
-        });
-      };
-
-      script.onerror = () => {
-        delete window[callback];
-        script.remove();
-        status.textContent = "Falha de conexão. Confira a implantação do Apps Script.";
-      };
-
-      script.src = URL_APPS_SCRIPT + "?acao=habitantes&callback=" +
-        callback + "&t=" + Date.now();
-
-      document.body.appendChild(script);
-    }
-
-    carregarHabitantes();
-  </script>
 </body>
 </html>
